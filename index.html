@@ -1,0 +1,22 @@
+<script>
+let lang = "en";
+
+async function loadData() {
+  const res = await fetch("./content.json");
+  const data = await res.json();
+
+  const item = data[0];
+
+  document.getElementById("title").innerText = item.title[lang];
+  document.getElementById("problem").innerText = item.problem[lang];
+  document.getElementById("insight").innerText = item.insight[lang];
+  document.getElementById("impact").innerText = item.impact[lang];
+}
+
+function toggleLang() {
+  lang = lang === "en" ? "zh" : "en";
+  loadData();
+}
+
+loadData();
+</script>
