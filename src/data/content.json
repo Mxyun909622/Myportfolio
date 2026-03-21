@@ -1,0 +1,64 @@
+{
+  "settings": {
+    "defaultLang": "en",
+    "contact": {
+      "email": "Ingrid9096@outlook.com",
+      "linkedin": "linkedin.com/in/Ingrid"
+    }
+  },
+  "nav": {
+    "projects": { "zh": "案例展示", "en": "Projects" },
+    "about": { "zh": "关于我", "en": "About" },
+    "resume": { "zh": "简历", "en": "Resume" }
+  },
+  "profile": {
+    "name": "Ingrid Ma",
+    "title": {
+      "zh": "资深社交媒体洞察分析师",
+      "en": "Senior Social Listening Analyst"
+    },
+    "intro": {
+      "zh": "专注通过大数据挖掘消费者真实需求，为美妆及奢侈品牌提供增长策略。",
+      "en": "Transforming social noise into actionable business intelligence for Beauty & Luxury brands."
+    }
+  },
+  "projects": [
+    {
+      "id": "beauty-launch-2025",
+      "title": {
+        "zh": "高端美妆新品上市社交声量监测",
+        "en": "Luxury Skincare Product Launch Insight"
+      },
+      "meta": { "brand": "L'Oréal Group", "year": "2025", "category": "Beauty / Campaign" },
+      "problem": {
+        "zh": "新品在小红书声量高但转化率低于竞品，需定位流失点。",
+        "en": "High buzz on RED but lower conversion vs competitors; needed to identify the leak."
+      },
+      "key_question": {
+        "zh": "消费者对产品成分的讨论焦点是否与品牌宣称一致？",
+        "en": "Does consumer sentiment regarding ingredients align with brand claims?"
+      },
+      "approach": {
+        "zh": "使用 Meltwater 抓取 5万+ 条评论，配合 Python 进行词频分析与情感建模。",
+        "en": "Scraped 50k+ comments via Meltwater; applied Python for TF-IDF and sentiment modeling."
+      },
+      "insight": {
+        "zh": "消费者更关注‘肤感’而非官方主打的‘成分浓度’，存在认知错位。",
+        "en": "Consumers prioritize 'texture' over 'concentration', revealing a communication gap."
+      },
+      "impact": {
+        "zh": "调整投放素材后，电商搜索转化率提升 22%。",
+        "en": "Optimized creative assets led to a 22% increase in E-commerce CTR."
+      },
+      "recommendation": {
+        "zh": "建议下季度 Campaign 转向‘即时吸收’体验展示。",
+        "en": "Pivot next quarter's campaign towards 'instant absorption' demos."
+      },
+      "metrics": ["+22% Conv. Rate", "Top 2 SOV in Category"],
+      "assets": {
+        "images": ["/assets/pic.png"],
+        "pdf": "/assets/Convosphere_Case-Study_Parent-Journey-and-Perceptions-of-Infant-Food_2024.pdf"
+      }
+    }
+  ]
+}
