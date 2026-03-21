@@ -1,11 +1,16 @@
+/** @type {import('tailwindcss').Config} */
 module.exports = {
+  content: [
+    "./src/**/*.{js,jsx,ts,tsx}",
+    "./public/index.html"
+  ],
   theme: {
     extend: {
-      spacing: { '8': '32px' },
       colors: {
-        brand: '#111111',
-        accent: '#2563eb' // 蓝色点缀
+        'consulting-blue': '#2563eb',
+        'dark-bg': '#111111'
       }
-    }
-  }
+    },
+  },
+  plugins: [],
 }

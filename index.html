@@ -1,80 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Portfolio</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f8f8f8;
-      padding: 40px;
-      color: #111;
-    }
-    .card {
-      background: white;
-      padding: 24px;
-      border-radius: 12px;
-      max-width: 800px;
-      margin: auto;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-    }
-    button {
-      margin-bottom: 20px;
-      padding: 8px 16px;
-      cursor: pointer;
-    }
-    h1 { font-size: 24px; }
-    p { line-height: 1.6; }
-  </style>
-</head>
-
-<body>
-
-<div class="card">
-  <button onclick="toggleLang()">Switch Language</button>
-
-  <h1 id="title"></h1>
-  <p id="problem"></p>
-  <p id="insight"></p>
-  <p id="impact"></p>
-</div>
-
 <script>
-const data = {
-  title: {
-    zh: "高端美妆新品上市社交声量监测",
-    en: "Luxury Skincare Product Launch Insight"
-  },
-  problem: {
-    zh: "新品在小红书声量高但转化率低于竞品，需定位流失点。",
-    en: "High buzz on RED but lower conversion vs competitors."
-  },
-  insight: {
-    zh: "消费者更关注‘肤感’而非‘成分浓度’。",
-    en: "Consumers prioritize texture over concentration."
-  },
-  impact: {
-    zh: "转化率提升22%。",
-    en: "Conversion rate increased by 22%."
-  }
-};
-
 let lang = "en";
 
-function render() {
-  document.getElementById("title").innerText = data.title[lang];
-  document.getElementById("problem").innerText = data.problem[lang];
-  document.getElementById("insight").innerText = data.insight[lang];
-  document.getElementById("impact").innerText = data.impact[lang];
+async function loadData() {
+  const res = await fetch("./content.json");
+  const data = await res.json();
+
+  const item = data[0];
+
+  document.getElementById("title").innerText = item.title[lang];
+  document.getElementById("problem").innerText = item.problem[lang];
+  document.getElementById("insight").innerText = item.insight[lang];
+  document.getElementById("impact").innerText = item.impact[lang];
 }
 
 function toggleLang() {
   lang = lang === "en" ? "zh" : "en";
-  render();
+  loadData();
 }
 
-render();
+loadData();
 </script>
-
-</body>
-</html>

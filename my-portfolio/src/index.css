@@ -1,0 +1,20 @@
+/* 1. 引擎核心：必须放在最顶部 */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 2. 全局基础设置：放在中间 */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  
+  /* 使用你刚刚在 tailwind.config.js 里定义的背景色 */
+  @apply bg-light-gray text-brand; 
+}
+
+/* 3. 自定义组件样式：放在最后 */
+.btn-primary {
+  @apply bg-accent text-white px-6 py-2 rounded-sm transition-all hover:opacity-90;
+}

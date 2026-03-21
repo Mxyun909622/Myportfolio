@@ -1,37 +1,85 @@
 {
       "id": "beauty-launch-2025",
       "title": {
-        "zh": "高端美妆新品上市社交声量监测",
-        "en": "Luxury Skincare Product Launch Insight"
+            "zh": "高端美妆新品上市社交声量监测",
+            "en": "Luxury Skincare Product Launch Insight"
       },
-      "meta": { "brand": "L'Oréal Group", "year": "2025", "category": "Beauty / Campaign" },
+      "meta": {
+            "brand": "L'Oréal Group",
+            "year": "2025",
+            "category": "Beauty / Campaign"
+      },
       "problem": {
-        "zh": "新品在小红书声量高但转化率低于竞品，需定位流失点。",
-        "en": "High buzz on RED but lower conversion vs competitors; needed to identify the leak."
+            "zh": "新品在小红书声量高但转化率低于竞品，需定位流失点。",
+            "en": "High buzz on RED but lower conversion vs competitors; needed to identify the leak."
       },
       "key_question": {
-        "zh": "消费者对产品成分的讨论焦点是否与品牌宣称一致？",
-        "en": "Does consumer sentiment regarding ingredients align with brand claims?"
+            "zh": "消费者对产品成分的讨论焦点是否与品牌宣称一致？",
+            "en": "Does consumer sentiment regarding ingredients align with brand claims?"
       },
       "approach": {
-        "zh": "使用 Meltwater 抓取 5万+ 条评论，配合 Python 进行词频分析与情感建模。",
-        "en": "Scraped 50k+ comments via Meltwater; applied Python for TF-IDF and sentiment modeling."
+            "zh": "使用 Meltwater 抓取 5万+ 条评论，配合 Python 进行词频分析与情感建模。",
+            "en": "Scraped 50k+ comments via Meltwater; applied Python for TF-IDF and sentiment modeling."
       },
       "insight": {
-        "zh": "消费者更关注‘肤感’而非官方主打的‘成分浓度’，存在认知错位。",
-        "en": "Consumers prioritize 'texture' over 'concentration', revealing a communication gap."
+            "zh": "消费者更关注‘肤感’而非官方主打的‘成分浓度’，存在认知错位。",
+            "en": "Consumers prioritize 'texture' over 'concentration', revealing a communication gap."
       },
       "impact": {
-        "zh": "调整投放素材后，电商搜索转化率提升 22%。",
-        "en": "Optimized creative assets led to a 22% increase in E-commerce CTR."
+            "zh": "调整投放素材后，电商搜索转化率提升 22%。",
+            "en": "Optimized creative assets led to a 22% increase in E-commerce CTR."
       },
       "recommendation": {
-        "zh": "建议下季度 Campaign 转向‘即时吸收’体验展示。",
-        "en": "Pivot next quarter's campaign towards 'instant absorption' demos."
+            "zh": "建议下季度 Campaign 转向‘即时吸收’体验展示。",
+            "en": "Pivot next quarter's campaign towards 'instant absorption' demos."
       },
-      "metrics": ["+22% Conv. Rate", "Top 2 SOV in Category"],
+      "metrics": [
+            "+22% Conv. Rate",
+            "Top 2 SOV in Category"
+      ],
       "assets": {
-        "images": ["/assets/Platform and stakeholders.png","/assets/医药 漏斗数据筛选.png"],
-        "pdf": "/assets/Convosphere_Case-Study_Parent-Journey-and-Perceptions-of-Infant-Food_2024.pdf"
-      }
-    }
+            "images": [
+                  "/assets/Platform and stakeholders.png",
+                  "/assets/医药 漏斗数据筛选.png"
+            ],
+            "pdf": "/assets/Convosphere_Case-Study_Parent-Journey-and-Perceptions-of-Infant-Food_2024.pdf"
+      },
+      "devDependencies": {
+            "autoprefixer": "^10.4.27",
+            "postcss": "^8.5.8",
+            "tailwindcss": "^4.2.2"
+      },
+      "name": "my-portfolio",
+      "version": "1.0.0",
+      "description": "",
+      "main": "tailwind.config.js",
+      "dependencies": {
+            "baseline-browser-mapping": "^2.10.9",
+            "browserslist": "^4.28.1",
+            "caniuse-lite": "^1.0.30001780",
+            "electron-to-chromium": "^1.5.321",
+            "escalade": "^3.2.0",
+            "fraction.js": "^5.3.4",
+            "nanoid": "^3.3.11",
+            "node-releases": "^2.0.36",
+            "picocolors": "^1.1.1",
+            "postcss-value-parser": "^4.2.0",
+            "source-map-js": "^1.2.1",
+            "update-browserslist-db": "^1.2.3"
+      },
+      "scripts": {
+            "test": "echo \"Error: no test specified\" && exit 1"
+      },
+      "repository": {
+            "type": "git",
+            "url": "git+https://github.com/Mxyun909622/portfolio-site.git"
+      },
+      "keywords": [],
+      "author": "",
+      "license": "ISC",
+      "type": "commonjs",
+      "bugs": {
+            "url": "https://github.com/Mxyun909622/portfolio-site/issues"
+      },
+      "homepage": "https://github.com/Mxyun909622/portfolio-site#readme"
+}
