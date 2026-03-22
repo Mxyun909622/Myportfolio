@@ -4,25 +4,33 @@ import contentData from './data/content.json';
 
 // --- 抽取出的子组件：导航栏 ---
 const Navbar = ({ lang, setLang, t }) => (
-  <nav className="fixed w-full z-[100] bg-white/80 backdrop-blur-md border-b border-gray-200 px-8 py-4 flex justify-between items-center">
-    <Link to="/" className="font-bold tracking-tighter text-xl hover:text-blue-600 transition">
+  <nav className="fixed w-full top-0 left-0 z-[100] bg-white/80 backdrop-blur-md border-b border-gray-200 px-8 py-4 flex justify-between items-center">
+    {/* 左侧 Logo/姓名 */}
+    <Link to="/" className="font-bold tracking-tighter text-xl hover:text-blue-600 transition-colors">
       {contentData.profile.name}
     </Link>
     
-    <div className="hidden md:flex gap-8 items-center text-sm font-medium text-gray-600">
-      <Link to="/" className="hover:text-black transition">首页</Link>
-      <Link to="/projects" className="hover:text-black transition">项目经历</Link>
-      <Link to="/hobbies" className="hover:text-black transition">兴趣爱好</Link>
-      <Link to="/resources" className="hover:text-black transition">资源</Link>
-      <Link to="/contact" className="hover:text-black transition">联系方式</Link>
+    {/* 右侧菜单 */}
+    <div className="flex gap-4 md:gap-8 items-center text-sm font-medium text-gray-600">
+      {/* 桌面端显示的菜单，在移动端会自动隐藏部分，防止挤压 */}
+      <div className="hidden sm:flex gap-6">
+        <Link to="/" className="hover:text-black transition">首页</Link>
+        <Link to="/projects" className="hover:text-black transition">项目经历</Link>
+        <Link to="/hobbies" className="hover:text-black transition">兴趣爱好</Link>
+        <Link to="/resources" className="hover:text-black transition">资源</Link>
+        <Link to="/contact" className="hover:text-black transition">联系方式</Link>
+      </div>
+
+      {/* 语言切换按钮 - 始终显示 */}
       <button 
         onClick={() => setLang(lang === 'en' ? 'zh' : 'en')} 
-        className="bg-gray-100 px-3 py-1 rounded-full text-xs hover:bg-gray-200 transition"
+        className="bg-gray-100 px-4 py-1.5 rounded-full text-xs font-bold hover:bg-blue-50 hover:text-blue-600 transition-all border border-transparent hover:border-blue-100"
       >
         {lang === 'en' ? '中文' : 'EN'}
       </button>
     </div>
   </nav>
+);
 );
 
 // --- 页面 1: 首页 (Home) ---
