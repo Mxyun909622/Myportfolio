@@ -43,7 +43,7 @@ const Home = ({ t }) => (
       </div>
       {/* 可以在这里放你的照片 */}
       <div className="w-64 h-64 bg-gray-200 rounded-full overflow-hidden border-4 border-white shadow-lg">
-         <img src="/assets/profile.jpg" alt="Ingrid" className="w-full h-full object-cover" onError={(e) => e.target.style.display='none'}/>
+         <img src="/assets/profile.png" alt="Ingrid" className="w-full h-full object-cover" onError={(e) => e.target.style.display='none'}/>
       </div>
     </div>
   </section>
