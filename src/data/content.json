@@ -56,10 +56,9 @@
       },
       "metrics": ["+22% Conv. Rate", "Top 2 SOV in Category"],
       "assets": {
-        "images": ["/assets/Platform and stakeholders.png"，"/assets/pharma-funnel.jpg"],
+        "images": ["/assets/Platform and stakeholders.png","/assets/pharma-funnel.jpg"],
         "pdf": "/assets/Convosphere_Case-Study_Parent-Journey-and-Perceptions-of-Infant-Food_2024.pdf"
       }
-      
     }
   ]
 }
