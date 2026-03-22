@@ -185,12 +185,12 @@ function App() {
           </div>
           <h3 className="text-4xl font-bold mb-4">Xiaohongshu</h3>
           <p className="text-white/80 leading-relaxed text-lg">
-            分享关于 Social Listening、数据洞察及职场成长的深度思考。
+            分享关于 Social Listening、数据洞察及职场养成的笔记与思考。
           </p>
         </div>
         <div className="mt-12 flex items-center gap-3">
-          <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-[#ff2442] font-black">书</div>
-          <span className="font-bold border-b border-white/50 group-hover:border-white transition">Follow @Ingrid</span>
+          <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-[#ff2442] font-black">小红书</div>
+          <span className="font-bold border-b border-white/50 group-hover:border-white transition">Follow @小由的Insight笔记</span>
         </div>
       </a>
 
