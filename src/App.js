@@ -66,18 +66,23 @@ const [selectedProject, setSelectedProject] = useState(null);
     className="group cursor-pointer" 
     onClick={() => setSelectedProject(project)}
   >
-                {/* 项目封面图 */}
-                <div className="relative aspect-[16/9] bg-light-gray mb-8 overflow-hidden rounded-sm">
-                  <div className="absolute inset-0 flex items-center justify-center text-gray-300 font-serif italic text-lg group-hover:scale-110 transition-transform duration-700">
-                    {project.meta.brand} Analysis Visual
-                  </div>
-                  {/* 悬浮时的遮罩 */}
-                  <div className="absolute inset-0 bg-brand/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-6 text-white text-center">
-                     <p className="text-sm mb-2 uppercase tracking-widest">{lang === 'en' ? 'Key Results' : '核心成果'}</p>
-                     {project.metrics.map(m => <span key={m} className="text-2xl font-bold">{m}</span>)}
-                  </div>
-                </div>
-
+{/* 项目封面图 - 精确替换此部分 */}
+<div className="relative aspect-[16/9] bg-gray-100 mb-8 overflow-hidden rounded-sm border border-gray-100">
+  {/* 实际加载 JSON 中的图片 */}
+  {project.assets.images && project.assets.images[0] && (
+    <img 
+      src={project.assets.images[0]} 
+      alt={project.meta.brand}
+      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+    />
+  )}
+  
+  {/* 悬浮时的遮罩：显示核心指标 (保持不变) */}
+  <div className="absolute inset-0 bg-brand/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-6 text-white text-center backdrop-blur-sm">
+      <p className="text-sm mb-2 uppercase tracking-widest">{lang === 'en' ? 'Key Results' : '核心成果'}</p>
+      {project.metrics.map(m => <span key={m} className="text-2xl font-bold">{m}</span>)}
+  </div>
+</div>
                 {/* 项目文字信息 */}
                 <div className="space-y-4">
                   <div className="flex justify-between items-start">
