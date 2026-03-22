@@ -108,16 +108,55 @@ function App() {
         <Routes>
           <Route path="/" element={<Home t={t} />} />
           <Route path="/projects" element={<ProjectsPage t={t} setActiveProject={setActiveProject} />} />
-          <Route path="/hobbies" element={
-            <CardSection title="Hobbies & Aesthetic">
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <div className="aspect-square bg-white border p-6 rounded-xl shadow-sm hover:shadow-md transition">📷 Photography</div>
-                <div className="aspect-square bg-white border p-6 rounded-xl shadow-sm hover:shadow-md transition">🎨 Painting</div>
-                <div className="aspect-square bg-white border p-6 rounded-xl shadow-sm hover:shadow-md transition">📚 Reading List</div>
-                <div className="aspect-square bg-white border p-6 rounded-xl shadow-sm hover:shadow-md transition">🎙️ Podcast</div>
-              </div>
-            </CardSection>
-          } />
+<Route path="/hobbies" element={
+  <CardSection title="Interests & Aesthetic">
+    <div className="space-y-12">
+      {/* 摄影模块 */}
+      <div className="bg-white border p-8 rounded-3xl shadow-sm">
+        <div className="flex justify-between items-end mb-8">
+          <div>
+            <h3 className="text-2xl font-bold mb-2">📷 Photography</h3>
+            <p className="text-gray-500">捕捉光影与城市的叙事，记录社交媒体之外的真实瞬间。</p>
+          </div>
+          {/* More 按钮链接到图虫 */}
+          <a 
+            href="https://tuchong.com/3771178" 
+            target="_blank" 
+            rel="noreferrer"
+            className="text-sm font-bold text-blue-600 hover:text-blue-800 transition flex items-center gap-1 border-b-2 border-blue-100 pb-1"
+          >
+            More on Tuchong ➔
+          </a>
+        </div>
+
+        {/* 三张图片预览网格 */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="aspect-[3/4] bg-gray-100 rounded-xl overflow-hidden shadow-inner">
+            <img src="/assets/photo1.jpg" className="w-full h-full object-cover hover:scale-110 transition duration-700" alt="work1" />
+          </div>
+          <div className="aspect-[3/4] bg-gray-100 rounded-xl overflow-hidden shadow-inner">
+            <img src="/assets/photo2.jpg" className="w-full h-full object-cover hover:scale-110 transition duration-700" alt="work2" />
+          </div>
+          <div className="aspect-[3/4] bg-gray-100 rounded-xl overflow-hidden shadow-inner">
+            <img src="/assets/photo3.jpg" className="w-full h-full object-cover hover:scale-110 transition duration-700" alt="work3" />
+          </div>
+        </div>
+      </div>
+
+      {/* 底部可以并排两个小模块：绘画和书籍 */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="bg-white border p-8 rounded-3xl shadow-sm">
+          <h3 className="text-xl font-bold mb-4">🎨 Digital Painting</h3>
+          <p className="text-gray-500 text-sm">通过 Procreate 探索色彩与构图，平衡逻辑分析与感性表达。</p>
+        </div>
+        <div className="bg-white border p-8 rounded-3xl shadow-sm">
+          <h3 className="text-xl font-bold mb-4">📚 Reading List</h3>
+          <p className="text-gray-500 text-sm">关注社会学、传播学与消费者心理相关的经典著作。</p>
+        </div>
+      </div>
+    </div>
+  </CardSection>
+} />
           <Route path="/resources" element={
             <CardSection title="Resources">
               <div className="bg-white border p-12 rounded-2xl text-center">
