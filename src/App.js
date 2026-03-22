@@ -5,22 +5,25 @@ import contentData from './data/content.json';
 // --- 组件 1: 导航栏 (Navbar) ---
 const Navbar = ({ lang, setLang, t }) => (
   <nav className="fixed w-full top-0 left-0 z-[100] bg-white/80 backdrop-blur-md border-b border-gray-200 px-8 py-4 flex justify-between items-center">
+    {/* Logo / Name */}
     <Link to="/" className="font-bold tracking-tighter text-xl hover:text-blue-600 transition-colors">
       {contentData.profile.name}
     </Link>
     
-    <div className="flex gap-4 md:gap-8 items-center text-sm font-medium text-gray-600">
-      <div className="hidden sm:flex gap-6">
-        <Link to="/" className="hover:text-black transition">首页</Link>
-        <Link to="/projects" className="hover:text-black transition">项目经历</Link>
-        <Link to="/hobbies" className="hover:text-black transition">兴趣爱好</Link>
-        <Link to="/resources" className="hover:text-black transition">资源</Link>
-        <Link to="/contact" className="hover:text-black transition">联系方式</Link>
+    {/* Navigation Menu */}
+    <div className="flex gap-4 md:gap-8 items-center text-sm font-semibold tracking-wide text-gray-600">
+      <div className="hidden sm:flex gap-8 uppercase">
+        <Link to="/" className="hover:text-black transition">Home</Link>
+        <Link to="/projects" className="hover:text-black transition">Projects</Link>
+        <Link to="/hobbies" className="hover:text-black transition">Interests</Link>
+        <Link to="/resources" className="hover:text-black transition">Resources</Link>
+        <Link to="/contact" className="hover:text-black transition">Contact</Link>
       </div>
 
+      {/* Language Switcher */}
       <button 
         onClick={() => setLang(lang === 'en' ? 'zh' : 'en')} 
-        className="bg-gray-100 px-4 py-1.5 rounded-full text-xs font-bold hover:bg-blue-50 hover:text-blue-600 transition-all border border-transparent hover:border-blue-100"
+        className="bg-gray-100 px-4 py-1.5 rounded-full text-[10px] font-black hover:bg-blue-50 hover:text-blue-600 transition-all border border-transparent hover:border-blue-100 uppercase"
       >
         {lang === 'en' ? '中文' : 'EN'}
       </button>
@@ -44,7 +47,7 @@ const Home = ({ t }) => (
       </div>
     </div>
     <div className="w-64 h-64 bg-gray-200 rounded-full overflow-hidden border-4 border-white shadow-xl">
-      <img src="/assets/profile.jpg" alt="Profile" className="w-full h-full object-cover" onError={(e) => e.target.style.display='none'} />
+      <img src="/assets/profile.png" alt="Profile" className="w-full h-full object-cover" onError={(e) => e.target.style.display='none'} />
     </div>
   </section>
 );
