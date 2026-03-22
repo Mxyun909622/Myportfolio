@@ -165,17 +165,61 @@ function App() {
               </div>
             </CardSection>
           } />
-          <Route path="/contact" element={
-            <CardSection title="Contact">
-              <div className="max-w-xl bg-white border p-12 rounded-2xl shadow-sm">
-                <p className="text-2xl mb-8">📧 Email: <span className="text-blue-600 font-medium">ingrid@example.com</span></p>
-                <div className="border-t pt-8">
-                  <p className="text-sm text-gray-400 mb-4 uppercase tracking-tighter">WeChat QR</p>
-                  <div className="w-40 h-40 bg-gray-100 rounded-lg flex items-center justify-center border-2 border-dashed">QR Code</div>
-                </div>
+<Route path="/contact" element={
+  <section className="pt-32 px-8 max-w-6xl mx-auto pb-20">
+    <h2 className="text-4xl font-bold mb-12 text-left">Get in Touch</h2>
+    
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+      
+      {/* 1. 小红书模块：品牌色卡片 */}
+      <a 
+        href="https://xhslink.com/m/8ez2dN942gq" 
+        target="_blank" 
+        rel="noreferrer"
+        className="group bg-[#ff2442] text-white p-10 rounded-3xl shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
+      >
+        <div>
+          <div className="flex justify-between items-start mb-6">
+            <span className="bg-white/20 px-3 py-1 rounded-full text-xs font-bold tracking-widest uppercase">Social Media</span>
+            <span className="text-2xl">➔</span>
+          </div>
+          <h3 className="text-4xl font-bold mb-4">Xiaohongshu</h3>
+          <p className="text-white/80 leading-relaxed text-lg">
+            分享关于 Social Listening、数据洞察及职场成长的深度思考。
+          </p>
+        </div>
+        <div className="mt-12 flex items-center gap-3">
+          <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-[#ff2442] font-black">书</div>
+          <span className="font-bold border-b border-white/50 group-hover:border-white transition">Follow @Ingrid</span>
+        </div>
+      </a>
+
+      {/* 2. 传统联系方式：邮箱与微信 */}
+      <div className="bg-white border border-gray-100 p-10 rounded-3xl shadow-sm flex flex-col justify-between">
+        <div className="space-y-8 text-left">
+          <div>
+            <h4 className="text-xs font-black text-gray-400 uppercase tracking-widest mb-2">Email</h4>
+            <a href="mailto:your-email@example.com" className="text-2xl font-medium text-gray-800 hover:text-blue-600 transition underline decoration-gray-200 underline-offset-8">
+              ingridma9096@outlook.com
+            </a>
+          </div>
+          
+          <div className="pt-6 border-t border-gray-50">
+            <h4 className="text-xs font-black text-gray-400 uppercase tracking-widest mb-4">WeChat Account</h4>
+            <div className="flex items-center gap-6">
+              {/* 微信二维码 */}
+              <div className="w-32 h-32 bg-gray-50 rounded-xl border border-gray-100 p-2 shadow-inner">
+                <img src="/assets/wechat-qr.png" alt="WeChat" className="w-full h-full object-contain" onError={(e) => e.target.style.opacity='0.2'} />
               </div>
-            </CardSection>
-          } />
+              <p className="text-sm text-gray-500 italic">Scan to connect professionally.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+} />
         </Routes>
 
         {/* 项目详情弹窗 */}
