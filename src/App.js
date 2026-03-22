@@ -33,21 +33,28 @@ const Navbar = ({ lang, setLang, t }) => (
 
 // --- 组件 2: 首页 (Home) ---
 const Home = ({ t }) => (
-  <section className="pt-32 pb-20 px-8 max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12">
+  <section className="pt-32 pb-20 px-8 max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12 text-left">
     <div className="flex-1">
-      <h2 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-        {t(contentData.profile.title)}
-      </h2>
-      <p className="text-xl text-gray-600 max-w-2xl mb-8">
-        {t(contentData.profile.intro)}
-      </p>
+      <h2 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">{t(contentData.profile.title)}</h2>
+      <p className="text-xl text-gray-600 max-w-2xl mb-8">{t(contentData.profile.intro)}</p>
       <div className="flex gap-4">
         <Link to="/projects" className="bg-[#111] text-white px-8 py-3 rounded-sm hover:bg-gray-800 transition">View Projects</Link>
         <a href={contentData.profile.resumeUrl} target="_blank" rel="noreferrer" className="border border-[#111] px-8 py-3 rounded-sm hover:bg-gray-50 transition text-center inline-block">Resume</a>
       </div>
     </div>
-    <div className="w-64 h-64 bg-gray-200 rounded-full overflow-hidden border-4 border-white shadow-xl">
-      <img src="/assets/profile.png" alt="Profile" className="w-full h-full object-cover" onError={(e) => e.target.style.display='none'} />
+    
+    {/* 头像区域 - 重点检查这里 */}
+    <div className="w-64 h-64 bg-gray-100 rounded-full overflow-hidden border-4 border-white shadow-xl flex items-center justify-center">
+      <img 
+        src={contentData.profile.avatar} 
+        alt="Profile" 
+        className="w-full h-full object-cover"
+        onError={(e) => {
+          console.error("图片加载失败，路径是:", e.target.src);
+          // 如果加载失败，可以显示一个占位颜色或者文字
+          e.target.style.display = 'none';
+        }} 
+      />
     </div>
   </section>
 );
