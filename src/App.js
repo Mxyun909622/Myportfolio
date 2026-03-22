@@ -38,7 +38,14 @@ const Home = ({ t }) => (
         </p>
         <div className="flex gap-4">
           <Link to="/projects" className="bg-[#111] text-white px-8 py-3 rounded-sm hover:bg-gray-800 transition">View Projects</Link>
-          <a href={contentData.profile.resumeUrl || "#"} className="border border-[#111] px-8 py-3 rounded-sm hover:bg-gray-50 transition text-center">Resume</a>
+          <a 
+  href={contentData.profile.resumeUrl} 
+  target="_blank" 
+  rel="noreferrer"
+  className="border border-[#111] px-8 py-3 rounded-sm hover:bg-gray-50 transition text-center inline-block"
+>
+  {lang === 'en' ? 'Resume' : '阅读简历'}
+</a>
         </div>
       </div>
       {/* 可以在这里放你的照片 */}
