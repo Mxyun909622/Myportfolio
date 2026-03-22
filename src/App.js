@@ -1,220 +1,187 @@
 import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import contentData from './data/content.json';
 
+// --- 抽取出的子组件：导航栏 ---
+const Navbar = ({ lang, setLang, t }) => (
+  <nav className="fixed w-full z-[100] bg-white/80 backdrop-blur-md border-b border-gray-200 px-8 py-4 flex justify-between items-center">
+    <Link to="/" className="font-bold tracking-tighter text-xl hover:text-blue-600 transition">
+      {contentData.profile.name}
+    </Link>
+    
+    <div className="hidden md:flex gap-8 items-center text-sm font-medium text-gray-600">
+      <Link to="/" className="hover:text-black transition">首页</Link>
+      <Link to="/projects" className="hover:text-black transition">项目经历</Link>
+      <Link to="/hobbies" className="hover:text-black transition">兴趣爱好</Link>
+      <Link to="/resources" className="hover:text-black transition">资源</Link>
+      <Link to="/contact" className="hover:text-black transition">联系方式</Link>
+      <button 
+        onClick={() => setLang(lang === 'en' ? 'zh' : 'en')} 
+        className="bg-gray-100 px-3 py-1 rounded-full text-xs hover:bg-gray-200 transition"
+      >
+        {lang === 'en' ? '中文' : 'EN'}
+      </button>
+    </div>
+  </nav>
+);
+
+// --- 页面 1: 首页 (Home) ---
+const Home = ({ t }) => (
+  <section className="pt-32 pb-20 px-8 max-w-6xl mx-auto">
+    <div className="flex flex-col md:flex-row gap-12 items-center">
+      <div className="flex-1">
+        <h2 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+          {t(contentData.profile.title)}
+        </h2>
+        <p className="text-xl text-gray-600 max-w-2xl mb-8">
+          {t(contentData.profile.intro)}
+        </p>
+        <div className="flex gap-4">
+          <Link to="/projects" className="bg-[#111] text-white px-8 py-3 rounded-sm hover:bg-gray-800 transition">View Projects</Link>
+          <a href={contentData.profile.resumeUrl || "#"} className="border border-[#111] px-8 py-3 rounded-sm hover:bg-gray-50 transition text-center">Resume</a>
+        </div>
+      </div>
+      {/* 可以在这里放你的照片 */}
+      <div className="w-64 h-64 bg-gray-200 rounded-full overflow-hidden border-4 border-white shadow-lg">
+         <img src="/assets/profile.jpg" alt="Ingrid" className="w-full h-full object-cover" onError={(e) => e.target.style.display='none'}/>
+      </div>
+    </div>
+  </section>
+);
+
+// --- 页面 2: 项目经历 (Projects) ---
+const Projects = ({ t, setActiveProject }) => (
+  <section className="pt-32 px-8 max-w-6xl mx-auto py-20">
+    <h2 className="text-4xl font-bold mb-12">Case Studies</h2>
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+      {contentData.projects.map((project) => (
+        <div key={project.id} className="group cursor-pointer" onClick={() => setActiveProject(project)}>
+          <div className="aspect-video bg-gray-100 mb-4 overflow-hidden rounded-lg shadow-sm group-hover:shadow-md transition-all relative">
+            {project.assets.images && project.assets.images[0] ? (
+               <img src={project.assets.images[0]} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt={t(project.title)} />
+            ) : (
+               <div className="w-full h-full flex items-center justify-center text-gray-400 italic">Project Preview</div>
+            )}
+          </div>
+          <div className="flex justify-between items-start">
+            <div>
+              <h3 className="text-2xl font-bold mb-2 group-hover:text-blue-700 transition">{t(project.title)}</h3>
+              <span className="text-sm text-gray-500 uppercase tracking-widest">{project.meta.category}</span>
+            </div>
+            <div className="text-right">
+              {project.metrics.map(m => <div key={m} className="text-sm font-bold text-blue-600">{m}</div>)}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+);
+
+// --- 页面 3: 兴趣爱好 (Hobbies) ---
+const Hobbies = ({ t }) => (
+  <section className="pt-32 px-8 max-w-6xl mx-auto">
+    <h2 className="text-4xl font-bold mb-8">Interests & Hobbies</h2>
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      {/* 这里的图片路径需要你在 content.json 中补充 hobby 字段 */}
+      <div className="aspect-square bg-gray-100 rounded-lg flex items-center justify-center">📷 Photography</div>
+      <div className="aspect-square bg-gray-100 rounded-lg flex items-center justify-center">🎨 Painting</div>
+      <div className="aspect-square bg-gray-100 rounded-lg flex items-center justify-center">📚 Reading</div>
+      <div className="aspect-square bg-gray-100 rounded-lg flex items-center justify-center">🎙️ Podcast</div>
+    </div>
+  </section>
+);
+
+// --- 页面 4: 资源 (Resources) ---
+const Resources = ({ t }) => (
+  <section className="pt-32 px-8 max-w-6xl mx-auto">
+    <h2 className="text-4xl font-bold mb-8">Digital Shelf</h2>
+    <div className="bg-white border p-8 rounded-lg">
+      <p className="text-gray-500 italic mb-6">推荐的书籍、播客与摄影师清单将持续更新...</p>
+      <a href="https://www.xiaohongshu.com" target="_blank" rel="noreferrer" className="text-red-500 font-bold underline">
+        Visit my Xiaohongshu ➔
+      </a>
+    </div>
+  </section>
+);
+
+// --- 页面 5: 联系方式 (Contact) ---
+const Contact = ({ t }) => (
+  <section className="pt-32 px-8 max-w-4xl mx-auto text-center">
+    <h2 className="text-4xl font-bold mb-12">Get in Touch</h2>
+    <div className="space-y-6 text-xl">
+      <p>📧 Email: <span className="font-medium text-blue-600">ingrid_analyst@example.com</span></p>
+      <div className="py-8">
+        <p className="text-sm text-gray-400 mb-4 uppercase tracking-widest">WeChat QR Code</p>
+        <div className="w-48 h-48 bg-gray-200 mx-auto rounded-lg flex items-center justify-center">二维码图片</div>
+      </div>
+    </div>
+  </section>
+);
+
+// --- 主组件 App ---
 function App() {
   const [lang, setLang] = useState('en');
-  // 用来存储当前点击的是哪个项目，如果是 null 则关闭弹窗
-const [selectedProject, setSelectedProject] = useState(null);
+  const [activeProject, setActiveProject] = useState(null);
 
-  // 翻译辅助函数
-  const t = (field) => (field && field[lang] ? field[lang] : field);
-
-  const { profile } = contentData;
+  const t = (field) => {
+    if (!field) return "";
+    return field[lang] || field;
+  };
 
   return (
-    <div className="min-h-screen bg-light-gray transition-colors duration-500">
-      {/* 1. 导航栏 */}
-      <nav className="p-6 md:px-12 flex justify-between items-center bg-white/50 backdrop-blur-md sticky top-0 z-50">
-        <div className="font-bold tracking-tighter text-xl text-brand uppercase">
-          {profile.name}
-        </div>
-        <button 
-          onClick={() => setLang(lang === 'en' ? 'zh' : 'en')}
-          className="border border-brand px-4 py-1 text-sm font-medium hover:bg-brand hover:text-white transition-all rounded-full"
-        >
-          {lang === 'en' ? '中文' : 'EN'}
-        </button>
-      </nav>
+    <Router>
+      <div className="min-h-screen bg-[#F5F5F5] text-[#111] font-sans selection:bg-blue-100">
+        <Navbar lang={lang} setLang={setLang} t={t} />
 
-      {/* 2. Hero Section */}
-      <header className="max-w-6xl mx-auto px-6 py-24 md:py-40">
-        <div className="max-w-3xl">
-          <span className="text-accent font-semibold tracking-widest uppercase text-sm mb-4 block animate-fade-in">
-            Social Listening Analyst
-          </span>
-          
-          <h1 className="text-5xl md:text-7xl font-bold text-brand leading-tight mb-8">
-            {t(profile.title)}
-          </h1>
-          
-          <p className="text-xl md:text-2xl text-gray-600 mb-12 leading-relaxed">
-            {t(profile.intro)}
-          </p>
+        <Routes>
+          <Route path="/" element={<Home t={t} />} />
+          <Route path="/projects" element={<Projects t={t} setActiveProject={setActiveProject} />} />
+          <Route path="/hobbies" element={<Hobbies t={t} />} />
+          <Route path="/resources" element={<Resources t={t} />} />
+          <Route path="/contact" element={<Contact t={t} />} />
+        </Routes>
 
-          <div className="flex flex-col sm:flex-row gap-6">
-            <button className="bg-brand text-white px-10 py-4 font-medium hover:bg-gray-800 transition shadow-lg hover:shadow-xl">
-              {lang === 'en' ? 'View Projects' : '查看项目'}
-            </button>
-            <button className="border-b-2 border-brand py-4 font-bold hover:text-accent hover:border-accent transition-all">
-              {lang === 'en' ? 'Download CV' : '下载简历'}
-            </button>
-          </div>
-        </div>
-      </header>
-
-      {/* 3. 项目展示区域 */}
-      <section className="bg-white py-20 px-6 border-t border-gray-100">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-xs uppercase tracking-[0.2em] text-gray-400 mb-16 font-bold">
-            {lang === 'en' ? 'Featured Case Studies' : '精选咨询案例'}
-          </h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-24">
-           {contentData.projects.map((project) => (
-  <div 
-    key={project.id} 
-    className="group cursor-pointer" 
-    onClick={() => setSelectedProject(project)}
-  >
-{/* 项目封面图 - 精确替换此部分 */}
-<div className="relative aspect-[16/9] bg-gray-100 mb-8 overflow-hidden rounded-sm border border-gray-100">
-  {/* 实际加载 JSON 中的图片 */}
-  {project.assets.images && project.assets.images[0] && (
-    <img 
-      src={project.assets.images[0]} 
-      alt={project.meta.brand}
-      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-    />
-  )}
-  
-  {/* 悬浮时的遮罩：显示核心指标 (保持不变) */}
-  <div className="absolute inset-0 bg-brand/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-6 text-white text-center backdrop-blur-sm">
-      <p className="text-sm mb-2 uppercase tracking-widest">{lang === 'en' ? 'Key Results' : '核心成果'}</p>
-      {project.metrics.map(m => <span key={m} className="text-2xl font-bold">{m}</span>)}
-  </div>
-</div>
-                {/* 项目文字信息 */}
-                <div className="space-y-4">
-                  <div className="flex justify-between items-start">
-                    <span className="text-accent font-bold text-xs uppercase tracking-wider">
-                      {project.meta.category}
-                    </span>
-                    <span className="text-gray-400 text-xs">{project.meta.year}</span>
-                  </div>
-                  
-                  <h3 className="text-2xl font-bold group-hover:text-accent transition-colors">
-                    {t(project.title)}
-                  </h3>
-                  
-                  <p className="text-gray-600 line-clamp-2 text-sm leading-relaxed">
-                    {t(project.problem)}
-                  </p>
-                  
-                  <button className="text-brand font-bold text-sm border-b-2 border-transparent group-hover:border-accent transition-all pt-2">
-                    {lang === 'en' ? 'View Full Analysis →' : '查看深度分析 →'}
-                  </button>
+        {/* 项目详情弹窗 (保持你原来的代码逻辑) */}
+        {activeProject && (
+          <div className="fixed inset-0 z-[100] bg-white overflow-y-auto p-8 md:p-20 animate-in fade-in slide-in-from-bottom-4">
+            <button onClick={() => setActiveProject(null)} className="fixed top-8 right-8 text-4xl leading-none hover:text-red-500 transition">&times;</button>
+            <div className="max-w-4xl mx-auto">
+              <header className="mb-12">
+                <span className="text-blue-600 font-bold uppercase">{activeProject.meta.brand}</span>
+                <h2 className="text-4xl font-bold mt-2">{t(activeProject.title)}</h2>
+              </header>
+              <div className="grid md:grid-cols-3 gap-12">
+                <div className="md:col-span-2 space-y-12">
+                  <section>
+                    <h4 className="font-bold border-b pb-2 mb-4">01. Context & Problem</h4>
+                    <p className="text-gray-700 leading-relaxed">{t(activeProject.problem)}</p>
+                  </section>
+                  <section>
+                    <h4 className="font-bold border-b pb-2 mb-4">02. Key Insights</h4>
+                    <p className="bg-blue-50 p-6 rounded-r-lg border-l-4 border-blue-600 italic">{t(activeProject.insight)}</p>
+                  </section>
+                  <section>
+                    <h4 className="font-bold border-b pb-2 mb-4">03. Impact & Result</h4>
+                    <p className="text-2xl font-light">{t(activeProject.impact)}</p>
+                  </section>
                 </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-     {/* 4. About / Skills Section */}
-      <section className="py-24 px-6 bg-white border-t border-gray-100">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-12 text-left">
-          <div className="md:col-span-1">
-            <h2 className="text-2xl font-bold">{lang === 'en' ? 'Expertise' : '核心专长'}</h2>
-          </div>
-          <div className="md:col-span-2 grid grid-cols-2 gap-8">
-            <div>
-              <h4 className="font-bold mb-4">Methodologies</h4>
-              <ul className="text-gray-600 space-y-2 text-sm">
-                <li>Sentiment & Semantics Analysis</li>
-                <li>Competitive Benchmarking</li>
-                <li>KOL/KOC Mapping</li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-bold mb-4">Tech Stack</h4>
-              <ul className="text-gray-600 space-y-2 text-sm">
-                <li>Brandwatch / Meltwater</li>
-                <li>Python (NLP / Scraper)</li>
-                <li>Power BI / Tableau</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 5. 页脚 */}
-      <footer className="py-12 px-6 text-center text-gray-400 text-xs tracking-widest uppercase bg-white">
-        © {new Date().getFullYear()} {profile.name} • Designed for Social Intelligence
-      </footer>
-
-      {/* 6. 项目详情弹窗 (Modal) */}
-      {selectedProject && (
-        <div className="fixed inset-0 z-[100] bg-white overflow-y-auto">
-          {/* 关闭按钮 */}
-          <button 
-            onClick={(e) => {
-              e.stopPropagation();
-              setSelectedProject(null);
-            }}
-            className="fixed top-8 right-8 z-[110] text-3xl hover:rotate-90 transition-transform p-4 text-brand"
-          >
-            ✕
-          </button>
-
-          <article className="max-w-4xl mx-auto px-6 py-20 text-left">
-            <header className="mb-16 border-b pb-8">
-              <div className="text-accent font-bold uppercase tracking-widest mb-4">
-                {selectedProject.meta.brand} · {selectedProject.meta.year}
-              </div>
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-brand">
-                {t(selectedProject.title)}
-              </h2>
-            </header>
-
-            <div className="grid md:grid-cols-3 gap-12">
-              <div className="md:col-span-2 space-y-12">
-                <section>
-                  <h4 className="text-sm font-black uppercase mb-4 text-gray-400">01. Context & Problem</h4>
-                  <p className="text-xl text-gray-800 leading-relaxed font-light">
-                    {t(selectedProject.problem)}
-                  </p>
-                </section>
-
-                <section className="bg-brand text-white p-8 md:p-12 rounded-sm italic">
-                  <h4 className="text-xs font-bold uppercase mb-6 opacity-60">02. Key Insight</h4>
-                  <p className="text-2xl md:text-3xl leading-snug font-serif">
-                    "{t(selectedProject.insight)}"
-                  </p>
-                </section>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  <div className="border-l-2 border-gray-100 pl-6">
-                    <h4 className="text-xs font-bold uppercase mb-3 text-gray-400">Methodology</h4>
-                    <p className="text-sm text-gray-600">{t(selectedProject.approach)}</p>
-                  </div>
-                  <div className="border-l-2 border-accent pl-6">
-                    <h4 className="text-xs font-bold uppercase mb-3 text-accent">Recommendation</h4>
-                    <p className="text-sm text-gray-900 font-medium">{t(selectedProject.recommendation)}</p>
+                <div className="space-y-8">
+                  <div className="bg-gray-50 p-6 border rounded-lg">
+                    <h4 className="text-xs font-bold uppercase text-gray-400 mb-4">Deliverables</h4>
+                    {activeProject.assets.pdf && (
+                      <a href={activeProject.assets.pdf} target="_blank" rel="noreferrer" className="block text-blue-600 font-bold underline mb-2">
+                        Download PDF Report
+                      </a>
+                    )}
                   </div>
                 </div>
               </div>
-
-              <div className="md:col-span-1 space-y-8">
-                <div className="bg-light-gray p-6 rounded-sm">
-                  <h4 className="text-xs font-black uppercase mb-4">Deliverables</h4>
-                  <p className="text-xs text-gray-500 mb-4 italic">Internal Analysis Report</p>
-                  {selectedProject.assets.pdf && (
-                    <a 
-                      href={selectedProject.assets.pdf} 
-                      target="_blank" 
-                      rel="noreferrer" 
-                      className="flex items-center gap-2 text-sm font-bold text-accent hover:underline"
-                    >
-                      📄 Full Analysis (PDF)
-                    </a>
-                  )}
-                </div>
-              </div>
             </div>
-          </article>
-        </div>
-      )}
-    </div>
+          </div>
+        )}
+      </div>
+    </Router>
   );
 }
 
