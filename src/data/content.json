@@ -4,6 +4,11 @@
     "contact": {
       "email": "Ingrid9096@outlook.com",
       "linkedin": "linkedin.com/in/Ingrid"
+    },
+    "social": {
+      "tuchong": "https://tuchong.com/3771178",
+      "xiaohongshu": "https://xhslink.com/m/8ez2dN942gq",
+      "xiaohongshuHandle": "@小由的Insight笔记"
     }
   },
   "nav": {
@@ -574,5 +579,87 @@
         ]
       }
     ]
+  },
+  "hobbies": {
+    "heading": {
+      "zh": "兴趣与审美",
+      "en": "Interests & Aesthetic"
+    },
+    "photoTitle": {
+      "zh": "📷 摄影",
+      "en": "📷 Photography"
+    },
+    "photoBlurb": {
+      "zh": "捕捉光影与城市的叙事，记录社交媒体之外的真实瞬间。",
+      "en": "Catching light, cities and quiet moments — the real world outside the dashboard."
+    },
+    "moreTuchong": {
+      "zh": "更多作品见图虫 ➔",
+      "en": "More on Tuchong ➔"
+    },
+    "photos": [
+      {
+        "src": "/assets/photo1.jpg",
+        "alt": {
+          "zh": "京都红叶与寺顶",
+          "en": "Temple roof through autumn maples, Kyoto"
+        }
+      },
+      {
+        "src": "/assets/photo2.jpg",
+        "alt": {
+          "zh": "苏格兰北海灯塔的暮色",
+          "en": "Lighthouse pier at dusk, North Berwick"
+        }
+      },
+      {
+        "src": "/assets/photo3.jpg",
+        "alt": {
+          "zh": "北海滩上奔跑的孩子与 Bass Rock",
+          "en": "Kids running on the beach, Bass Rock beyond"
+        }
+      }
+    ],
+    "paintingTitle": {
+      "zh": "🎨 数字绘画",
+      "en": "🎨 Digital Painting"
+    },
+    "paintingBlurb": {
+      "zh": "通过 Procreate 探索色彩与构图，平衡逻辑分析与感性表达。",
+      "en": "Exploring colour and composition in Procreate — balancing analytical and expressive modes."
+    },
+    "readingTitle": {
+      "zh": "📚 阅读清单",
+      "en": "📚 Reading List"
+    },
+    "readingBlurb": {
+      "zh": "关注社会学、传播学与消费者心理相关的经典著作。",
+      "en": "Sociology, communication studies and consumer psychology — the classics that shape how I read culture."
+    },
+    "resourcesHeading": {
+      "zh": "资源",
+      "en": "Resources"
+    },
+    "resourcesBlurb": {
+      "zh": "持续更新：我常读的书、工具与摄影师清单。",
+      "en": "Coming soon: my curated list of books, tools and photographers."
+    },
+    "followXhs": {
+      "zh": "在小红书关注我 ➔",
+      "en": "Follow me on Xiaohongshu ➔"
+    },
+    "xhsCardTitle": "Xiaohongshu",
+    "xhsCardBlurb": {
+      "zh": "分享关于 Social Listening、数据洞察及职场养成的笔记与思考。",
+      "en": "Notes on social listening, data insight and building a career in insight."
+    },
+    "followHandle": {
+      "zh": "关注",
+      "en": "Follow"
+    },
+    "contactHeading": {
+      "zh": "联系方式",
+      "en": "Get in Touch"
+    }
   }
 }

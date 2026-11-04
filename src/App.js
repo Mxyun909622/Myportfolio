@@ -100,31 +100,102 @@ const Projects = ({ t, setActiveProject }) => (
 );
 
 // --- 页面 3: 兴趣爱好 (Hobbies) ---
-const Hobbies = ({ t }) => (
-  <section className="pt-32 px-8 max-w-6xl mx-auto">
-    <h2 className="text-4xl font-bold mb-8">Interests & Hobbies</h2>
-    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-      {/* 这里的图片路径需要你在 content.json 中补充 hobby 字段 */}
-      <div className="aspect-square bg-gray-100 rounded-lg flex items-center justify-center">📷 Photography</div>
-      <div className="aspect-square bg-gray-100 rounded-lg flex items-center justify-center">🎨 Painting</div>
-      <div className="aspect-square bg-gray-100 rounded-lg flex items-center justify-center">📚 Reading</div>
-      <div className="aspect-square bg-gray-100 rounded-lg flex items-center justify-center">🎙️ Podcast</div>
-    </div>
-  </section>
-);
+const Hobbies = ({ t }) => {
+  const h = contentData.hobbies;
+  return (
+    <section className="pt-32 px-8 max-w-6xl mx-auto pb-20">
+      <h2 className="text-4xl font-bold mb-10">{t(h.heading)}</h2>
+      <div className="space-y-10">
+        <div className="bg-white border p-8 rounded-3xl shadow-sm">
+          <div className="flex flex-wrap justify-between items-end gap-4 mb-8">
+            <div>
+              <h3 className="text-2xl font-bold mb-2">{t(h.photoTitle)}</h3>
+              <p className="text-gray-500">{t(h.photoBlurb)}</p>
+            </div>
+            <a
+              href={contentData.settings.social.tuchong}
+              target="_blank"
+              rel="noreferrer"
+              className="text-sm font-bold text-blue-600 hover:text-blue-800 transition flex items-center gap-1 border-b-2 border-blue-100 pb-1"
+            >
+              {t(h.moreTuchong)}
+            </a>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {h.photos.map((p) => (
+              <figure key={p.src} className="aspect-[3/4] bg-gray-100 rounded-xl overflow-hidden shadow-inner">
+                <img src={p.src} alt={t(p.alt)} className="w-full h-full object-cover hover:scale-110 transition duration-700" loading="lazy" />
+              </figure>
+            ))}
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="bg-white border p-8 rounded-3xl shadow-sm">
+            <h3 className="text-xl font-bold mb-4">{t(h.paintingTitle)}</h3>
+            <p className="text-gray-500 text-sm">{t(h.paintingBlurb)}</p>
+          </div>
+          <div className="bg-white border p-8 rounded-3xl shadow-sm">
+            <h3 className="text-xl font-bold mb-4">{t(h.readingTitle)}</h3>
+            <p className="text-gray-500 text-sm">{t(h.readingBlurb)}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
 
 // --- 页面 4: 资源 (Resources) ---
-const Resources = ({ t }) => (
-  <section className="pt-32 px-8 max-w-6xl mx-auto">
-    <h2 className="text-4xl font-bold mb-8">Digital Shelf</h2>
-    <div className="bg-white border p-8 rounded-lg">
-      <p className="text-gray-500 italic mb-6">推荐的书籍、播客与摄影师清单将持续更新...</p>
-      <a href="https://www.xiaohongshu.com" target="_blank" rel="noreferrer" className="text-red-500 font-bold underline">
-        Visit my Xiaohongshu ➔
-      </a>
-    </div>
-  </section>
-);
+const Resources = ({ t }) => {
+  const h = contentData.hobbies;
+  const social = contentData.settings.social;
+  return (
+    <section className="pt-32 px-8 max-w-6xl mx-auto pb-20">
+      <h2 className="text-4xl font-bold mb-10">{t(h.resourcesHeading)}</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <a
+          href={social.xiaohongshu}
+          target="_blank"
+          rel="noreferrer"
+          className="group bg-[#ff2442] text-white p-10 rounded-3xl shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
+        >
+          <div>
+            <div className="flex justify-between items-start mb-6">
+              <span className="bg-white/20 px-3 py-1 rounded-full text-xs font-bold tracking-widest uppercase">Social Media</span>
+              <span className="text-2xl">➔</span>
+            </div>
+            <h3 className="text-3xl font-bold mb-3">{h.xhsCardTitle}</h3>
+            <p className="text-white/80 leading-relaxed">{t(h.xhsCardBlurb)}</p>
+          </div>
+          <div className="mt-10 flex items-center gap-3">
+            <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-[#ff2442] font-black text-xs">小红书</div>
+            <span className="font-bold border-b border-white/50 group-hover:border-white transition">
+              {t(h.followHandle)} {social.xiaohongshuHandle}
+            </span>
+          </div>
+        </a>
+        <div className="bg-white border p-10 rounded-3xl shadow-sm flex flex-col justify-between">
+          <div>
+            <span className="bg-gray-100 px-3 py-1 rounded-full text-xs font-bold tracking-widest uppercase text-gray-500">Photography</span>
+            <h3 className="text-3xl font-bold mb-3 mt-6">Tuchong · 图虫</h3>
+            <p className="text-gray-500 leading-relaxed">{t(h.photoBlurb)}</p>
+          </div>
+          <a
+            href={social.tuchong}
+            target="_blank"
+            rel="noreferrer"
+            className="text-blue-600 font-bold hover:text-blue-800 transition mt-8 border-b-2 border-blue-100 pb-1 self-start"
+          >
+            {t(h.moreTuchong)}
+          </a>
+        </div>
+      </div>
+      <div className="bg-white border p-8 rounded-3xl shadow-sm mt-8">
+        <p className="text-gray-500 italic">{t(h.resourcesBlurb)}</p>
+      </div>
+    </section>
+  );
+};
 
 // --- 页面 6: 简历 (Resume) ---
 const Resume = ({ t }) => {
@@ -231,33 +302,63 @@ const Resume = ({ t }) => {
 };
 
 // --- 页面 5: 联系方式 (Contact) ---
-const Contact = ({ t }) => (
-  <section className="pt-32 px-8 max-w-4xl mx-auto text-center">
-    <h2 className="text-4xl font-bold mb-12">Get in Touch</h2>
-    <div className="space-y-6 text-xl">
-      <p>
-        📧 Email:{' '}
-        <a href={`mailto:${contentData.settings.contact.email}`} className="font-medium text-blue-600 hover:underline">
-          {contentData.settings.contact.email}
+const Contact = ({ t }) => {
+  const h = contentData.hobbies;
+  const social = contentData.settings.social;
+  return (
+    <section className="pt-32 px-8 max-w-6xl mx-auto pb-20">
+      <h2 className="text-4xl font-bold mb-12">{t(h.contactHeading)}</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+        <a
+          href={social.xiaohongshu}
+          target="_blank"
+          rel="noreferrer"
+          className="group bg-[#ff2442] text-white p-10 rounded-3xl shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
+        >
+          <div>
+            <div className="flex justify-between items-start mb-6">
+              <span className="bg-white/20 px-3 py-1 rounded-full text-xs font-bold tracking-widest uppercase">Social Media</span>
+              <span className="text-2xl">➔</span>
+            </div>
+            <h3 className="text-4xl font-bold mb-4">{h.xhsCardTitle}</h3>
+            <p className="text-white/80 leading-relaxed text-lg">{t(h.xhsCardBlurb)}</p>
+          </div>
+          <div className="mt-12 flex items-center gap-3">
+            <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-[#ff2442] font-black text-xs">小红书</div>
+            <span className="font-bold border-b border-white/50 group-hover:border-white transition">
+              {t(h.followHandle)} {social.xiaohongshuHandle}
+            </span>
+          </div>
         </a>
-      </p>
-      {contentData.settings.contact.linkedin && (
-        <p>
-          🔗 LinkedIn:{' '}
-          <a href={`https://${contentData.settings.contact.linkedin}`} target="_blank" rel="noreferrer" className="font-medium text-blue-600 hover:underline">
-            {contentData.settings.contact.linkedin}
-          </a>
-        </p>
-      )}
-      <div className="py-8">
-        <p className="text-sm text-gray-400 mb-4 uppercase tracking-widest">WeChat QR Code</p>
-        <div className="w-48 h-48 bg-gray-200 mx-auto rounded-lg flex items-center justify-center">
-          <img src="/assets/wechat-qr.png" alt="WeChat QR" className="w-full h-full object-cover rounded-lg" onError={(e) => { e.target.style.display = 'none'; }} />
+
+        <div className="bg-white border border-gray-100 p-10 rounded-3xl shadow-sm flex flex-col justify-between">
+          <div className="space-y-8 text-left">
+            <div>
+              <h4 className="text-xs font-black text-gray-400 uppercase tracking-widest mb-2">Email</h4>
+              <a href={`mailto:${contentData.settings.contact.email}`} className="text-2xl font-medium text-gray-800 hover:text-blue-600 transition underline decoration-gray-200 underline-offset-8 break-all">
+                {contentData.settings.contact.email}
+              </a>
+            </div>
+            {contentData.settings.contact.linkedin && !contentData.settings.contact.linkedin.endsWith('/Ingrid') && (
+              <div className="pt-6 border-t border-gray-50">
+                <h4 className="text-xs font-black text-gray-400 uppercase tracking-widest mb-2">LinkedIn</h4>
+                <a href={`https://${contentData.settings.contact.linkedin}`} target="_blank" rel="noreferrer" className="text-lg font-medium text-gray-800 hover:text-blue-600 transition">
+                  {contentData.settings.contact.linkedin}
+                </a>
+              </div>
+            )}
+            <div className="pt-6 border-t border-gray-50">
+              <h4 className="text-xs font-black text-gray-400 uppercase tracking-widest mb-2">Tuchong · 图虫</h4>
+              <a href={social.tuchong} target="_blank" rel="noreferrer" className="text-blue-600 font-bold hover:text-blue-800 transition">
+                {t(h.moreTuchong)}
+              </a>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 // --- 主组件 App ---
 function App() {
