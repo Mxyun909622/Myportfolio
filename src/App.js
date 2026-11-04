@@ -1,26 +1,38 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import contentData from './data/content.json';
 
-function App() {
-  const [lang, setLang] = useState('en'); // 默认英文
-  const [activeProject, setActiveProject] = useState(null);
+// --- 抽取出的子组件：导航栏 ---
+const Navbar = ({ lang, setLang, t }) => (
+  <nav className="fixed w-full z-[100] bg-white/80 backdrop-blur-md border-b border-gray-200 px-8 py-4 flex justify-between items-center">
+    <Link to="/" className="font-bold tracking-tighter text-xl hover:text-blue-600 transition">
+      {contentData.profile.name}
+    </Link>
+    
+    <div className="hidden md:flex gap-8 items-center text-sm font-medium text-gray-600">
+      <Link to="/" className="hover:text-black transition">{t(contentData.nav.home)}</Link>
+      <Link to="/projects" className="hover:text-black transition">{t(contentData.nav.projects)}</Link>
+      <Link to="/hobbies" className="hover:text-black transition">{t(contentData.nav.hobbies)}</Link>
+      <Link to="/resources" className="hover:text-black transition">{t(contentData.nav.resources)}</Link>
+      <Link to="/contact" className="hover:text-black transition">{t(contentData.nav.contact)}</Link>
+      <Link to="/resume" className="border border-gray-300 px-3 py-1 rounded-full hover:border-black hover:text-black transition">
+        {t(contentData.nav.resume)}
+      </Link>
+      <button 
+        onClick={() => setLang(lang === 'en' ? 'zh' : 'en')} 
+        className="bg-gray-100 px-3 py-1 rounded-full text-xs hover:bg-gray-200 transition"
+      >
+        {lang === 'en' ? '中文' : 'EN'}
+      </button>
+    </div>
+  </nav>
+);
 
-  const t = (field) => field[lang] || field; // 翻译辅助函数
-
-  return (
-    <div className="min-h-screen bg-[#F5F5F5] text-[#111] font-sans selection:bg-blue-100">
-      {/* Navigation */}
-      <nav className="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-gray-200 px-8 py-4 flex justify-between items-center">
-        <h1 className="font-bold tracking-tighter text-xl">{contentData.profile.name}</h1>
-        <div className="flex gap-8 items-center">
-          <button onClick={() => setLang(lang === 'en' ? 'zh' : 'en')} className="font-medium hover:text-blue-600 transition">
-            {lang === 'en' ? '中文' : 'EN'}
-          </button>
-        </div>
-      </nav>
-
-      {/* Hero Section */}
-      <section className="pt-32 pb-20 px-8 max-w-6xl mx-auto">
+// --- 页面 1: 首页 (Home) ---
+const Home = ({ t }) => (
+  <section className="pt-32 pb-20 px-8 max-w-6xl mx-auto">
+    <div className="flex flex-col md:flex-row gap-12 items-center">
+      <div className="flex-1">
         <h2 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
           {t(contentData.profile.title)}
         </h2>
@@ -28,76 +40,337 @@ function App() {
           {t(contentData.profile.intro)}
         </p>
         <div className="flex gap-4">
-          <button className="bg-[#111] text-white px-8 py-3 rounded-sm hover:bg-gray-800 transition">View Projects</button>
-          <button className="border border-[#111] px-8 py-3 rounded-sm hover:bg-gray-50 transition">Resume</button>
+          <Link to="/projects" className="bg-[#111] text-white px-8 py-3 rounded-sm hover:bg-gray-800 transition">View Projects</Link>
+          <Link to={contentData.profile.resumeUrl || "/resume"} className="border border-[#111] px-8 py-3 rounded-sm hover:bg-gray-50 transition text-center">Resume</Link>
         </div>
-      </section>
+      </div>
+      {/* 可以在这里放你的照片 */}
+      <div className="w-64 h-64 bg-gray-200 rounded-full overflow-hidden border-4 border-white shadow-lg">
+         <img src="/assets/profile.png" alt="Ingrid" className="w-full h-full object-cover" onError={(e) => e.target.style.display='none'}/>
+      </div>
+    </div>
+  </section>
+);
 
-      {/* Projects Grid */}
-      <section className="px-8 max-w-6xl mx-auto py-20 border-t border-gray-200">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          {contentData.projects.map((project) => (
-            <div key={project.id} className="group cursor-pointer" onClick={() => setActiveProject(project)}>
-              <div className="aspect-video bg-gray-200 mb-4 overflow-hidden rounded-lg shadow-sm group-hover:shadow-md transition-all">
-                {/* 这里放缩略图 */}
-                <div className="w-full h-full flex items-center justify-center text-gray-400 italic">Project Preview</div>
-              </div>
-              <div className="flex justify-between items-start">
-                <div>
-                  <h3 className="text-2xl font-bold mb-2 group-hover:text-blue-700 transition">{t(project.title)}</h3>
-                  <span className="text-sm text-gray-500 uppercase tracking-widest">{project.meta.category}</span>
+// --- 页面 2: 项目经历 (Projects) ---
+const Projects = ({ t, setActiveProject }) => (
+  <section className="pt-32 px-8 max-w-6xl mx-auto py-20">
+    <h2 className="text-4xl font-bold mb-3">Case Studies</h2>
+    <p className="text-gray-500 mb-12 max-w-2xl">
+      {t({
+        zh: '四个社媒聆听项目：从数据拆解、洞察落地到独立研究。',
+        en: 'Four social listening projects — from metric decomposition to insight-to-action and independent research.'
+      })}
+    </p>
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+      {contentData.projects.map((project, i) => (
+        <div key={project.id} className="group cursor-pointer" onClick={() => setActiveProject(project)}>
+          <div className="aspect-video bg-gray-100 mb-4 overflow-hidden rounded-lg shadow-sm group-hover:shadow-md transition-all relative">
+            {project.assets.images && project.assets.images[0] ? (
+               <img src={project.assets.images[0]} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt={t(project.title)} />
+            ) : (
+               <div className="w-full h-full flex flex-col justify-end p-6 bg-gradient-to-br from-gray-100 to-gray-200">
+                 <span className="text-6xl font-bold text-gray-300 leading-none mb-3">{String(i + 1).padStart(2, '0')}</span>
+                 <span className="text-sm text-gray-500 uppercase tracking-widest">{project.meta.category}</span>
+               </div>
+            )}
+          </div>
+          <div className="flex justify-between items-start gap-6">
+            <div>
+              <h3 className="text-2xl font-bold mb-2 group-hover:text-blue-700 transition">{t(project.title)}</h3>
+              <span className="text-sm text-gray-500 uppercase tracking-widest">
+                {project.meta.category}{project.meta.year ? ` · ${project.meta.year}` : ''}
+              </span>
+              {project.tags && (
+                <div className="flex flex-wrap gap-2 mt-3">
+                  {project.tags.map(tag => (
+                    <span key={t(tag)} className="text-xs text-gray-500 border border-gray-300 rounded-full px-2.5 py-0.5">{t(tag)}</span>
+                  ))}
                 </div>
-                <div className="text-right">
-                  {project.metrics.map(m => <div key={m} className="text-sm font-bold text-blue-600">{m}</div>)}
-                </div>
-              </div>
+              )}
             </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Project Detail Modal (Simplified) */}
-      {activeProject && (
-        <div className="fixed inset-0 z-[100] bg-white overflow-y-auto p-8 md:p-20 animate-in fade-in slide-in-from-bottom-4">
-          <button onClick={() => setActiveProject(null)} className="fixed top-8 right-8 text-4xl leading-none">&times;</button>
-          
-          <div className="max-w-4xl mx-auto">
-            <header className="mb-12">
-              <span className="text-blue-600 font-bold uppercase">{activeProject.meta.brand}</span>
-              <h2 className="text-4xl font-bold mt-2">{t(activeProject.title)}</h2>
-            </header>
-
-            <div className="grid md:grid-cols-3 gap-12">
-              <div className="md:col-span-2 space-y-12">
-                <section>
-                  <h4 className="font-bold border-b pb-2 mb-4">01. Context & Problem</h4>
-                  <p className="text-gray-700 leading-relaxed">{t(activeProject.problem)}</p>
-                </section>
-                <section>
-                  <h4 className="font-bold border-b pb-2 mb-4">02. Key Insights</h4>
-                  <p className="bg-blue-50 p-6 rounded-r-lg border-l-4 border-blue-600 italic">
-                    {t(activeProject.insight)}
-                  </p>
-                </section>
-                <section>
-                  <h4 className="font-bold border-b pb-2 mb-4">03. Impact & Result</h4>
-                  <p className="text-2xl font-light">{t(activeProject.impact)}</p>
-                </section>
-              </div>
-
-              <div className="space-y-8">
-                <div className="bg-gray-50 p-6">
-                  <h4 className="text-xs font-bold uppercase text-gray-400 mb-4">Deliverables</h4>
-                  {activeProject.assets.pdf && (
-                    <a href={activeProject.assets.pdf} className="block text-blue-600 underline mb-2">Download PDF Report</a>
-                  )}
-                </div>
-              </div>
+            <div className="text-right shrink-0">
+              {project.metrics.map(m => <div key={m} className="text-sm font-bold text-blue-600">{m}</div>)}
             </div>
           </div>
         </div>
-      )}
+      ))}
     </div>
+  </section>
+);
+
+// --- 页面 3: 兴趣爱好 (Hobbies) ---
+const Hobbies = ({ t }) => (
+  <section className="pt-32 px-8 max-w-6xl mx-auto">
+    <h2 className="text-4xl font-bold mb-8">Interests & Hobbies</h2>
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      {/* 这里的图片路径需要你在 content.json 中补充 hobby 字段 */}
+      <div className="aspect-square bg-gray-100 rounded-lg flex items-center justify-center">📷 Photography</div>
+      <div className="aspect-square bg-gray-100 rounded-lg flex items-center justify-center">🎨 Painting</div>
+      <div className="aspect-square bg-gray-100 rounded-lg flex items-center justify-center">📚 Reading</div>
+      <div className="aspect-square bg-gray-100 rounded-lg flex items-center justify-center">🎙️ Podcast</div>
+    </div>
+  </section>
+);
+
+// --- 页面 4: 资源 (Resources) ---
+const Resources = ({ t }) => (
+  <section className="pt-32 px-8 max-w-6xl mx-auto">
+    <h2 className="text-4xl font-bold mb-8">Digital Shelf</h2>
+    <div className="bg-white border p-8 rounded-lg">
+      <p className="text-gray-500 italic mb-6">推荐的书籍、播客与摄影师清单将持续更新...</p>
+      <a href="https://www.xiaohongshu.com" target="_blank" rel="noreferrer" className="text-red-500 font-bold underline">
+        Visit my Xiaohongshu ➔
+      </a>
+    </div>
+  </section>
+);
+
+// --- 页面 6: 简历 (Resume) ---
+const Resume = ({ t }) => {
+  const r = contentData.resume;
+  return (
+    <section className="pt-32 pb-24 px-8 max-w-5xl mx-auto">
+      <header className="mb-14 border-b border-gray-300 pb-8">
+        <h2 className="text-5xl font-bold tracking-tight mb-4">{contentData.profile.name}</h2>
+        <p className="text-xl text-gray-700 mb-4">{t(contentData.profile.title)}</p>
+        <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-gray-600">
+          <a href={`mailto:${contentData.settings.contact.email}`} className="hover:text-blue-600">{contentData.settings.contact.email}</a>
+          {contentData.settings.contact.linkedin && !contentData.settings.contact.linkedin.endsWith('/Ingrid') && (
+            <a href={`https://${contentData.settings.contact.linkedin}`} target="_blank" rel="noreferrer" className="hover:text-blue-600">
+              {contentData.settings.contact.linkedin}
+            </a>
+          )}
+          <span>{t({ zh: '上海', en: 'Shanghai, China' })}</span>
+        </div>
+      </header>
+
+      <div className="grid md:grid-cols-3 gap-12">
+        <div className="md:col-span-2">
+          <p className="text-lg leading-relaxed text-gray-800 mb-12">{t(r.summary)}</p>
+
+          <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-gray-400 mb-6">{t(r.experienceLabel)}</h3>
+          <div className="space-y-10 mb-14">
+            {r.experience.map((job, i) => (
+              <article key={i}>
+                <div className="flex flex-wrap items-baseline justify-between gap-2 mb-1">
+                  <h4 className="text-xl font-bold">{t(job.role)}</h4>
+                  <span className="text-sm text-gray-500 tabular-nums">{job.period}</span>
+                </div>
+                <p className="text-sm text-gray-600 mb-3">
+                  {t(job.org)} · {t(job.place)}
+                </p>
+                <p className="text-gray-700 leading-relaxed mb-3">{t(job.summary)}</p>
+                {job.bullets.length > 0 && (
+                  <ul className="space-y-2">
+                    {job.bullets.map((b, j) => (
+                      <li key={j} className="text-gray-700 leading-relaxed text-[15px] pl-5 relative">
+                        <span className="absolute left-0 top-[0.55em] w-1.5 h-1.5 bg-blue-600 rounded-full" />
+                        {t(b)}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </article>
+            ))}
+          </div>
+
+          <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-gray-400 mb-6">{t(r.educationLabel)}</h3>
+          <div className="space-y-6 mb-14">
+            {r.education.map((e, i) => (
+              <div key={i}>
+                <div className="flex flex-wrap items-baseline justify-between gap-2">
+                  <h4 className="font-bold">{t(e.school)}</h4>
+                  <span className="text-sm text-gray-500 tabular-nums">{e.period}</span>
+                </div>
+                <p className="text-gray-700 text-[15px]">{t(e.degree)}</p>
+                {e.note && <p className="text-sm text-gray-500 mt-1">{t(e.note)}</p>}
+              </div>
+            ))}
+          </div>
+
+          <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-gray-400 mb-6">{t(r.researchLabel)}</h3>
+          <div>
+            <div className="flex flex-wrap items-baseline justify-between gap-2">
+              <h4 className="font-bold">{t(r.research.title)}</h4>
+              <span className="text-sm text-gray-500 tabular-nums">{r.research.period}</span>
+            </div>
+            <p className="text-gray-700 leading-relaxed text-[15px] mt-2">{t(r.research.body)}</p>
+          </div>
+        </div>
+
+        <aside className="space-y-8">
+          <div className="bg-white border border-gray-200 rounded-lg p-6">
+            <h4 className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">{t(r.skillsLabel)}</h4>
+            <div className="space-y-5">
+              {r.skills.map((group, i) => (
+                <div key={i}>
+                  <p className="text-sm font-semibold mb-2">{t(group.label)}</p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {group.items.map((it, j) => (
+                      <span key={j} className="text-xs text-gray-600 bg-gray-50 border border-gray-200 rounded-full px-2.5 py-0.5">
+                        {t(it)}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="bg-blue-50 border-l-4 border-blue-600 p-6">
+            <p className="text-sm text-gray-700 leading-relaxed">{t(r.contactNote)}</p>
+            <a href={`mailto:${contentData.settings.contact.email}`} className="text-blue-700 font-semibold text-sm underline mt-3 inline-block">
+              {contentData.settings.contact.email}
+            </a>
+          </div>
+        </aside>
+      </div>
+    </section>
+  );
+};
+
+// --- 页面 5: 联系方式 (Contact) ---
+const Contact = ({ t }) => (
+  <section className="pt-32 px-8 max-w-4xl mx-auto text-center">
+    <h2 className="text-4xl font-bold mb-12">Get in Touch</h2>
+    <div className="space-y-6 text-xl">
+      <p>
+        📧 Email:{' '}
+        <a href={`mailto:${contentData.settings.contact.email}`} className="font-medium text-blue-600 hover:underline">
+          {contentData.settings.contact.email}
+        </a>
+      </p>
+      {contentData.settings.contact.linkedin && (
+        <p>
+          🔗 LinkedIn:{' '}
+          <a href={`https://${contentData.settings.contact.linkedin}`} target="_blank" rel="noreferrer" className="font-medium text-blue-600 hover:underline">
+            {contentData.settings.contact.linkedin}
+          </a>
+        </p>
+      )}
+      <div className="py-8">
+        <p className="text-sm text-gray-400 mb-4 uppercase tracking-widest">WeChat QR Code</p>
+        <div className="w-48 h-48 bg-gray-200 mx-auto rounded-lg flex items-center justify-center">
+          <img src="/assets/wechat-qr.png" alt="WeChat QR" className="w-full h-full object-cover rounded-lg" onError={(e) => { e.target.style.display = 'none'; }} />
+        </div>
+      </div>
+    </div>
+  </section>
+);
+
+// --- 主组件 App ---
+function App() {
+  const [lang, setLang] = useState('en');
+  const [activeProject, setActiveProject] = useState(null);
+
+  const t = (field) => {
+    if (!field) return "";
+    return field[lang] || field;
+  };
+
+  // 弹窗内的章节按实际字段动态生成，缺字段的 case 自动跳过对应章节
+  const displaySections = activeProject ? [
+    ...(activeProject.problem ? [{ key: 'problem', label: { zh: '背景', en: 'Context' } }] : []),
+    ...(activeProject.challenge ? [{ key: 'challenge', label: { zh: '难点', en: 'The hard part' } }] : []),
+    ...(activeProject.approach ? [{ key: 'approach', label: { zh: '我的做法', en: 'What I did' } }] : []),
+    ...(activeProject.items ? [{ key: 'items', label: { zh: '落地的建议', en: 'Recommendations shipped' }, type: 'items' }] : []),
+    ...(activeProject.insight ? [{ key: 'insight', label: { zh: '核心洞察', en: 'Key insight' }, type: 'insight' }] : []),
+    ...(activeProject.impact ? [{ key: 'impact', label: { zh: '成果与影响', en: 'Impact & result' }, type: 'impact' }] : []),
+    ...(activeProject.recommendation ? [{ key: 'recommendation', label: { zh: '后续建议', en: 'Recommendation' }, type: 'quote' }] : []),
+  ] : [];
+
+  return (
+    <Router>
+      <div className="min-h-screen bg-[#F5F5F5] text-[#111] font-sans selection:bg-blue-100">
+        <Navbar lang={lang} setLang={setLang} t={t} />
+
+        <Routes>
+          <Route path="/" element={<Home t={t} />} />
+          <Route path="/projects" element={<Projects t={t} setActiveProject={setActiveProject} />} />
+          <Route path="/hobbies" element={<Hobbies t={t} />} />
+          <Route path="/resources" element={<Resources t={t} />} />
+          <Route path="/contact" element={<Contact t={t} />} />
+          <Route path="/resume" element={<Resume t={t} />} />
+        </Routes>
+
+        {/* 项目详情弹窗 */}
+        {activeProject && (
+          <div className="fixed inset-0 z-[100] bg-white overflow-y-auto p-8 md:p-20">
+            <button onClick={() => setActiveProject(null)} className="fixed top-8 right-8 text-4xl leading-none hover:text-red-500 transition z-[110]">&times;</button>
+            <div className="max-w-5xl mx-auto">
+              <header className="mb-12">
+                <span className="text-blue-600 font-bold uppercase text-sm tracking-widest">
+                  {activeProject.meta.category}{activeProject.meta.year ? ` · ${activeProject.meta.year}` : ''}
+                </span>
+                <h2 className="text-4xl md:text-5xl font-bold mt-3 leading-tight">{t(activeProject.title)}</h2>
+                {activeProject.tags && (
+                  <div className="flex flex-wrap gap-2 mt-5">
+                    {activeProject.tags.map(tag => (
+                      <span key={t(tag)} className="text-xs text-gray-600 bg-gray-100 rounded-full px-3 py-1">{t(tag)}</span>
+                    ))}
+                  </div>
+                )}
+              </header>
+              <div className="grid md:grid-cols-3 gap-12">
+                <div className="md:col-span-2">
+                  {displaySections.map((s, idx) => (
+                    <section key={s.key} className="mb-12">
+                      <h4 className="font-bold border-b pb-2 mb-4 text-gray-800">
+                        {String(idx + 1).padStart(2, '0')}. {t(s.label)}
+                      </h4>
+                      {s.type === 'items' ? (
+                        <div className="grid sm:grid-cols-2 gap-6">
+                          {activeProject.items.map((it, i) => (
+                            <div key={i} className="border border-gray-200 rounded-lg p-5">
+                              <div className="text-blue-600 font-bold text-sm mb-2">{String(i + 1).padStart(2, '0')}</div>
+                              <h5 className="font-bold mb-2 leading-snug">{t(it.title)}</h5>
+                              <p className="text-gray-700 leading-relaxed text-sm">{t(it.body)}</p>
+                            </div>
+                          ))}
+                        </div>
+                      ) : s.type === 'insight' ? (
+                        <p className="bg-blue-50 p-6 rounded-r-lg border-l-4 border-blue-600 italic leading-relaxed">{t(activeProject.insight)}</p>
+                      ) : s.type === 'impact' ? (
+                        <p className="text-2xl font-light leading-relaxed">{t(activeProject.impact)}</p>
+                      ) : s.type === 'quote' ? (
+                        <p className="bg-blue-50 p-6 rounded-r-lg border-l-4 border-blue-600 italic leading-relaxed">{t(activeProject.recommendation)}</p>
+                      ) : (
+                        <p className="text-gray-700 leading-relaxed">{t(activeProject[s.key])}</p>
+                      )}
+                    </section>
+                  ))}
+                </div>
+                <aside className="space-y-8">
+                  {activeProject.metrics && activeProject.metrics.length > 0 && (
+                    <div className="bg-gray-50 p-6 border rounded-lg">
+                      <h4 className="text-xs font-bold uppercase text-gray-400 mb-4">Key Metrics</h4>
+                      {activeProject.metrics.map(m => (
+                        <div key={m} className="text-lg font-bold text-blue-600 mb-3">{m}</div>
+                      ))}
+                    </div>
+                  )}
+                  {activeProject.assets.pdf && (
+                    <div className="bg-gray-50 p-6 border rounded-lg">
+                      <h4 className="text-xs font-bold uppercase text-gray-400 mb-4">Deliverables</h4>
+                      <a href={activeProject.assets.pdf} target="_blank" rel="noreferrer" className="block text-blue-600 font-bold underline mb-2">
+                        Download PDF Report
+                      </a>
+                    </div>
+                  )}
+                  {activeProject.meta.brand && (
+                    <div className="bg-gray-50 p-6 border rounded-lg">
+                      <h4 className="text-xs font-bold uppercase text-gray-400 mb-2">Client</h4>
+                      <p className="text-sm text-gray-600">{activeProject.meta.brand}</p>
+                    </div>
+                  )}
+                </aside>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+    </Router>
   );
 }
 

@@ -7,9 +7,30 @@
     }
   },
   "nav": {
-    "projects": { "zh": "案例展示", "en": "Projects" },
-    "about": { "zh": "关于我", "en": "About" },
-    "resume": { "zh": "简历", "en": "Resume" }
+    "home": {
+      "zh": "首页",
+      "en": "Home"
+    },
+    "projects": {
+      "zh": "案例展示",
+      "en": "Case Studies"
+    },
+    "hobbies": {
+      "zh": "兴趣爱好",
+      "en": "Interests"
+    },
+    "resources": {
+      "zh": "资源",
+      "en": "Resources"
+    },
+    "contact": {
+      "zh": "联系方式",
+      "en": "Contact"
+    },
+    "resume": {
+      "zh": "简历",
+      "en": "Resume"
+    }
   },
   "profile": {
     "name": "Ingrid Ma",
@@ -18,47 +39,540 @@
       "en": "Senior Social Listening Analyst"
     },
     "intro": {
-      "zh": "专注通过大数据挖掘消费者真实需求，为美妆及奢侈品牌提供增长策略。",
-      "en": "Transforming social noise into actionable business intelligence for Beauty & Luxury brands."
-    }
+      "zh": "把社媒与电商的真实声音，变成品牌真正会执行的商业决策——覆盖美妆、高端香水、零售与医药。",
+      "en": "Turning social and e-commerce conversation into decisions brands actually make — across beauty, luxury fragrance, retail and healthcare."
+    },
+    "resumeUrl": "/resume"
   },
   "projects": [
     {
-      "id": "beauty-launch-2025",
+      "id": "negative-yoy-narrative",
       "title": {
-        "zh": "高端美妆新品上市社交声量监测",
-        "en": "Luxury Skincare Product Launch Insight"
+        "zh": "当所有核心指标都是负增长",
+        "en": "When every headline number was negative"
       },
-      "meta": { "brand": "L'Oréal Group", "year": "2025", "category": "Beauty / Campaign" },
+      "meta": {
+        "brand": "Client Confidential",
+        "year": "2024",
+        "category": "Fragrance & Beauty"
+      },
       "problem": {
-        "zh": "新品在小红书声量高但转化率低于竞品，需定位流失点。",
-        "en": "High buzz on RED but lower conversion vs competitors; needed to identify the leak."
+        "zh": "客户全球管理层到访上海，本地市场团队需要汇报一至三季度的工作成果，用数据体现 Marketing 部门的业绩。",
+        "en": "The client's global leadership team was flying in to Shanghai. The local marketing team had to present a Q1–Q3 review showing what their work had delivered."
       },
-      "key_question": {
-        "zh": "消费者对产品成分的讨论焦点是否与品牌宣称一致？",
-        "en": "Does consumer sentiment regarding ingredients align with brand claims?"
+      "challenge": {
+        "zh": "拉完数据却发现最糟糕的结果：Net Buzz 与 UGC 同比均为负值。直接呈现，等于告诉全球管理层本地市场团队业绩倒退——但这是错误的结论，只是因为切分数据的维度错了。",
+        "en": "I finished pulling the data and got the worst possible answer: net buzz and UGC were both down year over year. Presented as-is, the deck would have told a visiting global team that local marketing had gone backwards — the wrong conclusion, drawn from the wrong cut."
       },
       "approach": {
-        "zh": "使用 Meltwater 抓取 5万+ 条评论，配合 Python 进行词频分析与情感建模。",
-        "en": "Scraped 50k+ comments via Meltwater; applied Python for TF-IDF and sentiment modeling."
+        "zh": "Net Buzz 由电商（EC）与社媒数据构成。2024 年 EC 掉量严重，但那是整个行业的大趋势，不是营销工作的结果——先把 EC 拆出去，社媒部分其实是增长的。再进一步拆解社媒数据，分别看 Campaign、UGC、KOL、Sales & Promotions 等维度，确认增长主要由 Campaign 驱动。三层拆解之后，得到一个站得住的答案。",
+        "en": "Net buzz was a composite of e-commerce and social volume. E-commerce had contracted sharply in 2024 — a category-wide trend, not a marketing outcome — so I separated it out, and social volume alone was growing. Then I decomposed social again into campaign, UGC, KOL, and sales & promotions, confirming the growth was campaign-driven. Three layers of decomposition, one defensible answer."
       },
       "insight": {
-        "zh": "消费者更关注‘肤感’而非官方主打的‘成分浓度’，存在认知错位。",
-        "en": "Consumers prioritize 'texture' over 'concentration', revealing a communication gap."
+        "zh": "增长集中在 Campaign 驱动的声量上——这才是 Marketing 团队真正拥有的部分。负增长的大标题，本质是行业整体收缩被误记在了品牌头上。",
+        "en": "The growth concentrated in campaign-driven conversation — the part marketing genuinely owned. The negative headline was an industry contraction wearing the brand's name."
       },
       "impact": {
-        "zh": "调整投放素材后，电商搜索转化率提升 22%。",
-        "en": "Optimized creative assets led to a 22% increase in E-commerce CTR."
+        "zh": "最终汇报清晰剥离出 Marketing 团队可以主张的业绩，没有夸大任何一个数字。客户顺利向全球管理层完成汇报，对结果很满意。",
+        "en": "A narrative that isolated the performance marketing could legitimately claim, without inflating anything. The client presented it as planned, the global team accepted it, and the review went smoothly."
       },
-      "recommendation": {
-        "zh": "建议下季度 Campaign 转向‘即时吸收’体验展示。",
-        "en": "Pivot next quarter's campaign towards 'instant absorption' demos."
-      },
-      "metrics": ["+22% Conv. Rate", "Top 2 SOV in Category"],
+      "metrics": [
+        "2 negative metrics → 1 credible story",
+        "3-layer decomposition"
+      ],
+      "tags": [
+        {
+          "zh": "指标拆解",
+          "en": "Metric decomposition"
+        },
+        {
+          "zh": "数据叙事",
+          "en": "Data storytelling"
+        },
+        {
+          "zh": "管理层汇报",
+          "en": "Executive reporting"
+        }
+      ],
       "assets": {
-        "images": ["/assets/pic.png"],
-        "pdf": "/assets/Convosphere_Case-Study_Parent-Journey-and-Perceptions-of-Infant-Food_2024.pdf"
+        "images": [
+          "/assets/covers/case-01.jpg"
+        ],
+        "pdf": ""
+      }
+    },
+    {
+      "id": "four-shipped-recommendations",
+      "title": {
+        "zh": "四条被品牌真正落地的建议",
+        "en": "Four recommendations the brand actually shipped"
+      },
+      "meta": {
+        "brand": "Client Confidential",
+        "year": "2024–2025",
+        "category": "Luxury Fragrance"
+      },
+      "problem": {
+        "zh": "为某高端香水品牌提供连续两年的社媒聆听服务。聆听类工作容易产出、也容易被忽略——它的价值只有一个衡量标准：客户是否真的因此改变了动作。",
+        "en": "A two-year social listening retainer for a luxury fragrance maison. Listening work is easy to produce and easy to ignore — the measure of it is whether anything changes."
+      },
+      "challenge": {
+        "zh": "交付物是报告，但真正的工作是翻译：把清洗后的数据变成一条具体到「下个季度就能执行」的建议。",
+        "en": "The deliverable is a report, but the job is translation: turning a cleaned dataset into a recommendation specific enough that a brand team can act on it next quarter."
+      },
+      "items": [
+        {
+          "title": {
+            "zh": "从弃用数据里捞出的新 KOL 类型",
+            "en": "A creator type found in the discard pile"
+          },
+          "body": {
+            "zh": "数据清洗时发现一条本该丢弃的帖子：一位在奢侈品包装上作画的插画艺术家（这类艺术家通常受高奢品牌委托创作）画了品牌香水瓶，但帖子内容是宣传画作本身而非产品。这种创作形式与品牌的视觉调性高度契合，优于当时追踪到的大多数付费投放内容。我把它从弃用数据里捞出给客户，建议将插画师类创作者纳入 KOL seeding 投放类型——客户后续确实采用了。",
+            "en": "During a data-cleaning pass I flagged a post that would normally have been thrown out: an illustrator who paints on luxury packaging — the kind of artist high-end maisons commission — had painted a fragrance bottle, but the post was promoting the artwork, not the product. The creative format fit the brand's visual language better than most of the paid seeding we were tracking. I pulled it out of the discard pile, showed the client, and proposed illustrator-creators as a seeding type. They adopted it."
+          }
+        },
+        {
+          "title": {
+            "zh": "媒体日与公众开放日分离",
+            "en": "Splitting media day from public days"
+          },
+          "body": {
+            "zh": "快闪活动的 UGC 负面反馈集中在一个主题：场地太小、太拥挤，媒体与公众同场导致线下体验不佳。我建议将媒体日与公众开放日分开举办，下一场 Campaign 的活动设计采纳了这一建议。",
+            "en": "UGC from a pop-up activation came back negative on one clear theme: the venue was too small, it felt crowded, and the experience suffered because press and public shared the floor at the same time. I recommended separating media day from public opening days. The next campaign's design did exactly that."
+          }
+        },
+        {
+          "title": {
+            "zh": "KOL 投放从微博转向小红书",
+            "en": "Moving KOL investment from Weibo to Xiaohongshu"
+          },
+          "body": {
+            "zh": "微博声量与投放份额连年下滑，美妆高奢预算已在向小红书和抖音迁移；而客户的核心 KPI 是 UGC 声量——小红书正是 UGC 友好型社区，平台调性与香水品类高度相关。我在年报中提出明年转投小红书的建议，客户采纳。年底复盘：剔除两场超大型 Campaign 带来的声量后，Net Buzz 同比 +17%，UGC 增长超 20%。",
+            "en": "Weibo's share of voice and share of spend had been sliding for years, and luxury beauty budgets were already migrating to Xiaohongshu and Douyin. The client's KPI was UGC volume — and Xiaohongshu is a UGC-native community whose format suits fragrance. I put the platform shift into the annual report as a next-year recommendation. They made the move. At year-end, setting aside volume from two outsized campaigns, net buzz was up 17% YoY and UGC up more than 20%."
+          }
+        },
+        {
+          "title": {
+            "zh": "重建品牌的巴黎起源叙事",
+            "en": "Rebuilding brand origin around Paris"
+          },
+          "body": {
+            "zh": "竞品的起源叙事都有鲜明的国家标签——某英伦品牌在女王玫瑰香水上市中嵌入都铎玫瑰元素，在身体护理线嵌入罗马浴场文化，用帕丁顿熊联名强化果酱产品；而该品牌的巴黎起源感偏弱，因为其创始人叙事本质是旅行叙事（越南、希腊、巴黎爵士酒吧）。我建议把巴黎本身做成 Campaign。品牌随后落地 #可能在巴黎# 活动，把巴黎街景搬进上海，当年 Brand Origin 维度指标明显提升。",
+            "en": "Competitors ran origin narratives that were unmistakably national — a British maison layering Tudor rose into a queen's rose launch, Roman bath culture into a bath line, a Paddington collaboration into marmalade. The client's Paris origin read comparatively faint, because its founder narrative is really a travel narrative: Vietnam, Greece, a Paris jazz bar. I proposed making Paris itself the campaign. The brand ran #可能在巴黎# (\"Perhaps in Paris\"), importing a Paris streetscape into Shanghai. Brand-origin metrics rose that year."
+          }
+        }
+      ],
+      "impact": {
+        "zh": "四条建议全部被品牌采纳。年底复盘：剔除超大型 Campaign 声量后，Net Buzz 同比 +17%，UGC 增长超 20%。",
+        "en": "Four of four recommendations adopted. At year-end, excluding two outsized campaign spikes, net buzz was up 17% YoY and UGC up more than 20%."
+      },
+      "metrics": [
+        "+17% Net Buzz YoY",
+        "+20%+ UGC YoY",
+        "4/4 Adopted"
+      ],
+      "tags": [
+        {
+          "zh": "洞察落地",
+          "en": "Insight translation"
+        },
+        {
+          "zh": "平台策略",
+          "en": "Platform strategy"
+        },
+        {
+          "zh": "创意策略",
+          "en": "Creative strategy"
+        },
+        {
+          "zh": "品牌资产",
+          "en": "Brand equity"
+        }
+      ],
+      "assets": {
+        "images": [
+          "/assets/covers/case-02.jpg"
+        ],
+        "pdf": ""
+      }
+    },
+    {
+      "id": "rare-disease-research",
+      "title": {
+        "zh": "罕见病研究：从零搭建方法",
+        "en": "Rare disease, no prior playbook"
+      },
+      "meta": {
+        "brand": "Client Confidential",
+        "category": "Pharmaceutical"
+      },
+      "problem": {
+        "zh": "医药客户需要了解斑秃患者的真实画像：他们是谁、如何经历诊断与治疗、未满足的需求在哪里。",
+        "en": "A pharmaceutical client needed patient-side understanding of alopecia areata: who these patients are, how they move through diagnosis and treatment, and where the unmet needs sit."
+      },
+      "challenge": {
+        "zh": "一切都要从零搭建：患者讨论集中在哪里、数据如何清洗、打什么标签、哪些分析维度重要、结果如何解读——公司内部没有任何可继承的先例。",
+        "en": "Everything had to be constructed — where the conversation lived, how to clean it, what to tag, which dimensions mattered, and how to read the result. There was no prior framework for this condition to inherit."
+      },
+      "approach": {
+        "zh": "全流程独立完成：数据获取、清洗整理、围绕患者画像与患者旅程设计打标签体系、数据分析，直到最终的研究报告交付。没有交接环节，也没有上游的人替我定义问题。",
+        "en": "I owned the full pipeline alone: data acquisition, cleaning, a tagging taxonomy built around patient profile and patient journey, the analysis, and the written research report. No handoffs, no one upstream to define the question for me."
+      },
+      "insight": {
+        "zh": "罕见病的社媒聆听必须围绕患者旅程而非症状关键词搭建——同一疾病在确诊期、治疗期和复发期，患者的表达方式完全不同。",
+        "en": "Rare-disease listening has to be built around the patient journey rather than symptom keywords — patients describe the same condition in completely different language at diagnosis, treatment and relapse."
+      },
+      "impact": {
+        "zh": "项目以探索性研究交付，建议暂未进入落地执行，价值更多沉淀在方法论而非业务结果上——这一点我想说得更直接。它带给我的，是独立跑通完整流程的实感：一套罕见病患者画像与打标签的可行方法，以及对医药聆听与消费品类差异的真实体感。",
+        "en": "Delivered as exploratory research; its recommendations were not taken forward into activation, so the value sits in the framework rather than a business result — I'd rather say that plainly. What it gave me was the entire pipeline in my own hands once: a working method for patient profiling and rare-disease tagging, and a realistic sense of how medical listening differs from consumer categories."
+      },
+      "metrics": [
+        "100% pipeline owned solo",
+        "Patient-journey taxonomy"
+      ],
+      "tags": [
+        {
+          "zh": "罕见病",
+          "en": "Rare disease"
+        },
+        {
+          "zh": "患者旅程",
+          "en": "Patient journey"
+        },
+        {
+          "zh": "标签体系",
+          "en": "Taxonomy design"
+        },
+        {
+          "zh": "独立交付",
+          "en": "Solo delivery"
+        }
+      ],
+      "assets": {
+        "images": [
+          "/assets/covers/case-03.jpg"
+        ],
+        "pdf": ""
+      }
+    },
+    {
+      "id": "aspect-level-review-tagging",
+      "title": {
+        "zh": "一条评论，六种声音",
+        "en": "One review, six opinions"
+      },
+      "meta": {
+        "brand": "Client Confidential",
+        "category": "Retail & E-commerce"
+      },
+      "problem": {
+        "zh": "零售客户的月报依赖电商评论数据——这是他们掌握产品、运营、物流表现最快的信号。",
+        "en": "A retail client's monthly report rested on e-commerce review data — the fastest signal they had on product, operations and logistics."
+      },
+      "challenge": {
+        "zh": "一条关于精华液的评论，可能同时包含对肤感、包装、物流速度和客服体验的独立评价，各自带着不同情感倾向。如果只在评论级别打标，平均值会掩盖所有可执行的信息。",
+        "en": "One review about a serum can carry separate opinions on texture, packaging, delivery speed and a customer-service interaction, each with its own sentiment. Tag at review level and the average hides everything actionable."
+      },
+      "approach": {
+        "zh": "核心工作是把每条评论拆分为多个维度的观点单元，对每个单元单独做情感打标和维度打标（产品 / 运营 / 物流），然后再聚合——最后把聚合结果翻译成各团队可以分别认领的结论，而不是一个没人负责的混合分数。",
+        "en": "The work was to atomise each review into aspect-level opinion units, tag sentiment and dimension (product / operations / logistics) per unit, and only then aggregate — then translate the aggregates into findings each team could act on separately, rather than one blended score nobody owned."
+      },
+      "insight": {
+        "zh": "月报节奏很难产出石破天惊的洞察，这个项目也不做这种承诺。它的优势在于反馈闭环：在交易驱动的行业里，报告发现的问题会被立即重视。",
+        "en": "Monthly cadence rarely produces a dramatic headline, and this program doesn't pretend otherwise. Its advantage is the loop: in a transaction-driven category, findings get acted on immediately."
+      },
+      "impact": {
+        "zh": "某个月报告里指出的短板，下个季度就能在数据端看到明显变化——跨部门整改的效果通常在 2–3 个月内的数据中体现出来。",
+        "en": "A weakness named in one month's report was a measurable change by the next quarter — the effect of cross-team fixes showed up in the data two to three months later."
+      },
+      "metrics": [
+        "Review → aspect-level units",
+        "Visible change in 2–3 months"
+      ],
+      "tags": [
+        {
+          "zh": "属性级情感分析",
+          "en": "Aspect-based sentiment"
+        },
+        {
+          "zh": "打标体系",
+          "en": "Tagging design"
+        },
+        {
+          "zh": "零售电商",
+          "en": "Retail & e-commerce"
+        },
+        {
+          "zh": "月度追踪",
+          "en": "Monthly reporting"
+        }
+      ],
+      "assets": {
+        "images": [
+          "/assets/covers/case-04.jpg"
+        ],
+        "pdf": ""
       }
     }
-  ]
+  ],
+  "resume": {
+    "heading": {
+      "zh": "简历",
+      "en": "Resume"
+    },
+    "summary": {
+      "zh": "六年社媒聆听与消费者洞察经验，覆盖美妆、高端香水、零售电商、保险与医药。擅长把杂乱的社媒与电商语料变成可执行的结论：指标拆解、打标体系设计、KOL 与平台策略建议，以及能撑住全球管理层质询的叙事。",
+      "en": "Six years across social listening and consumer insight — beauty, luxury fragrance, retail e-commerce, insurance and healthcare. I turn messy social and e-commerce conversation into decisions: metric decomposition, tagging frameworks, KOL and platform strategy, and a narrative that survives a global leadership review."
+    },
+    "contactNote": {
+      "zh": "含完整联系方式的 PDF 版本可通过邮件索取。",
+      "en": "A PDF version with full contact details is available on request."
+    },
+    "experienceLabel": {
+      "zh": "工作经历",
+      "en": "Experience"
+    },
+    "educationLabel": {
+      "zh": "教育背景",
+      "en": "Education"
+    },
+    "skillsLabel": {
+      "zh": "技能",
+      "en": "Capabilities"
+    },
+    "researchLabel": {
+      "zh": "独立研究",
+      "en": "Independent research"
+    },
+    "experience": [
+      {
+        "period": "Dec 2023 — Present",
+        "role": {
+          "zh": "社媒分析师",
+          "en": "Social Listening Analyst"
+        },
+        "org": {
+          "zh": "上海新励信息科技有限公司",
+          "en": "Shanghai Xinli Information Technology"
+        },
+        "place": {
+          "zh": "上海",
+          "en": "Shanghai"
+        },
+        "summary": {
+          "zh": "服务美妆、零售、保险、医药四类客户，负责社媒趋势分析与竞品监测。",
+          "en": "Social trend analysis and competitor monitoring for beauty, retail, insurance and pharmaceutical clients."
+        },
+        "bullets": [
+          {
+            "zh": "深度分析 40+ 香水品牌的社媒数据，覆盖品牌形象、KOL 投放、情感分析、话题分析与 UGC 反馈，为品牌优化社媒策略提供数据支持。",
+            "en": "Analysed social data for 40+ fragrance brands across brand image, KOL investment, sentiment, topic analysis and UGC feedback to inform social strategy."
+          },
+          {
+            "zh": "电商侧按品类、品线拆解评论趋势，帮客户放大优势卖点、定位产品短板；医药侧完成罕见病患者画像与患者旅程梳理，识别潜在机会点。",
+            "en": "On the e-commerce side, decomposed review trends by category and line to amplify strengths and locate product gaps; in pharma, built rare-disease patient profiles and journey maps to identify opportunity areas."
+          },
+          {
+            "zh": "营销活动效果评估：从快闪活动反馈推动品牌将媒体日与消费者日分开；从好评中识别游戏设置、赠品等驱动因素，提出消费后礼券建议，带动好评讨论与品牌曝光。",
+            "en": "Campaign evaluation: pop-up feedback led the brand to separate media day from consumer day; praise-pattern analysis identified game mechanics and gifting as drivers, leading to a post-purchase voucher recommendation that lifted positive discussion and brand visibility."
+          },
+          {
+            "zh": "KOL 与竞品分析，优化 KOL 合作组合；建立品牌舆情监测体系，输出社媒月报（声量、UGC 讨论、KOL 影响力），以 PPT 可视化支撑品牌决策。",
+            "en": "KOL and competitor analysis to rebalance KOL mix; built a brand reputation monitoring system and delivered monthly social reports (share of voice, UGC discussion, KOL impact) visualised in PPT for decision-making."
+          },
+          {
+            "zh": "客户维护与需求沟通、报告框架设计；客户连续两年续签，年报建议推动品牌市场排名上升 1 位、UGC 声量同比增长 25%、小红书品牌占比排名提升 2 位。",
+            "en": "Client communication and report architecture; the account renewed two years running, and annual-report recommendations contributed to a one-place market rank gain, +25% YoY UGC volume and a two-place rise in Xiaohongshu brand share ranking."
+          }
+        ],
+        "tags": [
+          {
+            "zh": "社媒聆听",
+            "en": "Social listening"
+          },
+          {
+            "zh": "美妆 / 香水",
+            "en": "Beauty / fragrance"
+          },
+          {
+            "zh": "电商评论",
+            "en": "E-commerce reviews"
+          },
+          {
+            "zh": "医药",
+            "en": "Pharma"
+          }
+        ]
+      },
+      {
+        "period": "Mar 2023 — Dec 2023",
+        "role": {
+          "zh": "高级研究员",
+          "en": "Senior Research Analyst"
+        },
+        "org": {
+          "zh": "辰智商务咨询有限公司",
+          "en": "Chenzhi Business Consulting"
+        },
+        "place": {
+          "zh": "上海",
+          "en": "Shanghai"
+        },
+        "summary": {
+          "zh": "餐饮与食品饮料方向的定量研究与行业分析。",
+          "en": "Quantitative research and industry analysis for foodservice and F&B clients."
+        },
+        "bullets": [
+          {
+            "zh": "恒天然芝士菜品专项：独立完成 300 万条菜品数据的采集与编码，撰写并交付行业分析报告，帮客户在餐饮市场找到芝士应用的创新增长机会。",
+            "en": "Fonterra cheese dish project: single-handedly collected and coded 3 million dish-level records, then wrote and delivered the industry report that located white-space growth opportunities for cheese applications in foodservice."
+          },
+          {
+            "zh": "百事餐饮市场监测：持续监测餐饮市场趋势与消费者行为，为客户营销策略提供数据支持。",
+            "en": "Pepsi foodservice monitoring: tracked market trends and consumer behaviour to support marketing strategy."
+          },
+          {
+            "zh": "奇华顿乳制品与牛肉制品访谈：参与产品测试与用户反馈分析，优化产品概念。",
+            "en": "Givaudan dairy and beef interviews: ran product tests and feedback analysis to refine product concepts."
+          }
+        ],
+        "tags": [
+          {
+            "zh": "定量研究",
+            "en": "Quantitative research"
+          },
+          {
+            "zh": "餐饮",
+            "en": "Foodservice"
+          },
+          {
+            "zh": "数据编码",
+            "en": "Data coding"
+          }
+        ]
+      },
+      {
+        "period": "Aug 2020 — Jul 2021",
+        "role": {
+          "zh": "服务顾问（英国留学后期服务部）",
+          "en": "Service Consultant, UK Post-application"
+        },
+        "org": {
+          "zh": "上海优越教育咨询有限公司",
+          "en": "Shanghai Youyue Education Consulting"
+        },
+        "place": {
+          "zh": "上海",
+          "en": "Shanghai"
+        },
+        "summary": {
+          "zh": "负责英国方向学生的后期服务与客户沟通。",
+          "en": "Post-application service and account communication for UK-bound students."
+        },
+        "bullets": []
+      },
+      {
+        "period": "Aug 2017 — May 2020",
+        "role": {
+          "zh": "咨询主管（美国留学部）",
+          "en": "Consulting Supervisor, US Study Abroad"
+        },
+        "org": {
+          "zh": "北京亿方博创教育咨询有限公司",
+          "en": "Beijing Yifang Bochuang Education Consulting"
+        },
+        "place": {
+          "zh": "北京",
+          "en": "Beijing"
+        },
+        "summary": {
+          "zh": "带团队做美国留学咨询与申请规划。",
+          "en": "Led a team on US study-abroad consulting and application planning."
+        },
+        "bullets": []
+      }
+    ],
+    "education": [
+      {
+        "period": "Sep 2021 — Nov 2022",
+        "school": {
+          "zh": "爱丁堡大学",
+          "en": "University of Edinburgh"
+        },
+        "degree": {
+          "zh": "应用语言学 硕士（Merit）",
+          "en": "MSc Applied Linguistics, Merit"
+        },
+        "note": {
+          "zh": "QS 综合排名 15，专业排名 5",
+          "en": "QS ranked 15th overall, 5th in subject"
+        }
+      },
+      {
+        "period": "Sep 2013 — Jun 2017",
+        "school": {
+          "zh": "湖北大学",
+          "en": "Hubei University"
+        },
+        "degree": {
+          "zh": "汉语国际教育 + 英语 双学位 本科",
+          "en": "BA Chinese International Education & English (double degree)"
+        },
+        "note": ""
+      }
+    ],
+    "research": {
+      "period": "Feb 2023 — Mar 2023",
+      "title": {
+        "zh": "播客 App「小宇宙」用户体验研究",
+        "en": "Podcast app Xiaoyuzhou — UX research"
+      },
+      "body": {
+        "zh": "通过用户反馈与评分数据分析，定位评分下滑的核心原因（创作者风波与功能痛点），输出产品迭代建议，推动多设备适配与播放列表管理优化。",
+        "en": "Analysed user feedback and rating data to isolate the causes behind a rating decline (creator controversy and feature gaps), then delivered iteration recommendations that fed into multi-device support and playlist management improvements."
+      }
+    },
+    "skills": [
+      {
+        "label": {
+          "zh": "数据分析与可视化",
+          "en": "Data & visualisation"
+        },
+        "items": [
+          "Python (Pandas)",
+          "Power BI",
+          "Excel",
+          "PPT storytelling"
+        ]
+      },
+      {
+        "label": {
+          "zh": "社媒与内容",
+          "en": "Social & content"
+        },
+        "items": [
+          "Social listening platforms",
+          "Adobe Premiere",
+          "Photoshop",
+          "Xmind"
+        ]
+      },
+      {
+        "label": {
+          "zh": "语言",
+          "en": "Languages"
+        },
+        "items": [
+          {
+            "zh": "英语（工作语言）",
+            "en": "English (working proficiency)"
+          },
+          {
+            "zh": "中文（母语）",
+            "en": "Mandarin (native)"
+          }
+        ]
+      }
+    ]
+  }
 }
