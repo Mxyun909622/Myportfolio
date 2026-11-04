@@ -660,6 +660,40 @@
     "contactHeading": {
       "zh": "联系方式",
       "en": "Get in Touch"
+    },
+    "paintings": [
+      {
+        "src": "/assets/paintings/painting-1.jpg",
+        "alt": {
+          "zh": "橙墙街角与遛狗的人（临摹）",
+          "en": "Street corner, orange wall (study)"
+        }
+      },
+      {
+        "src": "/assets/paintings/painting-2.jpg",
+        "alt": {
+          "zh": "雏菊窗台（临摹）",
+          "en": "Daisy window box (study)"
+        }
+      },
+      {
+        "src": "/assets/paintings/painting-3.jpg",
+        "alt": {
+          "zh": "托腮的女孩（临摹）",
+          "en": "Girl resting her face on her hands (study)"
+        }
+      },
+      {
+        "src": "/assets/paintings/painting-4.jpg",
+        "alt": {
+          "zh": "躺平的鹅：什么都不想做（临摹）",
+          "en": "A goose doing nothing (study)"
+        }
+      }
+    ],
+    "paintingNote": {
+      "zh": "以下均为 iPad 临摹习作：原作来自小红书上的插画师，此处仅作为个人学习练习展示，版权归原作者所有。",
+      "en": "iPad practice studies: the original artworks are by illustrators on Xiaohongshu (RED). Shared here as learning exercises only — all rights belong to the original artists."
     }
   }
 }

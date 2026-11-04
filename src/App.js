@@ -130,15 +130,24 @@ const Hobbies = ({ t }) => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="bg-white border p-8 rounded-3xl shadow-sm">
-            <h3 className="text-xl font-bold mb-4">{t(h.paintingTitle)}</h3>
+        <div className="bg-white border p-8 rounded-3xl shadow-sm">
+          <div className="mb-6">
+            <h3 className="text-2xl font-bold mb-2">{t(h.paintingTitle)}</h3>
             <p className="text-gray-500 text-sm">{t(h.paintingBlurb)}</p>
           </div>
-          <div className="bg-white border p-8 rounded-3xl shadow-sm">
-            <h3 className="text-xl font-bold mb-4">{t(h.readingTitle)}</h3>
-            <p className="text-gray-500 text-sm">{t(h.readingBlurb)}</p>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+            {h.paintings.map((p) => (
+              <figure key={p.src} className="aspect-[3/4] bg-[#faf9f7] border border-gray-100 rounded-xl overflow-hidden">
+                <img src={p.src} alt={t(p.alt)} className="w-full h-full object-contain hover:scale-105 transition duration-500" loading="lazy" />
+              </figure>
+            ))}
           </div>
+          <p className="text-xs text-gray-400 leading-relaxed mt-5 border-t border-gray-100 pt-4">{t(h.paintingNote)}</p>
+        </div>
+
+        <div className="bg-white border p-8 rounded-3xl shadow-sm">
+          <h3 className="text-xl font-bold mb-4">{t(h.readingTitle)}</h3>
+          <p className="text-gray-500 text-sm">{t(h.readingBlurb)}</p>
         </div>
       </div>
     </section>
