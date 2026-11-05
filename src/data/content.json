@@ -370,8 +370,8 @@
         },
         "bullets": [
           {
-            "zh": "深度分析 40+ 香水品牌的社媒数据，覆盖品牌形象、KOL 投放、情感分析、话题分析与 UGC 反馈，为品牌优化社媒策略提供数据支持。",
-            "en": "Analysed social data for 40+ fragrance brands across brand image, KOL investment, sentiment, topic analysis and UGC feedback to inform social strategy."
+            "zh": "深度分析 20+ 香水品牌的社媒数据，覆盖品牌形象、KOL 投放、情感分析、话题分析与 UGC 反馈，为品牌优化社媒策略提供数据支持。",
+            "en": "Analysed social data for 20+ fragrance brands across brand image, KOL investment, sentiment, topic analysis and UGC feedback to inform social strategy."
           },
           {
             "zh": "电商侧按品类、品线拆解评论趋势，帮客户放大优势卖点、定位产品短板；医药侧完成罕见病患者画像与患者旅程梳理，识别潜在机会点。",
@@ -429,8 +429,8 @@
         },
         "bullets": [
           {
-            "zh": "恒天然芝士菜品专项：独立完成 300 万条菜品数据的采集与编码，撰写并交付行业分析报告，帮客户在餐饮市场找到芝士应用的创新增长机会。",
-            "en": "Fonterra cheese dish project: single-handedly collected and coded 3 million dish-level records, then wrote and delivered the industry report that located white-space growth opportunities for cheese applications in foodservice."
+            "zh": "恒天然芝士菜品专项：完成餐饮菜品数据的采集与整理，撰写并交付行业分析报告，帮客户在餐饮市场找到芝士应用的创新增长机会。",
+            "en": "Fonterra cheese dish project: gathered and structured dish-level foodservice data, then wrote and delivered the industry report that located white-space growth opportunities for cheese applications in foodservice."
           },
           {
             "zh": "百事餐饮市场监测：持续监测餐饮市场趋势与消费者行为，为客户营销策略提供数据支持。",
@@ -451,8 +451,8 @@
             "en": "Foodservice"
           },
           {
-            "zh": "数据编码",
-            "en": "Data coding"
+            "zh": "行业分析",
+            "en": "Industry analysis"
           }
         ]
       },
@@ -714,19 +714,11 @@
         }
       },
       {
-        "value": "40+",
+        "value": "20+",
         "unit": "",
         "label": {
           "zh": "分析过的香水品牌",
           "en": "fragrance brands analysed"
-        }
-      },
-      {
-        "value": "3M",
-        "unit": "",
-        "label": {
-          "zh": "条菜品数据编码",
-          "en": "dish records coded"
         }
       },
       {

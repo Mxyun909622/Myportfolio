@@ -136,14 +136,14 @@ const Home = ({ t, setActiveProject }) => {
 
       {/* 数字凭证条 */}
       <section className="px-6 max-w-6xl mx-auto pb-16 md:pb-20">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-y-8 border-t border-black/[0.08] pt-8">
+        <div className="grid grid-cols-3 gap-x-4 md:gap-x-0 border-t border-black/[0.08] pt-8">
           {h.stats.map((s, i) => (
-            <div key={i} className={`pr-6 md:border-l md:border-black/[0.07] md:pl-8 ${i === 0 ? 'md:border-l-0 md:pl-0' : ''} ${i % 2 === 1 ? 'pl-6' : ''}`}>
+            <div key={i} className={`pr-3 md:pr-6 ${i === 0 ? '' : 'md:border-l md:border-black/[0.07] md:pl-8'}`}>
               <div className="flex items-baseline gap-1.5">
-                <span className="text-[32px] md:text-[40px] font-semibold tracking-[-0.025em] tabular-nums leading-none">{s.value}</span>
+                <span className="text-[28px] md:text-[40px] font-semibold tracking-[-0.025em] tabular-nums leading-none">{s.value}</span>
                 {s.unit && <span className="text-[14px] text-secondary">{t(s.unit)}</span>}
               </div>
-              <p className="text-[13px] text-secondary mt-2.5 leading-snug">{t(s.label)}</p>
+              <p className="text-[12px] md:text-[13px] text-secondary mt-2.5 leading-snug">{t(s.label)}</p>
             </div>
           ))}
         </div>
