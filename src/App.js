@@ -102,28 +102,131 @@ const Navbar = ({ lang, setLang, t }) => {
 };
 
 // --- 页面 1: 首页 (Home) ---
-const Home = ({ t }) => (
-  <section className="pt-36 pb-24 px-6 max-w-6xl mx-auto fade-up">
-    <div className="flex flex-col md:flex-row gap-14 items-center">
-      <div className="flex-1">
-        <p className={EYEBROW + ' mb-5'}>{t({ zh: '社交媒体洞察', en: 'Social Listening & Insight' })}</p>
-        <h1 className="text-[38px] md:text-[56px] font-semibold tracking-[-0.02em] leading-[1.12] text-balance mb-6">
-          {t(contentData.profile.title)}
-        </h1>
-        <p className="text-[17px] md:text-[19px] leading-relaxed text-secondary max-w-xl mb-10 text-balance">
-          {t(contentData.profile.intro)}
-        </p>
-        <div className="flex flex-wrap gap-3">
-          <Link to="/projects" className={BTN_PRIMARY}>{t({ zh: '查看案例', en: 'View Projects' })}</Link>
-          <Link to={contentData.profile.resumeUrl || '/resume'} className={BTN_SECONDARY}>{t(contentData.nav.resume)}</Link>
+const Home = ({ t, setActiveProject }) => {
+  const h = contentData.home;
+  const featured = contentData.projects.slice(0, 2);
+
+  return (
+    <div className="fade-up">
+      {/* Hero */}
+      <section className="pt-32 md:pt-40 pb-16 px-6 max-w-6xl mx-auto">
+        <div className="flex flex-col md:flex-row gap-14 items-center">
+          <div className="flex-1">
+            <p className={EYEBROW + ' mb-5'}>{t({ zh: '社交媒体洞察', en: 'Social Listening & Insight' })}</p>
+            <h1 className="text-[38px] md:text-[56px] font-semibold tracking-[-0.02em] leading-[1.12] text-balance mb-6">
+              {t(contentData.profile.title)}
+            </h1>
+            <p className="text-[17px] md:text-[19px] leading-relaxed text-secondary max-w-xl mb-10 text-balance">
+              {t(contentData.profile.intro)}
+            </p>
+            <div className="flex flex-wrap gap-3">
+              <Link to="/projects" className={BTN_PRIMARY}>{t({ zh: '查看案例', en: 'View Projects' })}</Link>
+              <Link to={contentData.profile.resumeUrl || '/resume'} className={BTN_SECONDARY}>{t(contentData.nav.resume)}</Link>
+            </div>
+            <p className="mt-7 flex items-center gap-2.5 text-[13px] text-secondary">
+              <span className="w-1.5 h-1.5 rounded-full bg-accent" />
+              {t(h.currently)}
+            </p>
+          </div>
+          <div className="shrink-0 w-56 h-56 md:w-64 md:h-64 rounded-full overflow-hidden shadow-card ring-1 ring-black/[0.06]">
+            <img src="/assets/profile.png" alt="Ingrid Ma" className="w-full h-full object-cover" onError={(e) => { e.target.style.display = 'none'; }} />
+          </div>
         </div>
-      </div>
-      <div className="shrink-0 w-56 h-56 md:w-64 md:h-64 rounded-full overflow-hidden shadow-card ring-1 ring-black/[0.06]">
-        <img src="/assets/profile.png" alt="Ingrid Ma" className="w-full h-full object-cover" onError={(e) => { e.target.style.display = 'none'; }} />
-      </div>
+      </section>
+
+      {/* 数字凭证条 */}
+      <section className="px-6 max-w-6xl mx-auto pb-16 md:pb-20">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-y-8 border-t border-black/[0.08] pt-8">
+          {h.stats.map((s, i) => (
+            <div key={i} className={`pr-6 md:border-l md:border-black/[0.07] md:pl-8 ${i === 0 ? 'md:border-l-0 md:pl-0' : ''} ${i % 2 === 1 ? 'pl-6' : ''}`}>
+              <div className="flex items-baseline gap-1.5">
+                <span className="text-[32px] md:text-[40px] font-semibold tracking-[-0.025em] tabular-nums leading-none">{s.value}</span>
+                {s.unit && <span className="text-[14px] text-secondary">{t(s.unit)}</span>}
+              </div>
+              <p className="text-[13px] text-secondary mt-2.5 leading-snug">{t(s.label)}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* 精选案例 */}
+      <section className="px-6 max-w-6xl mx-auto py-16 md:py-20 border-t border-black/[0.06]">
+        <div className="flex flex-wrap justify-between items-end gap-4 mb-10">
+          <div>
+            <p className={EYEBROW + ' mb-3'}>{t(h.workLabel)}</p>
+            <h2 className="text-[24px] md:text-[30px] font-semibold tracking-[-0.015em] text-balance max-w-2xl">{t(h.workHint)}</h2>
+          </div>
+          <Link to="/projects" className="text-[14px] font-medium text-accent hover:underline underline-offset-4 shrink-0">
+            {t(h.allCases)} →
+          </Link>
+        </div>
+        <div className="grid md:grid-cols-2 gap-8 md:gap-10">
+          {featured.map((p, i) => (
+            <div key={p.id} className="group cursor-pointer" onClick={() => setActiveProject(p)}>
+              <div className="aspect-[16/10] overflow-hidden rounded-[20px] shadow-card ring-1 ring-black/[0.04] bg-white">
+                <img
+                  src={p.assets.images[0]}
+                  alt={t(p.title)}
+                  className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-700 ease-out"
+                />
+              </div>
+              <div className="mt-5 flex flex-col sm:flex-row sm:items-start justify-between gap-2 sm:gap-5 px-1">
+                <div>
+                  <div className="flex items-center gap-2 text-[11px] uppercase tracking-[0.14em] text-secondary mb-2">
+                    <span className="text-accent font-semibold tabular-nums">{String(i + 1).padStart(2, '0')}</span>
+                    <span className="w-4 h-px bg-black/20" />
+                    <span>{p.meta.category}</span>
+                  </div>
+                  <h3 className="text-[20px] font-semibold leading-snug text-balance transition-colors duration-300 group-hover:text-accent">
+                    {t(p.title)}
+                  </h3>
+                </div>
+                <span className="text-[13px] font-semibold text-accent text-right shrink-0 pt-1">{p.metrics[0]}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* 我做什么 */}
+      <section className="px-6 max-w-6xl mx-auto py-16 md:py-20 border-t border-black/[0.06]">
+        <p className={EYEBROW + ' mb-10'}>{t(h.capLabel)}</p>
+        <div className="grid md:grid-cols-3 gap-x-10 gap-y-10">
+          {h.capabilities.map((c) => (
+            <div key={c.num}>
+              <div className="flex items-center gap-3 mb-4">
+                <span className="text-[12px] font-semibold text-accent tabular-nums">{c.num}</span>
+                <span className="flex-1 h-px bg-black/[0.08]" />
+              </div>
+              <h3 className="text-[19px] font-semibold mb-2.5 tracking-[-0.01em]">{t(c.title)}</h3>
+              <p className="text-secondary text-[15px] leading-[1.75]">{t(c.body)}</p>
+            </div>
+          ))}
+        </div>
+        <div className="mt-14 flex flex-wrap items-center gap-2.5">
+          <span className="text-[11px] uppercase tracking-[0.14em] text-black/35 mr-2">{t(h.sectorsLabel)}</span>
+          {h.sectors.map((s, i) => (
+            <span key={i} className="text-[13px] text-secondary bg-white ring-1 ring-black/[0.06] rounded-full px-3.5 py-1.5">{t(s)}</span>
+          ))}
+        </div>
+      </section>
+
+      {/* 联系 CTA */}
+      <section className="px-6 max-w-6xl mx-auto pb-24">
+        <div className="rounded-[28px] bg-white shadow-card ring-1 ring-black/[0.04] p-9 md:p-12 flex flex-col md:flex-row md:items-center justify-between gap-8">
+          <div className="max-w-xl">
+            <h2 className="text-[26px] md:text-[32px] font-semibold tracking-[-0.02em] mb-3 text-balance">{t(h.ctaTitle)}</h2>
+            <p className="text-secondary text-[15px] leading-[1.75]">{t(h.ctaBody)}</p>
+          </div>
+          <div className="flex flex-wrap gap-3 shrink-0">
+            <a href={`mailto:${contentData.settings.contact.email}`} className={BTN_PRIMARY}>{t(h.ctaButton)}</a>
+            <Link to="/resume" className={BTN_SECONDARY}>{t(h.ctaResume)}</Link>
+          </div>
+        </div>
+      </section>
     </div>
-  </section>
-);
+  );
+};
 
 // --- 页面 2: 项目经历 (Projects) ---
 const Projects = ({ t, setActiveProject }) => (
@@ -585,7 +688,7 @@ function Site() {
 
       <main className="flex-1" key={location.pathname}>
         <Routes>
-          <Route path="/" element={<Home t={t} />} />
+          <Route path="/" element={<Home t={t} setActiveProject={setActiveProject} />} />
           <Route path="/projects" element={<Projects t={t} setActiveProject={setActiveProject} />} />
           <Route path="/hobbies" element={<Hobbies t={t} />} />
           <Route path="/resources" element={<Resources t={t} />} />

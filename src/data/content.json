@@ -695,5 +695,141 @@
       "zh": "以下均为 iPad 临摹习作：原作来自小红书上的插画师，此处仅作为个人学习练习展示，版权归原作者所有。",
       "en": "iPad practice studies: the original artworks are by illustrators on Xiaohongshu (RED). Shared here as learning exercises only — all rights belong to the original artists."
     }
+  },
+  "home": {
+    "currently": {
+      "zh": "现任上海新励 · 社媒分析师",
+      "en": "Social Listening Analyst at Shanghai Xinli · Shanghai"
+    },
+    "stats": [
+      {
+        "value": "6",
+        "unit": {
+          "zh": "年",
+          "en": "yrs"
+        },
+        "label": {
+          "zh": "社媒聆听与消费者洞察",
+          "en": "in listening & insight"
+        }
+      },
+      {
+        "value": "40+",
+        "unit": "",
+        "label": {
+          "zh": "分析过的香水品牌",
+          "en": "fragrance brands analysed"
+        }
+      },
+      {
+        "value": "3M",
+        "unit": "",
+        "label": {
+          "zh": "条菜品数据编码",
+          "en": "dish records coded"
+        }
+      },
+      {
+        "value": "4/4",
+        "unit": "",
+        "label": {
+          "zh": "建议被品牌采纳",
+          "en": "recommendations shipped"
+        }
+      }
+    ],
+    "workLabel": {
+      "zh": "精选案例",
+      "en": "Selected work"
+    },
+    "workHint": {
+      "zh": "四个项目，从指标拆解到洞察真正落地。",
+      "en": "Four projects — from metric decomposition to insight actually shipped."
+    },
+    "allCases": {
+      "zh": "查看全部四个案例",
+      "en": "All four case studies"
+    },
+    "capLabel": {
+      "zh": "我做什么",
+      "en": "What I do"
+    },
+    "capabilities": [
+      {
+        "num": "01",
+        "title": {
+          "zh": "指标拆解",
+          "en": "Metric decomposition"
+        },
+        "body": {
+          "zh": "当一个数字讲错了故事，就把它拆到能解释的那一层：电商与社媒分离，Campaign / UGC / KOL 分层，直到结论站得住。",
+          "en": "When a number tells the wrong story, break it into the layer that explains it — e-commerce vs social, campaign vs UGC vs KOL — until the conclusion holds."
+        }
+      },
+      {
+        "num": "02",
+        "title": {
+          "zh": "打标体系设计",
+          "en": "Taxonomy design"
+        },
+        "body": {
+          "zh": "把一条评论拆成多个维度的观点单元，为罕见病从零搭患者旅程标签——让数据可以被切片，而不是被平均。",
+          "en": "Atomising a review into aspect-level opinions, building a patient-journey taxonomy from scratch — data that can be sliced instead of averaged."
+        }
+      },
+      {
+        "num": "03",
+        "title": {
+          "zh": "从洞察到落地",
+          "en": "Insight to adoption"
+        },
+        "body": {
+          "zh": "交付物是报告，真正的工作是翻译：把发现写成下个季度就能执行的动作，并确认它真的被执行。",
+          "en": "The deliverable is a report; the real work is translation — turning findings into actions a brand can run next quarter, then checking they shipped."
+        }
+      }
+    ],
+    "sectorsLabel": {
+      "zh": "服务过的行业",
+      "en": "Sectors"
+    },
+    "sectors": [
+      {
+        "zh": "美妆与香水",
+        "en": "Beauty & fragrance"
+      },
+      {
+        "zh": "高端香水",
+        "en": "Luxury fragrance"
+      },
+      {
+        "zh": "零售与电商",
+        "en": "Retail & e-commerce"
+      },
+      {
+        "zh": "保险",
+        "en": "Insurance"
+      },
+      {
+        "zh": "医药",
+        "en": "Healthcare"
+      }
+    ],
+    "ctaTitle": {
+      "zh": "聊聊你的下一个项目",
+      "en": "Let's talk about your next project"
+    },
+    "ctaBody": {
+      "zh": "如果你想弄清社媒和电商数据到底在说什么，欢迎直接来信——我通常一个工作日内回复。",
+      "en": "If you're trying to work out what your social and e-commerce data is actually saying, write to me — I usually reply within a working day."
+    },
+    "ctaButton": {
+      "zh": "发邮件给我",
+      "en": "Email me"
+    },
+    "ctaResume": {
+      "zh": "看完整简历",
+      "en": "Full resume"
+    }
   }
 }
