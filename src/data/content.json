@@ -70,16 +70,16 @@
         "en": "I finished pulling the data and got the worst possible answer: net buzz and UGC were both down year over year. Presented as-is, the deck would have told a visiting global team that local marketing had gone backwards — the wrong conclusion, drawn from the wrong cut."
       },
       "approach": {
-        "zh": "Net Buzz 由电商（EC）与社媒数据构成。2024 年 EC 掉量严重，但那是整个行业的大趋势，不是营销工作的结果——先把 EC 拆出去，社媒部分其实是增长的。再进一步拆解社媒数据，分别看 Campaign、UGC、KOL、Sales & Promotions 等维度，确认增长主要由 Campaign 驱动。三层拆解之后，得到一个站得住的答案。",
-        "en": "Net buzz was a composite of e-commerce and social volume. E-commerce had contracted sharply in 2024 — a category-wide trend, not a marketing outcome — so I separated it out, and social volume alone was growing. Then I decomposed social again into campaign, UGC, KOL, and sales & promotions, confirming the growth was campaign-driven. Three layers of decomposition, one defensible answer."
+        "zh": "Net Buzz 由电商（EC）与社媒数据构成。2024 年 EC 掉量严重，但那是整个行业的大趋势，不是营销工作的结果——先把 EC 拆出去，==社媒部分其实是增长的==。再进一步拆解社媒数据，分别看 Campaign、UGC、KOL、Sales & Promotions 等维度，确认增长主要由 Campaign 驱动。三层拆解之后，得到一个站得住的答案。",
+        "en": "Net buzz was a composite of e-commerce and social volume. E-commerce had contracted sharply in 2024 — a category-wide trend, not a marketing outcome — so I separated it out, and ==social volume alone was growing==. Then I decomposed social again into campaign, UGC, KOL, and sales & promotions, confirming the growth was campaign-driven. Three layers of decomposition, one defensible answer."
       },
       "insight": {
-        "zh": "增长集中在 Campaign 驱动的声量上——这才是 Marketing 团队真正拥有的部分。负增长的大标题，本质是行业整体收缩被误记在了品牌头上。",
-        "en": "The growth concentrated in campaign-driven conversation — the part marketing genuinely owned. The negative headline was an industry contraction wearing the brand's name."
+        "zh": "增长集中在 **Campaign 驱动的声量**上——**这才是 Marketing 团队真正拥有的部分**。负增长的大标题，本质是行业整体收缩被误记在了品牌头上。",
+        "en": "The growth concentrated in **campaign-driven conversation** — **the part marketing genuinely owned**. The negative headline was an industry contraction wearing the brand's name."
       },
       "impact": {
-        "zh": "最终汇报清晰剥离出 Marketing 团队可以主张的业绩，没有夸大任何一个数字。客户顺利向全球管理层完成汇报，对结果很满意。",
-        "en": "A narrative that isolated the performance marketing could legitimately claim, without inflating anything. The client presented it as planned, the global team accepted it, and the review went smoothly."
+        "zh": "最终汇报清晰剥离出 Marketing 团队可以主张的业绩，**没有夸大任何一个数字**。客户顺利向全球管理层完成汇报，对结果很满意。",
+        "en": "A narrative that isolated the performance marketing could legitimately claim, **without inflating anything**. The client presented it as planned, the global team accepted it, and the review went smoothly."
       },
       "metrics": [
         "2 negative metrics → 1 credible story",
@@ -132,8 +132,8 @@
             "en": "A creator type found in the discard pile"
           },
           "body": {
-            "zh": "数据清洗时发现一条本该丢弃的帖子：一位在奢侈品包装上作画的插画艺术家（这类艺术家通常受高奢品牌委托创作）画了品牌香水瓶，但帖子内容是宣传画作本身而非产品。这种创作形式与品牌的视觉调性高度契合，优于当时追踪到的大多数付费投放内容。我把它从弃用数据里捞出给客户，建议将插画师类创作者纳入 KOL seeding 投放类型——客户后续确实采用了。",
-            "en": "During a data-cleaning pass I flagged a post that would normally have been thrown out: an illustrator who paints on luxury packaging — the kind of artist high-end maisons commission — had painted a fragrance bottle, but the post was promoting the artwork, not the product. The creative format fit the brand's visual language better than most of the paid seeding we were tracking. I pulled it out of the discard pile, showed the client, and proposed illustrator-creators as a seeding type. They adopted it."
+            "zh": "数据清洗时发现一条本该丢弃的帖子：一位在奢侈品包装上作画的插画艺术家（这类艺术家通常受高奢品牌委托创作）画了品牌香水瓶，但帖子内容是宣传画作本身而非产品。这种创作形式与品牌的视觉调性高度契合，优于当时追踪到的大多数付费投放内容。我把它从弃用数据里捞出给客户，**建议将插画师类创作者纳入 KOL seeding 投放类型**——客户后续确实采用了。",
+            "en": "During a data-cleaning pass I flagged a post that would normally have been thrown out: an illustrator who paints on luxury packaging — the kind of artist high-end maisons commission — had painted a fragrance bottle, but the post was promoting the artwork, not the product. The creative format fit the brand's visual language better than most of the paid seeding we were tracking. I pulled it out of the discard pile, showed the client, and **proposed illustrator-creators as a seeding type. They adopted it.**"
           }
         },
         {
@@ -142,8 +142,8 @@
             "en": "Splitting media day from public days"
           },
           "body": {
-            "zh": "快闪活动的 UGC 负面反馈集中在一个主题：场地太小、太拥挤，媒体与公众同场导致线下体验不佳。我建议将媒体日与公众开放日分开举办，下一场 Campaign 的活动设计采纳了这一建议。",
-            "en": "UGC from a pop-up activation came back negative on one clear theme: the venue was too small, it felt crowded, and the experience suffered because press and public shared the floor at the same time. I recommended separating media day from public opening days. The next campaign's design did exactly that."
+            "zh": "快闪活动的 UGC 负面反馈集中在一个主题：场地太小、太拥挤，媒体与公众同场导致线下体验不佳。**我建议将媒体日与公众开放日分开举办**，下一场 Campaign 的活动设计**采纳了这一建议**。",
+            "en": "UGC from a pop-up activation came back negative on one clear theme: the venue was too small, it felt crowded, and the experience suffered because press and public shared the floor at the same time. **I recommended separating media day from public opening days. The next campaign's design did exactly that.**"
           }
         },
         {
@@ -152,8 +152,8 @@
             "en": "Moving KOL investment from Weibo to Xiaohongshu"
           },
           "body": {
-            "zh": "微博声量与投放份额连年下滑，美妆高奢预算已在向小红书和抖音迁移；而客户的核心 KPI 是 UGC 声量——小红书正是 UGC 友好型社区，平台调性与香水品类高度相关。我在年报中提出明年转投小红书的建议，客户采纳。年底复盘：剔除两场超大型 Campaign 带来的声量后，Net Buzz 同比 +17%，UGC 增长超 20%。",
-            "en": "Weibo's share of voice and share of spend had been sliding for years, and luxury beauty budgets were already migrating to Xiaohongshu and Douyin. The client's KPI was UGC volume — and Xiaohongshu is a UGC-native community whose format suits fragrance. I put the platform shift into the annual report as a next-year recommendation. They made the move. At year-end, setting aside volume from two outsized campaigns, net buzz was up 17% YoY and UGC up more than 20%."
+            "zh": "微博声量与投放份额连年下滑，美妆高奢预算已在向小红书和抖音迁移；而客户的核心 KPI 是 UGC 声量——小红书正是 UGC 友好型社区，平台调性与香水品类高度相关。**我在年报中提出明年转投小红书的建议，客户采纳**。年底复盘：剔除两场超大型 Campaign 带来的声量后，Net Buzz 同比 +17%，UGC 增长超 20%。",
+            "en": "Weibo's share of voice and share of spend had been sliding for years, and luxury beauty budgets were already migrating to Xiaohongshu and Douyin. The client's KPI was UGC volume — and Xiaohongshu is a UGC-native community whose format suits fragrance. **I put the platform shift into the annual report as a next-year recommendation. They made the move.** At year-end, setting aside volume from two outsized campaigns, net buzz was up 17% YoY and UGC up more than 20%."
           }
         },
         {
@@ -162,14 +162,14 @@
             "en": "Rebuilding brand origin around Paris"
           },
           "body": {
-            "zh": "竞品的起源叙事都有鲜明的国家标签——某英伦品牌在女王玫瑰香水上市中嵌入都铎玫瑰元素，在身体护理线嵌入罗马浴场文化，用帕丁顿熊联名强化果酱产品；而该品牌的巴黎起源感偏弱，因为其创始人叙事本质是旅行叙事（越南、希腊、巴黎爵士酒吧）。我建议把巴黎本身做成 Campaign。品牌随后落地 #可能在巴黎# 活动，把巴黎街景搬进上海，当年 Brand Origin 维度指标明显提升。",
-            "en": "Competitors ran origin narratives that were unmistakably national — a British maison layering Tudor rose into a queen's rose launch, Roman bath culture into a bath line, a Paddington collaboration into marmalade. The client's Paris origin read comparatively faint, because its founder narrative is really a travel narrative: Vietnam, Greece, a Paris jazz bar. I proposed making Paris itself the campaign. The brand ran #可能在巴黎# (\"Perhaps in Paris\"), importing a Paris streetscape into Shanghai. Brand-origin metrics rose that year."
+            "zh": "竞品的起源叙事都有鲜明的国家标签——某英伦品牌在女王玫瑰香水上市中嵌入都铎玫瑰元素，在身体护理线嵌入罗马浴场文化，用帕丁顿熊联名强化果酱产品；而该品牌的巴黎起源感偏弱，因为其创始人叙事本质是旅行叙事（越南、希腊、巴黎爵士酒吧）。**我建议把巴黎本身做成 Campaign**。品牌随后落地 #可能在巴黎# 活动，把巴黎街景搬进上海，**当年 Brand Origin 维度指标明显提升**。",
+            "en": "Competitors ran origin narratives that were unmistakably national — a British maison layering Tudor rose into a queen's rose launch, Roman bath culture into a bath line, a Paddington collaboration into marmalade. The client's Paris origin read comparatively faint, because its founder narrative is really a travel narrative: Vietnam, Greece, a Paris jazz bar. **I proposed making Paris itself the campaign.** The brand ran #可能在巴黎# (\"Perhaps in Paris\"), importing a Paris streetscape into Shanghai. **Brand-origin metrics rose that year.**"
           }
         }
       ],
       "impact": {
-        "zh": "四条建议全部被品牌采纳。年底复盘：剔除超大型 Campaign 声量后，Net Buzz 同比 +17%，UGC 增长超 20%。",
-        "en": "Four of four recommendations adopted. At year-end, excluding two outsized campaign spikes, net buzz was up 17% YoY and UGC up more than 20%."
+        "zh": "**四条建议全部被品牌采纳**。年底复盘：剔除超大型 Campaign 声量后，Net Buzz 同比 ==+17%==，UGC 增长超 ==20%==。",
+        "en": "**Four of four recommendations adopted.** At year-end, excluding two outsized campaign spikes, net buzz was ==up 17% YoY== and UGC ==up more than 20%==."
       },
       "metrics": [
         "+17% Net Buzz YoY",
@@ -216,20 +216,20 @@
         "en": "A pharmaceutical client needed patient-side understanding of alopecia areata: who these patients are, how they move through diagnosis and treatment, and where the unmet needs sit."
       },
       "challenge": {
-        "zh": "一切都要从零搭建：患者讨论集中在哪里、数据如何清洗、打什么标签、哪些分析维度重要、结果如何解读——公司内部没有任何可继承的先例。",
-        "en": "Everything had to be constructed — where the conversation lived, how to clean it, what to tag, which dimensions mattered, and how to read the result. There was no prior framework for this condition to inherit."
+        "zh": "一切都要从零搭建：患者讨论集中在哪里、数据如何清洗、打什么标签、哪些分析维度重要、结果如何解读——**公司内部没有任何可继承的先例**。",
+        "en": "Everything had to be constructed — where the conversation lived, how to clean it, what to tag, which dimensions mattered, and how to read the result. **There was no prior framework for this condition to inherit.**"
       },
       "approach": {
-        "zh": "全流程独立完成：数据获取、清洗整理、围绕患者画像与患者旅程设计打标签体系、数据分析，直到最终的研究报告交付。没有交接环节，也没有上游的人替我定义问题。",
-        "en": "I owned the full pipeline alone: data acquisition, cleaning, a tagging taxonomy built around patient profile and patient journey, the analysis, and the written research report. No handoffs, no one upstream to define the question for me."
+        "zh": "**全流程独立完成**：数据获取、清洗整理、围绕患者画像与患者旅程设计打标签体系、数据分析，直到最终的研究报告交付。没有交接环节，也没有上游的人替我定义问题。",
+        "en": "**I owned the full pipeline alone**: data acquisition, cleaning, a tagging taxonomy built around patient profile and patient journey, the analysis, and the written research report. No handoffs, no one upstream to define the question for me."
       },
       "insight": {
-        "zh": "罕见病的社媒聆听必须围绕患者旅程而非症状关键词搭建——同一疾病在确诊期、治疗期和复发期，患者的表达方式完全不同。",
-        "en": "Rare-disease listening has to be built around the patient journey rather than symptom keywords — patients describe the same condition in completely different language at diagnosis, treatment and relapse."
+        "zh": "罕见病的社媒聆听必须**围绕患者旅程而非症状关键词**搭建——同一疾病在确诊期、治疗期和复发期，患者的表达方式完全不同。",
+        "en": "Rare-disease listening has to be built **around the patient journey rather than symptom keywords** — patients describe the same condition in completely different language at diagnosis, treatment and relapse."
       },
       "impact": {
-        "zh": "项目以探索性研究交付，建议暂未进入落地执行，价值更多沉淀在方法论而非业务结果上——这一点我想说得更直接。它带给我的，是独立跑通完整流程的实感：一套罕见病患者画像与打标签的可行方法，以及对医药聆听与消费品类差异的真实体感。",
-        "en": "Delivered as exploratory research; its recommendations were not taken forward into activation, so the value sits in the framework rather than a business result — I'd rather say that plainly. What it gave me was the entire pipeline in my own hands once: a working method for patient profiling and rare-disease tagging, and a realistic sense of how medical listening differs from consumer categories."
+        "zh": "项目以探索性研究交付，建议暂未进入落地执行，价值更多沉淀在方法论而非业务结果上——这一点我想说得更直接。它带给我的，是独立跑通完整流程的实感：**一套罕见病患者画像与打标签的可行方法**，以及对医药聆听与消费品类差异的真实体感。",
+        "en": "Delivered as exploratory research; its recommendations were not taken forward into activation, so the value sits in the framework rather than a business result — I'd rather say that plainly. What it gave me was the entire pipeline in my own hands once: **a working method for patient profiling and rare-disease tagging**, and a realistic sense of how medical listening differs from consumer categories."
       },
       "metrics": [
         "100% pipeline owned solo",
@@ -275,20 +275,20 @@
         "en": "A retail client's monthly report rested on e-commerce review data — the fastest signal they had on product, operations and logistics."
       },
       "challenge": {
-        "zh": "一条关于精华液的评论，可能同时包含对肤感、包装、物流速度和客服体验的独立评价，各自带着不同情感倾向。如果只在评论级别打标，平均值会掩盖所有可执行的信息。",
-        "en": "One review about a serum can carry separate opinions on texture, packaging, delivery speed and a customer-service interaction, each with its own sentiment. Tag at review level and the average hides everything actionable."
+        "zh": "一条关于精华液的评论，可能同时包含对肤感、包装、物流速度和客服体验的独立评价，各自带着不同情感倾向。**如果只在评论级别打标，平均值会掩盖所有可执行的信息**。",
+        "en": "One review about a serum can carry separate opinions on texture, packaging, delivery speed and a customer-service interaction, each with its own sentiment. **Tag at review level and the average hides everything actionable.**"
       },
       "approach": {
-        "zh": "核心工作是把每条评论拆分为多个维度的观点单元，对每个单元单独做情感打标和维度打标（产品 / 运营 / 物流），然后再聚合——最后把聚合结果翻译成各团队可以分别认领的结论，而不是一个没人负责的混合分数。",
-        "en": "The work was to atomise each review into aspect-level opinion units, tag sentiment and dimension (product / operations / logistics) per unit, and only then aggregate — then translate the aggregates into findings each team could act on separately, rather than one blended score nobody owned."
+        "zh": "核心工作是**把每条评论拆分为多个维度的观点单元**，对每个单元单独做情感打标和维度打标（产品 / 运营 / 物流），然后再聚合——最后把聚合结果翻译成各团队可以分别认领的结论，而不是一个没人负责的混合分数。",
+        "en": "The work was to **atomise each review into aspect-level opinion units**, tag sentiment and dimension (product / operations / logistics) per unit, and only then aggregate — then translate the aggregates into findings each team could act on separately, rather than one blended score nobody owned."
       },
       "insight": {
         "zh": "月报节奏很难产出石破天惊的洞察，这个项目也不做这种承诺。它的优势在于反馈闭环：在交易驱动的行业里，报告发现的问题会被立即重视。",
         "en": "Monthly cadence rarely produces a dramatic headline, and this program doesn't pretend otherwise. Its advantage is the loop: in a transaction-driven category, findings get acted on immediately."
       },
       "impact": {
-        "zh": "某个月报告里指出的短板，下个季度就能在数据端看到明显变化——跨部门整改的效果通常在 2–3 个月内的数据中体现出来。",
-        "en": "A weakness named in one month's report was a measurable change by the next quarter — the effect of cross-team fixes showed up in the data two to three months later."
+        "zh": "某个月报告里指出的短板，下个季度就能在数据端看到明显变化——跨部门整改的效果通常在 ==2–3 个月内==就能在数据中看到变化。",
+        "en": "A weakness named in one month's report was a measurable change by the next quarter — the effect of cross-team fixes ==showed up in the data within two to three months==."
       },
       "metrics": [
         "Review → aspect-level units",

@@ -1,16 +1,36 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, NavLink, useLocation } from 'react-router-dom';
 import contentData from './data/content.json';
 
 // --- 设计系统：Apple 风格的共用样式 ---
 const CARD = 'bg-white rounded-[24px] shadow-card ring-1 ring-black/[0.04]';
 const BTN_PRIMARY =
-  'inline-flex items-center justify-center rounded-full bg-apple px-7 py-3 text-[15px] font-medium text-white transition-all duration-200 hover:bg-apple-hover active:scale-[0.97]';
+  'inline-flex items-center justify-center rounded-full bg-accent px-7 py-3 text-[15px] font-medium text-white transition-all duration-200 hover:bg-accent-hover active:scale-[0.97]';
 const BTN_SECONDARY =
   'inline-flex items-center justify-center rounded-full bg-white px-7 py-3 text-[15px] font-medium text-ink ring-1 ring-hairline transition-all duration-200 hover:ring-ink active:scale-[0.97]';
 const SECTION_TITLE =
   'text-[32px] md:text-[40px] font-semibold tracking-[-0.015em] leading-tight text-balance';
 const EYEBROW = 'text-xs font-semibold uppercase tracking-[0.18em] text-secondary';
+
+// --- 富文本渲染：支持 **加粗** 与 ==高亮== ---
+const renderRich = (text) => {
+  if (!text) return text;
+  const tokens = String(text).split(/(\*\*[^*]+\*\*|==[^=]+==)/g);
+  return tokens.map((tk, i) => {
+    if (tk.startsWith('**') && tk.endsWith('**')) {
+      return <strong key={i} className="font-semibold text-ink">{tk.slice(2, -2)}</strong>;
+    }
+    if (tk.startsWith('==') && tk.endsWith('==')) {
+      return (
+        <mark key={i} className="bg-accent-soft text-accent font-semibold px-1.5 py-0.5 rounded-md box-decoration-clone">
+          {tk.slice(2, -2)}
+        </mark>
+      );
+    }
+    return tk;
+  });
+};
+const RichText = ({ text, className }) => <p className={className}>{renderRich(text)}</p>;
 
 // --- 导航栏 ---
 const Navbar = ({ lang, setLang, t }) => {
@@ -23,7 +43,9 @@ const Navbar = ({ lang, setLang, t }) => {
     ['/contact', t(contentData.nav.contact)],
   ];
   const linkCls = ({ isActive }) =>
-    `transition-colors duration-200 ${isActive ? 'text-ink font-semibold' : 'text-secondary hover:text-ink'}`;
+    `uppercase tracking-[0.09em] transition-colors duration-200 ${
+      isActive ? 'text-ink font-semibold' : 'text-secondary hover:text-ink font-medium'
+    }`;
 
   return (
     <nav className="fixed w-full z-[100] bg-surface/70 backdrop-blur-xl ring-1 ring-black/[0.05]">
@@ -32,7 +54,7 @@ const Navbar = ({ lang, setLang, t }) => {
           {contentData.profile.name}
         </Link>
 
-        <div className="hidden md:flex items-center gap-7 text-[13px]">
+        <div className="hidden md:flex items-center gap-7 text-[12px]">
           {navItems.map(([to, label]) => (
             <NavLink key={to} to={to} className={linkCls}>{label}</NavLink>
           ))}
@@ -63,7 +85,7 @@ const Navbar = ({ lang, setLang, t }) => {
       >
         <div className="px-6 py-4 flex flex-col gap-1 text-[15px]">
           {[...navItems, ['/resume', t(contentData.nav.resume)]].map(([to, label]) => (
-            <NavLink key={to} to={to} className={({ isActive }) => `py-2.5 ${isActive ? 'text-ink font-semibold' : 'text-secondary'}`} onClick={() => setOpen(false)}>
+            <NavLink key={to} to={to} className={({ isActive }) => `py-2.5 uppercase tracking-[0.09em] ${isActive ? 'text-ink font-semibold' : 'text-secondary'}`} onClick={() => setOpen(false)}>
               {label}
             </NavLink>
           ))}
@@ -128,7 +150,7 @@ const Projects = ({ t, setActiveProject }) => (
           </div>
           <div className="flex justify-between items-start gap-6 px-1">
             <div>
-              <h3 className="text-[21px] font-semibold mb-2 tracking-[-0.01em] text-balance group-hover:text-apple transition-colors duration-300">
+              <h3 className="text-[21px] font-semibold mb-2 tracking-[-0.01em] text-balance group-hover:text-accent transition-colors duration-300">
                 {t(project.title)}
               </h3>
               <span className="text-[13px] text-secondary">
@@ -143,7 +165,7 @@ const Projects = ({ t, setActiveProject }) => (
               )}
             </div>
             <div className="text-right shrink-0">
-              {project.metrics.map(m => <div key={m} className="text-[13px] font-semibold text-apple">{m}</div>)}
+              {project.metrics.map(m => <div key={m} className="text-[13px] font-semibold text-accent">{m}</div>)}
             </div>
           </div>
         </div>
@@ -169,7 +191,7 @@ const Hobbies = ({ t }) => {
               href={contentData.settings.social.tuchong}
               target="_blank"
               rel="noreferrer"
-              className="text-sm font-medium text-apple hover:underline underline-offset-4"
+              className="text-sm font-medium text-accent hover:underline underline-offset-4"
             >
               {t(h.moreTuchong)}
             </a>
@@ -244,7 +266,7 @@ const Resources = ({ t }) => {
             href={social.tuchong}
             target="_blank"
             rel="noreferrer"
-            className="text-apple font-medium mt-10 hover:underline underline-offset-4 self-start"
+            className="text-accent font-medium mt-10 hover:underline underline-offset-4 self-start"
           >
             {t(h.moreTuchong)}
           </a>
@@ -266,9 +288,9 @@ const Resume = ({ t }) => {
         <h2 className="text-[40px] md:text-[48px] font-semibold tracking-[-0.02em] mb-3">{contentData.profile.name}</h2>
         <p className="text-xl text-secondary mb-5">{t(contentData.profile.title)}</p>
         <div className="flex flex-wrap gap-x-7 gap-y-2 text-sm text-secondary">
-          <a href={`mailto:${contentData.settings.contact.email}`} className="hover:text-apple transition-colors">{contentData.settings.contact.email}</a>
+          <a href={`mailto:${contentData.settings.contact.email}`} className="hover:text-accent transition-colors">{contentData.settings.contact.email}</a>
           {contentData.settings.contact.linkedin && !contentData.settings.contact.linkedin.endsWith('/Ingrid') && (
-            <a href={`https://${contentData.settings.contact.linkedin}`} target="_blank" rel="noreferrer" className="hover:text-apple transition-colors">
+            <a href={`https://${contentData.settings.contact.linkedin}`} target="_blank" rel="noreferrer" className="hover:text-accent transition-colors">
               {contentData.settings.contact.linkedin}
             </a>
           )}
@@ -294,7 +316,7 @@ const Resume = ({ t }) => {
                   <ul className="space-y-2.5">
                     {job.bullets.map((b, j) => (
                       <li key={j} className="text-[15px] text-ink/80 leading-relaxed pl-5 relative">
-                        <span className="absolute left-0 top-[0.62em] w-[5px] h-[5px] bg-apple rounded-full" />
+                        <span className="absolute left-0 top-[0.62em] w-[5px] h-[5px] bg-accent rounded-full" />
                         {t(b)}
                       </li>
                     ))}
@@ -347,9 +369,9 @@ const Resume = ({ t }) => {
             </div>
           </div>
 
-          <div className="rounded-[24px] bg-apple/[0.06] ring-1 ring-apple/20 p-7">
+          <div className="rounded-[24px] bg-accent/[0.06] ring-1 ring-accent/20 p-7">
             <p className="text-sm text-ink/80 leading-relaxed">{t(r.contactNote)}</p>
-            <a href={`mailto:${contentData.settings.contact.email}`} className="text-apple font-medium text-sm mt-3.5 inline-block hover:underline underline-offset-4">
+            <a href={`mailto:${contentData.settings.contact.email}`} className="text-accent font-medium text-sm mt-3.5 inline-block hover:underline underline-offset-4">
               {contentData.settings.contact.email}
             </a>
           </div>
@@ -391,21 +413,21 @@ const Contact = ({ t }) => {
           <div className="space-y-8 text-left">
             <div>
               <h4 className={EYEBROW + ' mb-2.5'}>Email</h4>
-              <a href={`mailto:${contentData.settings.contact.email}`} className="text-[21px] font-medium text-ink hover:text-apple transition-colors underline decoration-black/10 underline-offset-8 break-all">
+              <a href={`mailto:${contentData.settings.contact.email}`} className="text-[21px] font-medium text-ink hover:text-accent transition-colors underline decoration-black/10 underline-offset-8 break-all">
                 {contentData.settings.contact.email}
               </a>
             </div>
             {contentData.settings.contact.linkedin && !contentData.settings.contact.linkedin.endsWith('/Ingrid') && (
               <div className="pt-7 border-t border-black/[0.06]">
                 <h4 className={EYEBROW + ' mb-2.5'}>LinkedIn</h4>
-                <a href={`https://${contentData.settings.contact.linkedin}`} target="_blank" rel="noreferrer" className="text-lg font-medium text-ink hover:text-apple transition-colors">
+                <a href={`https://${contentData.settings.contact.linkedin}`} target="_blank" rel="noreferrer" className="text-lg font-medium text-ink hover:text-accent transition-colors">
                   {contentData.settings.contact.linkedin}
                 </a>
               </div>
             )}
             <div className="pt-7 border-t border-black/[0.06]">
               <h4 className={EYEBROW + ' mb-2.5'}>Tuchong · 图虫</h4>
-              <a href={social.tuchong} target="_blank" rel="noreferrer" className="text-apple font-medium hover:underline underline-offset-4">
+              <a href={social.tuchong} target="_blank" rel="noreferrer" className="text-accent font-medium hover:underline underline-offset-4">
                 {t(h.moreTuchong)}
               </a>
             </div>
@@ -455,7 +477,7 @@ const ProjectModal = ({ project, t, onClose }) => {
       </div>
       <div className="max-w-5xl mx-auto px-6 pb-24 -mt-14">
         <header className="mb-14 pt-14">
-          <span className="text-apple font-semibold text-[13px] tracking-[0.1em] uppercase">
+          <span className="text-accent font-semibold text-[13px] tracking-[0.1em] uppercase">
             {project.meta.category}{project.meta.year ? ` · ${project.meta.year}` : ''}
           </span>
           <h2 className="text-[32px] md:text-[44px] font-semibold tracking-[-0.02em] leading-tight mt-3 text-balance">{t(project.title)}</h2>
@@ -477,21 +499,27 @@ const ProjectModal = ({ project, t, onClose }) => {
                 {s.type === 'items' ? (
                   <div className="grid sm:grid-cols-2 gap-5">
                     {project.items.map((it, i) => (
-                      <div key={i} className="rounded-[18px] ring-1 ring-black/[0.06] bg-white p-6">
-                        <div className="text-apple font-semibold text-sm mb-2.5">{String(i + 1).padStart(2, '0')}</div>
+                      <div key={i} className="rounded-[18px] ring-1 ring-black/[0.06] bg-white p-6 flex flex-col">
+                        <div className="flex items-center gap-2.5 mb-3">
+                          <span className="text-accent font-semibold text-sm tabular-nums">{String(i + 1).padStart(2, '0')}</span>
+                          <span className="flex-1 h-px bg-black/[0.06]" />
+                        </div>
                         <h5 className="font-semibold mb-2.5 leading-snug text-balance">{t(it.title)}</h5>
-                        <p className="text-secondary leading-relaxed text-sm">{t(it.body)}</p>
+                        <RichText text={t(it.body)} className="text-secondary leading-[1.75] text-[14.5px]" />
                       </div>
                     ))}
                   </div>
                 ) : s.type === 'insight' || s.type === 'quote' ? (
-                  <p className="bg-apple/[0.05] p-7 rounded-[18px] ring-1 ring-apple/15 italic leading-relaxed text-ink/90">
-                    {t(s.type === 'insight' ? project.insight : project.recommendation)}
-                  </p>
+                  <blockquote className="bg-accent-soft/70 border-l-[3px] border-accent p-7 md:p-8 rounded-r-[18px] leading-[1.8] text-[16.5px] md:text-[17.5px] text-ink">
+                    {renderRich(t(s.type === 'insight' ? project.insight : project.recommendation))}
+                  </blockquote>
                 ) : s.type === 'impact' ? (
-                  <p className="text-[24px] md:text-[28px] font-medium leading-relaxed tracking-[-0.01em] text-balance">{t(project.impact)}</p>
+                  <RichText
+                    text={t(project.impact)}
+                    className="text-[22px] md:text-[26px] font-medium leading-[1.6] tracking-[-0.01em] text-balance"
+                  />
                 ) : (
-                  <p className="text-ink/80 leading-[1.8]">{t(project[s.key])}</p>
+                  <RichText text={t(project[s.key])} className="text-ink/85 leading-[1.85] text-[15.5px]" />
                 )}
               </section>
             ))}
@@ -501,14 +529,14 @@ const ProjectModal = ({ project, t, onClose }) => {
               <div className={CARD + ' p-7'}>
                 <h4 className={EYEBROW + ' mb-4'}>{t({ zh: '关键指标', en: 'Key Metrics' })}</h4>
                 {project.metrics.map(m => (
-                  <div key={m} className="text-lg font-semibold text-apple mb-3 last:mb-0">{m}</div>
+                  <div key={m} className="text-lg font-semibold text-accent mb-3 last:mb-0">{m}</div>
                 ))}
               </div>
             )}
             {project.assets.pdf && (
               <div className={CARD + ' p-7'}>
                 <h4 className={EYEBROW + ' mb-4'}>{t({ zh: '交付物', en: 'Deliverables' })}</h4>
-                <a href={project.assets.pdf} target="_blank" rel="noreferrer" className="text-apple font-medium hover:underline underline-offset-4">
+                <a href={project.assets.pdf} target="_blank" rel="noreferrer" className="text-accent font-medium hover:underline underline-offset-4">
                   {t({ zh: '下载 PDF 报告', en: 'Download PDF Report' })}
                 </a>
               </div>
@@ -537,6 +565,20 @@ function Site() {
     return field[lang] || field;
   };
 
+  // 支持 ?open=<case-id> 深链直接打开某个案例（可分享具体案例链接）
+  useEffect(() => {
+    const id = new URLSearchParams(window.location.search).get('open');
+    if (id) {
+      const p = contentData.projects.find((x) => x.id === id);
+      if (p) setActiveProject(p);
+    }
+  }, []);
+
+  const closeProject = () => {
+    setActiveProject(null);
+    window.history.replaceState({}, '', window.location.pathname);
+  };
+
   return (
     <div className="min-h-screen bg-surface text-ink font-sans flex flex-col">
       <Navbar lang={lang} setLang={setLang} t={t} />
@@ -555,7 +597,7 @@ function Site() {
       <Footer t={t} />
 
       {activeProject && (
-        <ProjectModal project={activeProject} t={t} onClose={() => setActiveProject(null)} />
+        <ProjectModal project={activeProject} t={t} onClose={closeProject} />
       )}
     </div>
   );
