@@ -443,13 +443,14 @@ const Resume = ({ t }) => {
             ))}
           </div>
 
-          <h3 className={EYEBROW + ' mb-7'}>{t(r.researchLabel)}</h3>
-          <div>
-            <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-              <h4 className="font-semibold">{t(r.research.title)}</h4>
-              <span className="text-[13px] text-secondary tabular-nums">{r.research.period}</span>
-            </div>
-            <p className="text-[15px] text-ink/80 leading-relaxed mt-2.5">{t(r.research.body)}</p>
+          <h3 className={EYEBROW + ' mb-7'}>{t(r.aiLabel)}</h3>
+          <div className="space-y-6">
+            {r.aiCapabilities.map((c, i) => (
+              <div key={i} className="grid sm:grid-cols-[168px_1fr] gap-x-6 gap-y-1.5">
+                <h4 className="font-semibold text-[15px] leading-relaxed">{t(c.title)}</h4>
+                <p className="text-[15px] text-ink/80 leading-relaxed">{t(c.body)}</p>
+              </div>
+            ))}
           </div>
         </div>
 

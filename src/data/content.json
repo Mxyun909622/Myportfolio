@@ -345,10 +345,6 @@
       "zh": "技能",
       "en": "Capabilities"
     },
-    "researchLabel": {
-      "zh": "独立研究",
-      "en": "Independent research"
-    },
     "experience": [
       {
         "period": "Dec 2023 — Present",
@@ -526,17 +522,42 @@
         "note": ""
       }
     ],
-    "research": {
-      "period": "Feb 2023 — Mar 2023",
-      "title": {
-        "zh": "播客 App「小宇宙」用户体验研究",
-        "en": "Podcast app Xiaoyuzhou — UX research"
-      },
-      "body": {
-        "zh": "通过用户反馈与评分数据分析，定位评分下滑的核心原因（创作者风波与功能痛点），输出产品迭代建议，推动多设备适配与播放列表管理优化。",
-        "en": "Analysed user feedback and rating data to isolate the causes behind a rating decline (creator controversy and feature gaps), then delivered iteration recommendations that fed into multi-device support and playlist management improvements."
-      }
+    "aiLabel": {
+      "zh": "AI 与技术能力",
+      "en": "AI & Technical Capabilities"
     },
+    "aiCapabilities": [
+      {
+        "title": {
+          "zh": "AI 辅助开发",
+          "en": "AI-assisted development"
+        },
+        "body": {
+          "zh": "借助 ChatGPT 与 WorkBuddy 独立搭建个人作品集网站，整合专业案例、个人兴趣，以及图虫、小红书等外部内容平台。",
+          "en": "Leveraged ChatGPT and WorkBuddy to independently build a personal portfolio website, integrating professional case studies, personal interests, and external content platforms (Tuchong, Xiaohongshu/RED)."
+        }
+      },
+      {
+        "title": {
+          "zh": "数据处理自动化",
+          "en": "Data processing automation"
+        },
+        "body": {
+          "zh": "用 AI 辅助编程开发 Python 工具，完成社交媒体内容分类、互动数据筛选与数据自动化处理，提升工作效率与流程标准化程度。",
+          "en": "Used AI-assisted coding to build Python tools for social media content classification, engagement data filtering and automated data processing — improving workflow efficiency and standardisation."
+        }
+      },
+      {
+        "title": {
+          "zh": "流程与项目管理",
+          "en": "Workflow & project management"
+        },
+        "body": {
+          "zh": "设计并搭建结构化的项目管理系统，跟踪项目需求、责任人、时间节点、交付物与进度，让项目协同与执行更有序。",
+          "en": "Designed and built a structured project management system to track requirements, ownership, timelines, deliverables and progress — supporting more coordinated, reliable project execution."
+        }
+      }
+    ],
     "skills": [
       {
         "label": {
