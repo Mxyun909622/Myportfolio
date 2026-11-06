@@ -326,8 +326,8 @@
       "en": "Resume"
     },
     "summary": {
-      "zh": "六年社媒聆听与消费者洞察经验，覆盖美妆、高端香水、零售电商、保险与医药。擅长把杂乱的社媒与电商语料变成可执行的结论：指标拆解、打标体系设计、KOL 与平台策略建议，以及能撑住全球管理层质询的叙事。",
-      "en": "Six years across social listening and consumer insight — beauty, luxury fragrance, retail e-commerce, insurance and healthcare. I turn messy social and e-commerce conversation into decisions: metric decomposition, tagging frameworks, KOL and platform strategy, and a narrative that survives a global leadership review."
+      "zh": "社媒聆听与消费者洞察分析师，近四年经验，把社媒与电商语料转化为可落地的商业洞察，覆盖高端香水、美妆、零售电商、保险与医药。擅长社媒情报、消费者行为分析、Campaign 效果评估、KOL 策略与客户报告；并用 AI 辅助的 Python 开发与流程自动化，让研究更快、更可复用。",
+      "en": "Social Listening & Consumer Insights Analyst with nearly four years of experience turning social and e-commerce data into business insight across luxury fragrance, beauty, retail, insurance and healthcare. Experienced in social intelligence, consumer behaviour analysis, campaign evaluation, KOL strategy and client reporting — with AI-assisted Python development and workflow automation to make research faster and more scalable."
     },
     "contactNote": {
       "zh": "含完整联系方式的 PDF 版本可通过邮件索取。",
@@ -344,6 +344,10 @@
     "skillsLabel": {
       "zh": "技能",
       "en": "Capabilities"
+    },
+    "coreLabel": {
+      "zh": "核心能力",
+      "en": "Core Competencies"
     },
     "experience": [
       {
@@ -366,24 +370,46 @@
         },
         "bullets": [
           {
-            "zh": "深度分析 20+ 香水品牌的社媒数据，覆盖品牌形象、KOL 投放、情感分析、话题分析与 UGC 反馈，为品牌优化社媒策略提供数据支持。",
-            "en": "Analysed social data for 20+ fragrance brands across brand image, KOL investment, sentiment, topic analysis and UGC feedback to inform social strategy."
+            "zh": "**社媒情报**：监测 20+ 香水品牌的社媒数据，围绕品牌形象、KOL 投放、情感与话题分析、UGC 反馈建立监测体系，按月输出声量与讨论报告；同步跟踪竞品动态与品牌公关风险。",
+            "en": "**Social intelligence**: monitored 20+ fragrance brands across brand image, KOL investment, sentiment, topic analysis and UGC feedback, building the reputation-monitoring system behind monthly share-of-voice and discussion reports, alongside competitor tracking and PR-risk monitoring."
           },
           {
-            "zh": "电商侧按品类、品线拆解评论趋势，帮客户放大优势卖点、定位产品短板；医药侧完成罕见病患者画像与患者旅程梳理，识别潜在机会点。",
-            "en": "On the e-commerce side, decomposed review trends by category and line to amplify strengths and locate product gaps; in pharma, built rare-disease patient profiles and journey maps to identify opportunity areas."
+            "zh": "**消费者洞察**：电商侧按品类、品线拆解评论趋势，帮客户放大优势卖点、定位产品短板；医药侧完成罕见病患者画像与患者旅程梳理，识别潜在机会点。",
+            "en": "**Consumer insight**: decomposed e-commerce review trends by category and product line to amplify strengths and locate gaps; in pharma, built rare-disease patient profiles and journey maps to identify opportunity areas."
           },
           {
-            "zh": "营销活动效果评估：从快闪活动反馈推动品牌将媒体日与消费者日分开；从好评中识别游戏设置、赠品等驱动因素，提出消费后礼券建议，带动好评讨论与品牌曝光。",
-            "en": "Campaign evaluation: pop-up feedback led the brand to separate media day from consumer day; praise-pattern analysis identified game mechanics and gifting as drivers, leading to a post-purchase voucher recommendation that lifted positive discussion and brand visibility."
+            "zh": "**策略建议**：从快闪活动的 UGC 反馈中识别出场地拥挤、媒体与公众同场的核心问题，推动品牌将媒体日与消费者体验日分开；从好评中拆出游戏设置、赠品等体验驱动因素，并提出消费后礼券建议，以鼓励正向 UGC 与品牌互动。",
+            "en": "**Strategic recommendations**: pop-up feedback pointed to crowding and press sharing the floor with the public, which led the brand to separate media day from consumer days; praise-pattern analysis isolated interactive game mechanics and gifting as experience drivers, and I recommended post-purchase vouchers to encourage positive UGC and engagement."
           },
           {
-            "zh": "KOL 与竞品分析，优化 KOL 合作组合；建立品牌舆情监测体系，输出社媒月报（声量、UGC 讨论、KOL 影响力），以 PPT 可视化支撑品牌决策。",
-            "en": "KOL and competitor analysis to rebalance KOL mix; built a brand reputation monitoring system and delivered monthly social reports (share of voice, UGC discussion, KOL impact) visualised in PPT for decision-making."
+            "zh": "**KOL 与竞品策略**：基于 KOL 表现与竞品监测，优化 KOL 合作组合与投放结构，某品牌形象维度指标提升 5%。",
+            "en": "**KOL & competitor strategy**: rebalanced the KOL mix and seeding structure from performance and competitor monitoring; one brand-image dimension improved by 5%."
           },
           {
-            "zh": "客户维护与需求沟通、报告框架设计；客户连续两年续签，年报建议推动品牌市场排名上升 1 位、UGC 声量同比增长 25%、小红书品牌占比排名提升 2 位。",
-            "en": "Client communication and report architecture; the account renewed two years running, and annual-report recommendations contributed to a one-place market rank gain, +25% YoY UGC volume and a two-place rise in Xiaohongshu brand share ranking."
+            "zh": "**客户与项目管理**：负责客户维护、需求沟通与报告框架设计；客户连续两年续签，年报建议推动品牌市场排名上升 1 位、UGC 声量同比增长 25%、小红书品牌占比排名提升 2 位。",
+            "en": "**Client & project management**: led client communication and report architecture; the account renewed two years running, and annual-report recommendations contributed to a one-place market rank gain, +25% YoY UGC volume and a two-place rise in Xiaohongshu brand share ranking."
+          }
+        ],
+        "subsections": [
+          {
+            "title": {
+              "zh": "国际合作与项目协同",
+              "en": "International partnership & project coordination"
+            },
+            "bullets": [
+              {
+                "zh": "代表公司参与与国际社媒情报伙伴的战略合作，参与某全球科技公司社媒聆听数据项目的方案推进。",
+                "en": "Represented SimplyBrand in a strategic collaboration with an international social intelligence partner, contributing to a social listening data opportunity for a major global technology company."
+              },
+              {
+                "zh": "协调三方沟通，对接客户需求、项目机会与执行安排；支持项目入驻与合同推进，目前已签约 3–4 个项目，另有数十个项目在洽谈中。",
+                "en": "Coordinated three-party communication across client requirements, project opportunities and operational arrangements; supported onboarding and contracting, with 3–4 projects signed to date and dozens more in the pipeline."
+              },
+              {
+                "zh": "负责签约后的执行协同：数据迁移、需求对齐、运营问题排查与解决。",
+                "en": "Coordinated post-signing execution — data migration, requirement alignment, operational troubleshooting and issue resolution."
+              }
+            ]
           }
         ],
         "tags": [
@@ -425,16 +451,16 @@
         },
         "bullets": [
           {
-            "zh": "恒天然芝士菜品专项：完成餐饮菜品数据的采集与整理，撰写并交付行业分析报告，帮客户在餐饮市场找到芝士应用的创新增长机会。",
-            "en": "Fonterra cheese dish project: gathered and structured dish-level foodservice data, then wrote and delivered the industry report that located white-space growth opportunities for cheese applications in foodservice."
+            "zh": "**恒天然芝士菜品专项**：完成餐饮菜品数据的采集与结构化整理，撰写并交付行业研究报告，帮客户找到芝士应用的创新增长机会。",
+            "en": "**Fonterra, cheese dish project**: collected and structured dish-level foodservice data, then researched and delivered the industry report identifying growth opportunities for cheese applications."
           },
           {
-            "zh": "百事餐饮市场监测：持续监测餐饮市场趋势与消费者行为，为客户营销策略提供数据支持。",
-            "en": "Pepsi foodservice monitoring: tracked market trends and consumer behaviour to support marketing strategy."
+            "zh": "**百事餐饮市场监测**：持续监测餐饮市场趋势与消费者行为，为营销与品类策略提供数据支持。",
+            "en": "**Pepsi, foodservice monitoring**: tracked market trends and consumer behaviour to support marketing and category strategy."
           },
           {
-            "zh": "奇华顿乳制品与牛肉制品访谈：参与产品测试与用户反馈分析，优化产品概念。",
-            "en": "Givaudan dairy and beef interviews: ran product tests and feedback analysis to refine product concepts."
+            "zh": "**奇华顿乳制品与牛肉制品**：参与产品测试访谈，分析消费者反馈以优化产品概念。",
+            "en": "**Givaudan, dairy & beef**: ran product-testing interviews and analysed consumer feedback to refine product concepts."
           }
         ],
         "tags": [
@@ -504,10 +530,7 @@
           "zh": "应用语言学 硕士（Merit）",
           "en": "MSc Applied Linguistics, Merit"
         },
-        "note": {
-          "zh": "QS 综合排名 15，专业排名 5",
-          "en": "QS ranked 15th overall, 5th in subject"
-        }
+        "note": ""
       },
       {
         "period": "Sep 2013 — Jun 2017",
@@ -517,7 +540,7 @@
         },
         "degree": {
           "zh": "汉语国际教育 + 英语 双学位 本科",
-          "en": "BA Chinese International Education & English (double degree)"
+          "en": "Dual Bachelor's Degrees in Chinese International Education and English"
         },
         "note": ""
       }
@@ -529,33 +552,81 @@
     "aiCapabilities": [
       {
         "title": {
-          "zh": "AI 辅助开发",
-          "en": "AI-assisted development"
+          "zh": "AI 辅助开发与自动化",
+          "en": "AI-assisted development & automation"
         },
-        "body": {
-          "zh": "借助 ChatGPT 与 WorkBuddy 独立搭建个人作品集网站，整合专业案例、个人兴趣，以及图虫、小红书等外部内容平台。",
-          "en": "Leveraged ChatGPT and WorkBuddy to independently build a personal portfolio website, integrating professional case studies, personal interests, and external content platforms (Tuchong, Xiaohongshu/RED)."
-        }
+        "items": [
+          {
+            "zh": "用 ChatGPT 与 WorkBuddy 做 AI 辅助的 Python 开发，搭建可复用的社媒内容分类、按互动量筛选数据与自动化处理工具。",
+            "en": "Used ChatGPT and WorkBuddy for AI-assisted Python development, building reusable tools for social media content classification, engagement-based data selection and automated processing."
+          },
+          {
+            "zh": "把 AI 辅助开发用于重复性的研究流程，提升数据处理的一致性与速度。",
+            "en": "Applied AI-assisted development to repetitive research workflows, improving consistency and speed of data processing."
+          },
+          {
+            "zh": "互动量更新规则设计：比较不同筛选条件的覆盖率、重叠率与数据分布，设计自动化更新规则并用 Python 实现，降低全量更新的处理成本。",
+            "en": "Designed an engagement-refresh rule: compared coverage, overlap and distribution across filter conditions, then specified and built an automated update rule in Python to cut the cost of full refreshes."
+          }
+        ]
       },
       {
         "title": {
-          "zh": "数据处理自动化",
-          "en": "Data processing automation"
+          "zh": "数据分析与流程优化",
+          "en": "Data analytics & workflow optimisation"
         },
-        "body": {
-          "zh": "用 AI 辅助编程开发 Python 工具，完成社交媒体内容分类、互动数据筛选与数据自动化处理，提升工作效率与流程标准化程度。",
-          "en": "Used AI-assisted coding to build Python tools for social media content classification, engagement data filtering and automated data processing — improving workflow efficiency and standardisation."
-        }
+        "items": [
+          {
+            "zh": "搭建结构化项目管理系统，跟踪需求、责任人、时间节点、交付物与进度，让项目协同与执行更可控。",
+            "en": "Built a structured project management system tracking requirements, ownership, timelines, deliverables and progress for more controllable execution."
+          },
+          {
+            "zh": "用 AI 辅助开发完成个人作品集网站，整合专业案例、个人兴趣与外部内容平台（图虫、小红书）。",
+            "en": "Built a personal portfolio site with AI-assisted development, integrating case studies, personal work and external content platforms (Tuchong, Xiaohongshu/RED)."
+          }
+        ]
+      }
+    ],
+    "core": [
+      {
+        "zh": "社媒聆听与社媒情报",
+        "en": "Social listening & intelligence"
       },
       {
-        "title": {
-          "zh": "流程与项目管理",
-          "en": "Workflow & project management"
-        },
-        "body": {
-          "zh": "设计并搭建结构化的项目管理系统，跟踪项目需求、责任人、时间节点、交付物与进度，让项目协同与执行更有序。",
-          "en": "Designed and built a structured project management system to track requirements, ownership, timelines, deliverables and progress — supporting more coordinated, reliable project execution."
-        }
+        "zh": "消费者与市场研究",
+        "en": "Consumer & market research"
+      },
+      {
+        "zh": "社媒数据分析",
+        "en": "Social media analytics"
+      },
+      {
+        "zh": "竞品情报",
+        "en": "Competitive intelligence"
+      },
+      {
+        "zh": "消费者行为分析",
+        "en": "Consumer behaviour analysis"
+      },
+      {
+        "zh": "KOL 与达人策略",
+        "en": "KOL & influencer strategy"
+      },
+      {
+        "zh": "Campaign 效果评估",
+        "en": "Campaign evaluation"
+      },
+      {
+        "zh": "客户关系管理",
+        "en": "Client relationship management"
+      },
+      {
+        "zh": "数据处理与自动化",
+        "en": "Data processing & automation"
+      },
+      {
+        "zh": "跨团队项目协同",
+        "en": "Cross-functional coordination"
       }
     ],
     "skills": [
@@ -566,9 +637,9 @@
         },
         "items": [
           "Python (Pandas)",
-          "Power BI",
           "Excel",
-          "PPT storytelling"
+          "Power BI",
+          "PowerPoint"
         ]
       },
       {
@@ -724,7 +795,7 @@
     },
     "stats": [
       {
-        "value": "6",
+        "value": "4",
         "unit": {
           "zh": "年",
           "en": "yrs"

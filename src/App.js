@@ -420,11 +420,24 @@ const Resume = ({ t }) => {
                     {job.bullets.map((b, j) => (
                       <li key={j} className="text-[15px] text-ink/80 leading-relaxed pl-5 relative">
                         <span className="absolute left-0 top-[0.62em] w-[5px] h-[5px] bg-accent rounded-full" />
-                        {t(b)}
+                        {renderRich(t(b))}
                       </li>
                     ))}
                   </ul>
                 )}
+                {job.subsections && job.subsections.map((sub, k) => (
+                  <div key={k} className="mt-5 pl-5 border-l border-black/[0.12]">
+                    <h5 className="text-[13px] font-semibold uppercase tracking-[0.08em] text-secondary mb-2.5">{t(sub.title)}</h5>
+                    <ul className="space-y-2.5">
+                      {sub.bullets.map((b, j) => (
+                        <li key={j} className="text-[15px] text-ink/80 leading-relaxed pl-4 relative">
+                          <span className="absolute left-0 top-[0.62em] w-[4px] h-[4px] bg-black/25 rounded-full" />
+                          {renderRich(t(b))}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
               </article>
             ))}
           </div>
@@ -444,12 +457,28 @@ const Resume = ({ t }) => {
           </div>
 
           <h3 className={EYEBROW + ' mb-7'}>{t(r.aiLabel)}</h3>
-          <div className="space-y-6">
+          <div className="space-y-7">
             {r.aiCapabilities.map((c, i) => (
-              <div key={i} className="grid sm:grid-cols-[168px_1fr] gap-x-6 gap-y-1.5">
+              <div key={i} className="grid sm:grid-cols-[168px_1fr] gap-x-6 gap-y-2">
                 <h4 className="font-semibold text-[15px] leading-relaxed">{t(c.title)}</h4>
-                <p className="text-[15px] text-ink/80 leading-relaxed">{t(c.body)}</p>
+                <ul className="space-y-2">
+                  {c.items.map((it, j) => (
+                    <li key={j} className="text-[15px] text-ink/80 leading-relaxed pl-4 relative">
+                      <span className="absolute left-0 top-[0.62em] w-[4px] h-[4px] bg-black/25 rounded-full" />
+                      {renderRich(t(it))}
+                    </li>
+                  ))}
+                </ul>
               </div>
+            ))}
+          </div>
+
+          <h3 className={EYEBROW + ' mt-16 mb-6'}>{t(r.coreLabel)}</h3>
+          <div className="flex flex-wrap gap-2">
+            {r.core.map((c, i) => (
+              <span key={i} className="text-[13px] text-ink/75 border border-black/[0.12] rounded-full px-3.5 py-1.5">
+                {t(c)}
+              </span>
             ))}
           </div>
         </div>
