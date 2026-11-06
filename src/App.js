@@ -42,7 +42,6 @@ const Navbar = ({ lang, setLang, t }) => {
     ['/hobbies', t(contentData.nav.hobbies)],
     ['/social-listening', t(contentData.nav.hub)],
     ['/resources', t(contentData.nav.resources)],
-    ['/contact', t(contentData.nav.contact)],
   ];
   const linkCls = ({ isActive }) =>
     `uppercase tracking-[0.09em] transition-colors duration-200 ${
