@@ -32,6 +32,15 @@
   .fade-up {
     animation: fadeUp 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
   }
+
+  /* 横向滚动条隐藏（用于资源库的锚点导航） */
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 @keyframes fadeUp {

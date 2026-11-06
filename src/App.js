@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, NavLink, useLocation } from 'react-router-dom';
 import contentData from './data/content.json';
+import ResourceHub from './pages/ResourceHub';
 
 // --- 设计系统：Apple 风格的共用样式 ---
 const CARD = 'bg-white rounded-[24px] shadow-card ring-1 ring-black/[0.04]';
@@ -40,6 +41,7 @@ const Navbar = ({ lang, setLang, t }) => {
     ['/projects', t(contentData.nav.projects)],
     ['/hobbies', t(contentData.nav.hobbies)],
     ['/resources', t(contentData.nav.resources)],
+    ['/social-listening', t(contentData.nav.hub)],
     ['/contact', t(contentData.nav.contact)],
   ];
   const linkCls = ({ isActive }) =>
@@ -54,7 +56,7 @@ const Navbar = ({ lang, setLang, t }) => {
           {contentData.profile.name}
         </Link>
 
-        <div className="hidden md:flex items-center gap-7 text-[12px]">
+        <div className="hidden lg:flex items-center gap-4 lg:gap-5 xl:gap-7 text-[11.5px] xl:text-[12px]">
           {navItems.map(([to, label]) => (
             <NavLink key={to} to={to} className={linkCls}>{label}</NavLink>
           ))}
@@ -68,7 +70,7 @@ const Navbar = ({ lang, setLang, t }) => {
         </div>
 
         <button
-          className="md:hidden w-9 h-9 flex flex-col items-center justify-center gap-[5px]"
+          className="lg:hidden w-9 h-9 flex flex-col items-center justify-center gap-[5px]"
           onClick={() => setOpen(!open)}
           aria-label="Menu"
         >
@@ -79,7 +81,7 @@ const Navbar = ({ lang, setLang, t }) => {
 
       {/* 移动端菜单 */}
       <div
-        className={`md:hidden overflow-hidden transition-all duration-300 ease-out bg-surface/95 backdrop-blur-xl ${
+        className={`lg:hidden overflow-hidden transition-all duration-300 ease-out bg-surface/95 backdrop-blur-xl ${
           open ? 'max-h-96 border-b border-black/[0.06]' : 'max-h-0'
         }`}
       >
@@ -722,6 +724,7 @@ function Site() {
           <Route path="/projects" element={<Projects t={t} setActiveProject={setActiveProject} />} />
           <Route path="/hobbies" element={<Hobbies t={t} />} />
           <Route path="/resources" element={<Resources t={t} />} />
+          <Route path="/social-listening" element={<ResourceHub t={t} />} />
           <Route path="/contact" element={<Contact t={t} />} />
           <Route path="/resume" element={<Resume t={t} />} />
         </Routes>
