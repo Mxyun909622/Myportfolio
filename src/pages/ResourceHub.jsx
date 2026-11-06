@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { videos, accessLabels, accessFilters } from '../data/resources';
 import { experts } from '../data/experts';
-import { podcast, episodes } from '../data/podcasts';
+import { podcasts, totalEpisodes } from '../data/podcasts';
 
 /* ---------- 设计常量（沿用全站设计系统） ---------- */
 const CARD = 'bg-white rounded-[20px] ring-1 ring-black/[0.06]';
@@ -258,6 +258,27 @@ const EpisodeRow = ({ ep, t, saved, onToggle }) => (
   </div>
 );
 
+/* ---------- 播客系列行（无单集清单时按系列展示） ---------- */
+const SeriesRow = ({ s, i, url, t }) => (
+  <div className="group flex items-start gap-4 py-4 border-b border-black/[0.06] last:border-b-0">
+    <span className="w-7 shrink-0 pt-0.5 text-[12px] tabular-nums text-secondary/60">
+      {String(i + 1).padStart(2, '0')}
+    </span>
+    <div className="min-w-0 flex-1">
+      <p className="text-[14.5px] leading-snug font-medium">{t(s.title)}</p>
+      <p className="mt-1.5 text-[11.5px] leading-[1.6] text-secondary">{t(s.desc)}</p>
+    </div>
+    <a
+      href={url}
+      target="_blank"
+      rel="noreferrer"
+      className="text-[12.5px] font-medium text-accent whitespace-nowrap hover:underline underline-offset-4 shrink-0"
+    >
+      {t({ zh: '收听', en: 'Listen' })} ↗
+    </a>
+  </div>
+);
+
 /* ---------- 区块标题 ---------- */
 const SectionHead = ({ num, title, blurb, count, t }) => (
   <div className="mb-7">
@@ -332,18 +353,29 @@ const ResourceHub = ({ t }) => {
     return true;
   });
 
-  const filteredEpisodes = episodes.filter((ep) => {
-    if (savedOnly && !saved.includes(ep.id)) return false;
-    if (epQuery.trim()) {
-      const hay = `${ep.guest} ${ep.org} ${ep.topic.map((x) => t(x)).join(' ')}`.toLowerCase();
-      if (!hay.includes(epQuery.trim().toLowerCase())) return false;
-    }
-    return true;
+  const filteredPodcasts = podcasts.map((p) => {
+    const q = epQuery.trim().toLowerCase();
+    const matchEpisode = (ep) => {
+      if (savedOnly && !saved.includes(ep.id)) return false;
+      if (!q) return true;
+      const hay = `${ep.guest || ''} ${ep.org || ''} ${ep.title ? t(ep.title) : ''} ${(ep.topic || []).map((x) => t(x)).join(' ')}`.toLowerCase();
+      return hay.includes(q);
+    };
+    return {
+      ...p,
+      episodes: p.episodes.filter(matchEpisode),
+      series: (p.series || []).filter((s) => {
+        if (!q) return true;
+        const hay = `${t(s.title)} ${t(s.desc)}`.toLowerCase();
+        return hay.includes(q);
+      }),
+    };
   });
 
   const featured = videos.filter((v) => v.featured).slice(0, 3);
-  const total = videos.length + experts.length + episodes.length;
-  const latestVerified = '2026-11-06';
+  const total = videos.length + experts.length + totalEpisodes + podcasts.length;
+  const latestVerified = '2026-11-07';
+  const podcastItemCount = filteredPodcasts.reduce((n, p) => n + p.episodes.length + p.series.length, 0);
 
   const jump = (id) => (ev) => {
     ev.preventDefault();
@@ -388,7 +420,11 @@ const ResourceHub = ({ t }) => {
           </span>
           <span className="w-[3px] h-[3px] rounded-full bg-hairline" />
           <span className="tabular-nums">
-            {episodes.length} {t({ zh: '期播客', en: 'episodes' })}
+            {podcasts.length} {t({ zh: '档播客', en: 'podcast series' })}
+          </span>
+          <span className="w-[3px] h-[3px] rounded-full bg-hairline" />
+          <span className="tabular-nums">
+            {totalEpisodes} {t({ zh: '期剧集', en: 'episodes' })}
           </span>
           <span className="w-[3px] h-[3px] rounded-full bg-hairline" />
           <span>
@@ -579,84 +615,104 @@ const ResourceHub = ({ t }) => {
           num="03"
           title={t({ zh: '播客', en: 'Podcasts' })}
           blurb={t({
-            zh: '一档聚焦女性从业者的播客系列，适合通勤时听的行业视角与职业路径。',
-            en: 'One series, focused on women in the field — good for industry perspective and career paths on a commute.',
+            zh: '两档聚焦行业从业者的播客系列：一档对话社媒聆听领域的女性从业者，一档来自 ESOMAR 的行业现场对谈。',
+            en: 'Two podcast series focused on people in the field — conversations with women in social listening, and ESOMAR\'s on-the-road industry discussions.',
           })}
-          count={filteredEpisodes.length}
+          count={podcastItemCount}
           t={t}
         />
 
-        <div className="grid lg:grid-cols-[300px_1fr] gap-6 items-start">
-          {/* 封面 */}
-          <div className={`${CARD} p-5 lg:sticky lg:top-32`}>
-            <div className="rounded-[14px] bg-[#1d1d1f] aspect-square p-5 flex flex-col justify-between">
-              <span className="text-[9.5px] uppercase tracking-[0.22em] text-white/45">
-                {t({ zh: '播客系列', en: 'Podcast series' })}
-              </span>
-              <div>
-                <p className="text-white text-[17px] font-semibold leading-[1.3] tracking-[-0.01em]">
-                  Women in
-                  <br />
-                  Social Listening
-                  <br />
-                  &amp; Insights
+        <div className="space-y-10">
+          {filteredPodcasts.map((p) => (
+            <div key={p.id} className="grid lg:grid-cols-[300px_1fr] gap-6 items-start">
+              {/* 封面 */}
+              <div className={`${CARD} p-5`}>
+                {p.cover ? (
+                  <div className="rounded-[14px] overflow-hidden aspect-square bg-black/[0.04]">
+                    <img src={p.cover} alt={p.title} loading="lazy" className="h-full w-full object-cover" />
+                  </div>
+                ) : (
+                  <div className="rounded-[14px] bg-[#1d1d1f] aspect-square p-5 flex flex-col justify-between">
+                    <span className="text-[9.5px] uppercase tracking-[0.22em] text-white/45">
+                      {t({ zh: '播客系列', en: 'Podcast series' })}
+                    </span>
+                    <div>
+                      <p className="text-white text-[17px] font-semibold leading-[1.3] tracking-[-0.01em]">{p.title}</p>
+                      <p className="text-white/45 text-[10.5px] mt-3">{p.publisher}{p.host ? ` · ${p.host}` : ''}</p>
+                    </div>
+                  </div>
+                )}
+
+                {!p.cover && (
+                  <div className="mt-4">
+                    <p className="text-[15px] font-semibold leading-snug text-balance">{p.title}</p>
+                    <p className="text-[12px] text-secondary mt-1">{p.publisher}{p.host ? ` · ${p.host}` : ''}</p>
+                  </div>
+                )}
+
+                <p className="mt-4 text-[13px] leading-[1.7] text-secondary">{t(p.description)}</p>
+
+                <div className="mt-4 flex flex-wrap gap-1.5">
+                  <AccessBadge access={p.access} />
+                  {p.category.map((c) => (
+                    <span key={c.en} className="text-[11px] text-secondary bg-black/[0.045] rounded-full px-2.5 py-1">{t(c)}</span>
+                  ))}
+                </div>
+
+                <a
+                  href={p.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-4 inline-flex items-center justify-center w-full rounded-full bg-ink text-white text-[13px] font-medium py-2.5 hover:bg-black transition-colors"
+                >
+                  {t({ zh: '打开播客主页', en: 'Open podcast hub' })} ↗
+                </a>
+                <p className="mt-3 text-[11px] text-secondary/80 leading-relaxed">{t(p.note)}</p>
+              </div>
+
+              {/* 剧集 / 系列列表 */}
+              <div className={`${CARD} px-6 py-5`}>
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-black/[0.06]">
+                  <p className={EYEBROW}>
+                    {p.episodes.length > 0
+                      ? t({ zh: '精选剧集', en: 'Selected episodes' })
+                      : t({ zh: '系列一览', en: 'Series' })}
+                  </p>
+                  <div className="relative w-full sm:w-64">
+                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-secondary/60">
+                      <SearchIcon />
+                    </span>
+                    <input
+                      type="search"
+                      value={epQuery}
+                      onChange={(ev) => setEpQuery(ev.target.value)}
+                      placeholder={t({ zh: '按嘉宾、公司或话题筛选', en: 'Filter by guest, company or topic' })}
+                      className={inputCls.replace('py-2', 'py-1.5')}
+                    />
+                  </div>
+                </div>
+
+                {p.episodes.length > 0
+                  ? p.episodes.map((ep) => <EpisodeRow key={ep.id} ep={ep} t={t} saved={saved} onToggle={toggle} />)
+                  : p.series.map((s, i) => <SeriesRow key={s.id} s={s} i={i} url={p.url} t={t} />)}
+
+                {p.episodes.length === 0 && p.series.length === 0 && (
+                  <p className="py-12 text-center text-[14px] text-secondary">
+                    {savedOnly
+                      ? t({ zh: '还没有收藏的内容。', en: 'Nothing bookmarked yet.' })
+                      : t({ zh: '没有符合筛选条件的内容。', en: 'Nothing matches this filter.' })}
+                  </p>
+                )}
+
+                <p className="pt-4 text-[11.5px] text-secondary/80">
+                  {t({ zh: '共收录', en: 'Showing' })} {p.episodes.length + p.series.length}
+                  {p.episodes.length > 0
+                    ? ` / ${p.episodes.length}`
+                    : ` / ${p.series.length}`}
                 </p>
-                <p className="text-white/45 text-[10.5px] mt-3">{podcast.publisher} · {podcast.host}</p>
               </div>
             </div>
-
-            <p className="mt-4 text-[13px] leading-[1.7] text-secondary">{t(podcast.description)}</p>
-
-            <div className="mt-4 flex flex-wrap gap-1.5">
-              <AccessBadge access={podcast.access} />
-              {podcast.category.map((c) => (
-                <span key={c.en} className="text-[11px] text-secondary bg-black/[0.045] rounded-full px-2.5 py-1">{t(c)}</span>
-              ))}
-            </div>
-
-            <a
-              href={podcast.url}
-              target="_blank"
-              rel="noreferrer"
-              className="mt-4 inline-flex items-center justify-center w-full rounded-full bg-ink text-white text-[13px] font-medium py-2.5 hover:bg-black transition-colors"
-            >
-              {t({ zh: '打开播客主页', en: 'Open podcast hub' })} ↗
-            </a>
-            <p className="mt-3 text-[11px] text-secondary/80 leading-relaxed">{t(podcast.note)}</p>
-          </div>
-
-          {/* 剧集列表 */}
-          <div className={`${CARD} px-6 py-5`}>
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-black/[0.06]">
-              <p className={EYEBROW}>{t({ zh: '精选剧集', en: 'Selected episodes' })}</p>
-              <div className="relative w-full sm:w-64">
-                <span className="absolute left-3 top-1/2 -translate-y-1/2 text-secondary/60">
-                  <SearchIcon />
-                </span>
-                <input
-                  type="search"
-                  value={epQuery}
-                  onChange={(ev) => setEpQuery(ev.target.value)}
-                  placeholder={t({ zh: '按嘉宾、公司或话题筛选', en: 'Filter by guest, company or topic' })}
-                  className={inputCls.replace('py-2', 'py-1.5')}
-                />
-              </div>
-            </div>
-
-            {filteredEpisodes.length > 0 ? (
-              filteredEpisodes.map((ep) => <EpisodeRow key={ep.id} ep={ep} t={t} saved={saved} onToggle={toggle} />)
-            ) : (
-              <p className="py-12 text-center text-[14px] text-secondary">
-                {savedOnly
-                  ? t({ zh: '还没有收藏的剧集。', en: 'No bookmarked episodes yet.' })
-                  : t({ zh: '没有符合条件的剧集。', en: 'No episodes match this filter.' })}
-              </p>
-            )}
-
-            <p className="pt-4 text-[11.5px] text-secondary/80">
-              {t({ zh: '共收录', en: 'Showing' })} {filteredEpisodes.length} / {episodes.length}
-            </p>
-          </div>
+          ))}
         </div>
       </section>
 
