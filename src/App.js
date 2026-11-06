@@ -40,8 +40,8 @@ const Navbar = ({ lang, setLang, t }) => {
     ['/', t(contentData.nav.home)],
     ['/projects', t(contentData.nav.projects)],
     ['/hobbies', t(contentData.nav.hobbies)],
-    ['/resources', t(contentData.nav.resources)],
     ['/social-listening', t(contentData.nav.hub)],
+    ['/resources', t(contentData.nav.resources)],
     ['/contact', t(contentData.nav.contact)],
   ];
   const linkCls = ({ isActive }) =>
