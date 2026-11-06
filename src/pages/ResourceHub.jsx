@@ -87,16 +87,41 @@ const Chip = ({ active, children, onClick }) => (
 const VideoCard = ({ r, t, saved, onToggle }) => {
   const tint = PROVIDER_TINT[r.provider] || '#f2f2f4';
   return (
-    <article className={`${CARD} overflow-hidden flex flex-col transition-all duration-300 hover:shadow-card hover:ring-black/[0.11]`}>
-      <div className="px-5 pt-4 pb-3 flex items-start justify-between gap-3" style={{ backgroundColor: tint }}>
-        <div className="min-w-0">
-          <p className="text-[13px] font-semibold tracking-[-0.01em] text-ink/75 truncate">{r.provider}</p>
-          {r.providerNote && <p className="text-[10.5px] text-ink/40 mt-0.5 truncate">{t(r.providerNote)}</p>}
+    <article className={`${CARD} group overflow-hidden flex flex-col transition-all duration-300 hover:shadow-card hover:ring-black/[0.11]`}>
+      {r.thumbnail ? (
+        <a href={r.url} target="_blank" rel="noreferrer" className="relative block aspect-video overflow-hidden bg-black/[0.04]" aria-label={r.title}>
+          <img
+            src={r.thumbnail}
+            alt=""
+            loading="lazy"
+            className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"
+          />
+          <span className="absolute top-3 right-3">
+            <AccessBadge access={r.access} />
+          </span>
+        </a>
+      ) : (
+        <div className="relative aspect-video overflow-hidden flex flex-col justify-between p-4" style={{ backgroundColor: tint }}>
+          <div className="flex items-start justify-between gap-3">
+            <span className="text-[12.5px] font-semibold text-ink/70">{r.provider}</span>
+            <AccessBadge access={r.access} />
+          </div>
+          <span className="text-[clamp(20px,2.2vw,30px)] font-semibold tracking-[-0.02em] leading-[1.05] text-ink/25">
+            {r.provider}
+          </span>
         </div>
-        <AccessBadge access={r.access} />
-      </div>
+      )}
 
       <div className="p-5 flex flex-col flex-1">
+        {r.thumbnail && (
+          <div className="mb-2">
+            <p className="text-[12.5px] font-semibold text-secondary">
+              {r.provider}
+              {r.providerNote && <span className="font-normal text-secondary/70"> · {t(r.providerNote)}</span>}
+            </p>
+          </div>
+        )}
+
         <div className="flex items-center gap-2 text-[10.5px] uppercase tracking-[0.11em] text-secondary mb-2.5">
           <span>{t(r.format)}</span>
           {r.duration && (

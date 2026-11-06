@@ -25,12 +25,12 @@
       "en": "Interests"
     },
     "resources": {
-      "zh": "资源",
-      "en": "Resources"
+      "zh": "更多",
+      "en": "Elsewhere"
     },
     "hub": {
-      "zh": "社媒聆听",
-      "en": "Social Listening"
+      "zh": "社媒聆听资源",
+      "en": "Social Listening Resources"
     },
     "contact": {
       "zh": "联系方式",
@@ -733,8 +733,8 @@
       "en": "Sociology, communication studies and consumer psychology — the classics that shape how I read culture."
     },
     "resourcesHeading": {
-      "zh": "资源",
-      "en": "Resources"
+      "zh": "更多",
+      "en": "Elsewhere"
     },
     "resourcesBlurb": {
       "zh": "持续更新：我常读的书、工具与摄影师清单。",

@@ -16,6 +16,7 @@
  *  access      'free' | 'reg' | 'unconfirmed' | 'paid'
  *  speaker     讲者/讲师，可为 null
  *  url         主链接
+ *  thumbnail   本地缩略图路径 /assets/hub/...，拿不到真图时为 null（卡片用版式兜底）
  *  extraUrl    补充链接 { label, url }，可为 null
  *  note        特别提示（例如存档页），可为 null
  *  featured    是否进入「精选」区
@@ -56,6 +57,7 @@ export const videos = [
     extraUrl: null,
     note: null,
     featured: true,
+    thumbnail: '/assets/hub/t-sprout-social-intelligence-masterclass.jpg',
     lastVerified: '2026-11-06',
   },
   {
@@ -77,6 +79,7 @@ export const videos = [
     extraUrl: null,
     note: null,
     featured: false,
+    thumbnail: '/assets/hub/t-sprout-social-listening-analytics.jpg',
     lastVerified: '2026-11-06',
   },
   {
@@ -104,6 +107,7 @@ export const videos = [
     },
     note: null,
     featured: true,
+    thumbnail: '/assets/hub/t-ipsos-genai-social-listening.jpg',
     lastVerified: '2026-11-06',
   },
   {
@@ -125,6 +129,7 @@ export const videos = [
     extraUrl: null,
     note: null,
     featured: false,
+    thumbnail: '/assets/hub/t-ipsos-five-steps.jpg',
     lastVerified: '2026-11-06',
   },
   {
@@ -146,6 +151,7 @@ export const videos = [
     extraUrl: null,
     note: null,
     featured: false,
+    thumbnail: '/assets/hub/t-youscan-cx.jpg',
     lastVerified: '2026-11-06',
   },
   {
@@ -170,6 +176,7 @@ export const videos = [
     },
     note: null,
     featured: false,
+    thumbnail: null,
     lastVerified: '2026-11-06',
   },
   {
@@ -191,6 +198,7 @@ export const videos = [
     extraUrl: null,
     note: null,
     featured: false,
+    thumbnail: null,
     lastVerified: '2026-11-06',
   },
   {
@@ -212,6 +220,7 @@ export const videos = [
     extraUrl: null,
     note: null,
     featured: true,
+    thumbnail: null,
     lastVerified: '2026-11-06',
   },
   {
@@ -233,6 +242,7 @@ export const videos = [
     extraUrl: null,
     note: null,
     featured: false,
+    thumbnail: '/assets/hub/t-unwritten-tiktok-business-insight.jpg',
     lastVerified: '2026-11-06',
   },
   {
@@ -257,6 +267,7 @@ export const videos = [
       en: 'Archived course page. Not verified as currently available or free — check the official page before relying on it.',
     },
     featured: false,
+    thumbnail: null,
     lastVerified: '2026-11-06',
   },
 ];
