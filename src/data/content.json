@@ -326,8 +326,8 @@
       "en": "Resume"
     },
     "summary": {
-      "zh": "社媒聆听与消费者洞察分析师，近四年经验，把社媒与电商语料转化为可落地的商业洞察，覆盖高端香水、美妆、零售电商、保险与医药。擅长社媒情报、消费者行为分析、Campaign 效果评估、KOL 策略与客户报告；并用 AI 辅助的 Python 开发与流程自动化，让研究更快、更可复用。",
-      "en": "Social Listening & Consumer Insights Analyst with nearly four years of experience turning social and e-commerce data into business insight across luxury fragrance, beauty, retail, insurance and healthcare. Experienced in social intelligence, consumer behaviour analysis, campaign evaluation, KOL strategy and client reporting — with AI-assisted Python development and workflow automation to make research faster and more scalable."
+      "zh": "社媒聆听与消费者洞察分析师，近四年经验，把社媒与电商语料转化为可落地的商业洞察，覆盖高端香水、美妆、零售电商、保险与医药。擅长社媒舆情、消费者洞察、Campaign 效果评估、KOL 策略与客户报告；并用 AI 辅助的 Python 开发与流程自动化，让研究更快、更可复用。",
+      "en": "Social Listening & Consumer Insights Analyst with nearly four years of experience turning social and e-commerce data into business insight across luxury fragrance, beauty, retail, insurance and healthcare. Experienced in social listening, consumer insight, campaign evaluation, KOL strategy and client reporting — with AI-assisted Python development and workflow automation to make research faster and more scalable."
     },
     "contactNote": {
       "zh": "含完整联系方式的 PDF 版本可通过邮件索取。",
@@ -370,8 +370,8 @@
         },
         "bullets": [
           {
-            "zh": "**社媒情报**：监测 20+ 香水品牌的社媒数据，围绕品牌形象、KOL 投放、情感与话题分析、UGC 反馈建立监测体系，按月输出声量与讨论报告；同步跟踪竞品动态与品牌公关风险。",
-            "en": "**Social intelligence**: monitored 20+ fragrance brands across brand image, KOL investment, sentiment, topic analysis and UGC feedback, building the reputation-monitoring system behind monthly share-of-voice and discussion reports, alongside competitor tracking and PR-risk monitoring."
+            "zh": "**社媒舆情**：监测 20+ 香水品牌的社媒数据，围绕品牌形象、KOL 投放、情感与话题分析、UGC 反馈建立监测体系，按月输出声量与讨论报告；同步跟踪竞品动态与品牌公关风险。",
+            "en": "**Social listening**: monitored 20+ fragrance brands across brand image, KOL investment, sentiment, topic analysis and UGC feedback, building the reputation-monitoring system behind monthly share-of-voice and discussion reports, alongside competitor tracking and PR-risk monitoring."
           },
           {
             "zh": "**消费者洞察**：电商侧按品类、品线拆解评论趋势，帮客户放大优势卖点、定位产品短板；医药侧完成罕见病患者画像与患者旅程梳理，识别潜在机会点。",
@@ -589,8 +589,8 @@
     ],
     "core": [
       {
-        "zh": "社媒聆听与社媒情报",
-        "en": "Social listening & intelligence"
+        "zh": "社媒聆听与社媒舆情",
+        "en": "Social listening & opinion monitoring"
       },
       {
         "zh": "消费者与市场研究",
@@ -605,8 +605,8 @@
         "en": "Competitive intelligence"
       },
       {
-        "zh": "消费者行为分析",
-        "en": "Consumer behaviour analysis"
+        "zh": "消费者洞察",
+        "en": "Consumer insight"
       },
       {
         "zh": "KOL 与达人策略",
