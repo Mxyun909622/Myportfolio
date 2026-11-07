@@ -363,7 +363,9 @@ const Resources = ({ t }) => {
             <p className="text-white/80 leading-relaxed text-[15px]">{t(h.xhsCardBlurb)}</p>
           </div>
           <div className="mt-12 flex items-center gap-3">
-            <div className="w-9 h-9 bg-white rounded-full flex items-center justify-center text-[#ff2442] font-bold text-[11px]">小红书</div>
+            <div className="w-9 h-9 rounded-full overflow-hidden bg-white/90 shrink-0">
+              <img src="/assets/xhs-avatar.jpg" alt="Xiaohongshu avatar" loading="lazy" className="w-full h-full object-cover" />
+            </div>
             <span className="font-medium text-[15px]">{t(h.followHandle)} {social.xiaohongshuHandle}</span>
           </div>
         </a>
@@ -545,7 +547,9 @@ const Contact = ({ t }) => {
             <p className="text-white/80 leading-relaxed text-lg">{t(h.xhsCardBlurb)}</p>
           </div>
           <div className="mt-12 flex items-center gap-3">
-            <div className="w-9 h-9 bg-white rounded-full flex items-center justify-center text-[#ff2442] font-bold text-[11px]">小红书</div>
+            <div className="w-9 h-9 rounded-full overflow-hidden bg-white/90 shrink-0">
+              <img src="/assets/xhs-avatar.jpg" alt="Xiaohongshu avatar" loading="lazy" className="w-full h-full object-cover" />
+            </div>
             <span className="font-medium">{t(h.followHandle)} {social.xiaohongshuHandle}</span>
           </div>
         </a>
