@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link, NavLink, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link, NavLink, useLocation, Navigate } from 'react-router-dom';
 import contentData from './data/content.json';
 import ResourceHub from './pages/ResourceHub';
+
+// --- 简历页开关 ---
+// 暂时隐藏简历页（导航入口 + 路由都关闭，直接访问 /resume 会跳回首页）。
+// 以后要恢复：把 SHOW_RESUME 改回 true 重新部署即可，Resume 组件与内容都保留着。
+const SHOW_RESUME = false;
 
 // --- 设计系统：Apple 风格的共用样式 ---
 const CARD = 'bg-white rounded-[24px] shadow-card ring-1 ring-black/[0.04]';
@@ -59,7 +64,7 @@ const Navbar = ({ lang, setLang, t }) => {
           {navItems.map(([to, label]) => (
             <NavLink key={to} to={to} className={linkCls}>{label}</NavLink>
           ))}
-          <NavLink to="/resume" className={linkCls}>{t(contentData.nav.resume)}</NavLink>
+          {SHOW_RESUME && <NavLink to="/resume" className={linkCls}>{t(contentData.nav.resume)}</NavLink>}
           <button
             onClick={() => setLang(lang === 'en' ? 'zh' : 'en')}
             className="rounded-full bg-ink text-white text-xs px-3.5 py-1.5 font-medium transition-all duration-200 hover:bg-black active:scale-[0.97]"
@@ -85,7 +90,7 @@ const Navbar = ({ lang, setLang, t }) => {
         }`}
       >
         <div className="px-6 py-4 flex flex-col gap-1 text-[15px]">
-          {[...navItems, ['/resume', t(contentData.nav.resume)]].map(([to, label]) => (
+          {[...navItems, ...(SHOW_RESUME ? [['/resume', t(contentData.nav.resume)]] : [])].map(([to, label]) => (
             <NavLink key={to} to={to} className={({ isActive }) => `py-2.5 uppercase tracking-[0.09em] ${isActive ? 'text-ink font-semibold' : 'text-secondary'}`} onClick={() => setOpen(false)}>
               {label}
             </NavLink>
@@ -122,7 +127,9 @@ const Home = ({ t, setActiveProject }) => {
             </p>
             <div className="flex flex-wrap gap-3">
               <Link to="/projects" className={BTN_PRIMARY}>{t({ zh: '查看案例', en: 'View Projects' })}</Link>
-              <Link to={contentData.profile.resumeUrl || '/resume'} className={BTN_SECONDARY}>{t(contentData.nav.resume)}</Link>
+              {SHOW_RESUME && (
+                <Link to={contentData.profile.resumeUrl || '/resume'} className={BTN_SECONDARY}>{t(contentData.nav.resume)}</Link>
+              )}
             </div>
             <p className="mt-7 flex items-center gap-2.5 text-[13px] text-secondary">
               <span className="w-1.5 h-1.5 rounded-full bg-accent" />
@@ -221,7 +228,7 @@ const Home = ({ t, setActiveProject }) => {
           </div>
           <div className="flex flex-wrap gap-3 shrink-0">
             <a href={`mailto:${contentData.settings.contact.email}`} className={BTN_PRIMARY}>{t(h.ctaButton)}</a>
-            <Link to="/resume" className={BTN_SECONDARY}>{t(h.ctaResume)}</Link>
+            {SHOW_RESUME && <Link to="/resume" className={BTN_SECONDARY}>{t(h.ctaResume)}</Link>}
           </div>
         </div>
       </section>
@@ -579,7 +586,7 @@ const Footer = ({ t }) => (
       <span>© 2026 {contentData.profile.name}</span>
       <span className="flex gap-5">
         <Link to="/projects" className="hover:text-secondary transition-colors">{t(contentData.nav.projects)}</Link>
-        <Link to="/resume" className="hover:text-secondary transition-colors">{t(contentData.nav.resume)}</Link>
+        {SHOW_RESUME && <Link to="/resume" className="hover:text-secondary transition-colors">{t(contentData.nav.resume)}</Link>}
         <Link to="/contact" className="hover:text-secondary transition-colors">{t(contentData.nav.contact)}</Link>
       </span>
     </div>
@@ -725,7 +732,8 @@ function Site() {
           <Route path="/resources" element={<Resources t={t} />} />
           <Route path="/social-listening" element={<ResourceHub t={t} />} />
           <Route path="/contact" element={<Contact t={t} />} />
-          <Route path="/resume" element={<Resume t={t} />} />
+          {SHOW_RESUME && <Route path="/resume" element={<Resume t={t} />} />}
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>
 
