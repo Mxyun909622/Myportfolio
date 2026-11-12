@@ -584,18 +584,46 @@ const Contact = ({ t }) => {
 };
 
 // --- 页脚 ---
-const Footer = ({ t }) => (
-  <footer className="border-t border-black/[0.06] py-10 px-6">
-    <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-3 text-[13px] text-black/[0.4]">
-      <span>© 2026 {contentData.profile.name}</span>
-      <span className="flex gap-5">
-        <Link to="/projects" className="hover:text-secondary transition-colors">{t(contentData.nav.projects)}</Link>
-        {SHOW_RESUME && <Link to="/resume" className="hover:text-secondary transition-colors">{t(contentData.nav.resume)}</Link>}
-        <Link to="/contact" className="hover:text-secondary transition-colors">{t(contentData.nav.contact)}</Link>
-      </span>
-    </div>
-  </footer>
-);
+const Footer = ({ t }) => {
+  // 访问计数：Abacus 免费计数 API，页脚低调展示。同一浏览器会话只计一次。
+  const [visits, setVisits] = useState(null);
+  useEffect(() => {
+    const NS = 'ingridinsight.xyz';
+    const KEY = 'site-visits';
+    const counted = (() => {
+      try { return sessionStorage.getItem('visitCounted') === '1'; } catch (e) { return false; }
+    })();
+    const url = counted
+      ? `https://abacus.jasoncameron.dev/get/${NS}/${KEY}`
+      : `https://abacus.jasoncameron.dev/hit/${NS}/${KEY}`;
+    try { sessionStorage.setItem('visitCounted', '1'); } catch (e) { /* 隐私模式忽略 */ }
+    fetch(url)
+      .then((r) => (r.ok ? r.json() : null))
+      .then((d) => { if (d && typeof d.value === 'number') setVisits(d.value); })
+      .catch(() => { /* 静默失败：计数不显示也不影响页面 */ });
+  }, []);
+
+  return (
+    <footer className="border-t border-black/[0.06] py-10 px-6">
+      <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-3 text-[13px] text-black/[0.4]">
+        <span className="flex items-center gap-2">
+          <span>© 2026 {contentData.profile.name}</span>
+          {visits != null && (
+            <>
+              <span className="w-[3px] h-[3px] rounded-full bg-black/20" />
+              <span className="tabular-nums">{visits.toLocaleString()} {t({ zh: '次到访', en: 'visits' })}</span>
+            </>
+          )}
+        </span>
+        <span className="flex gap-5">
+          <Link to="/projects" className="hover:text-secondary transition-colors">{t(contentData.nav.projects)}</Link>
+          {SHOW_RESUME && <Link to="/resume" className="hover:text-secondary transition-colors">{t(contentData.nav.resume)}</Link>}
+          <Link to="/contact" className="hover:text-secondary transition-colors">{t(contentData.nav.contact)}</Link>
+        </span>
+      </div>
+    </footer>
+  );
+};
 
 // --- 项目详情弹窗 ---
 const ProjectModal = ({ project, t, onClose }) => {
